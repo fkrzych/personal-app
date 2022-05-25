@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Edit event
+{% endblock %}
+
+{% block body %}
+    {% if event is defined and event|length %}
+        <h1>Edit Event {{ event.name }}</h1>
+        <dl>
+            <dt>Event Name</dt>
+            <dd>{{ event.name }}</dd>
+            <dt>Date and Time</dt>
+            <dd>{{ event.datetime }}</dd>
+            <dt>Categories</dt>
+            <dd>{{ event.category }}</dd>
+            <dt>Tags</dt>
+            <dd>{{ event.tags|join(', ') }}</dd>
+        </dl>
+        <a href="{{ url('event_index') }}" title="back to events">Back to events</a>
+    {% else %}
+        <p>
+            Event not found.
+        </p>
+    {% endif %}
+{% endblock %}
