@@ -25,9 +25,7 @@
                 <tr>
                     <td>{{ event.id }}</td>
                     <td>{{ event.name }}</td>
-                    <td>{{ event.datetime }}</td>
-                    <td>{{ event.category }}</td>
-                    <td>{{ event.tags|join(', ') }}</td>
+                    <td>{{ event.date|format_date('long') }}</td>
                     <td>
                         <a href="{{ url('event_show', {'id': event.id}) }}" title="edit event">Edit event</a>
                     </td>

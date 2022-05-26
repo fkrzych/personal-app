@@ -1,76 +1,66 @@
 <?php
-/**
- * Record repository.
- */
 
 namespace App\Repository;
 
+use App\Entity\Event;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
 /**
- * Class RecordRepository.
+ * @extends ServiceEntityRepository<Event>
+ *
+ * @method Event|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Event|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Event[]    findAll()
+ * @method Event[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EventRepository
+class EventRepository extends ServiceEntityRepository
 {
-    /**
-     * Data.
-     *
-     * @var array<int, array<string, mixed>>
-     */
-    private array $data = [
-        1 => [
-            'id' => 1,
-            'name' => 'Wizyta u lekarza',
-            'datetime' => '2 czerwca 2022 19:00',
-            'category' => 'Zdrowie',
-            'tags' => [
-                'Lekarz',
-                'Wizyta'
-            ],
-        ],
-        2 => [
-            'id' => 2,
-            'name' => 'Urodziny Ani',
-            'datetime' => '19 września 21:00',
-            'category' => 'Rozrywka',
-            'tags' => [
-                'Urodziny',
-                'Znajomi'
-            ],
-        ],
-        3 => [
-            'id' => 3,
-            'name' => 'Koncert Nickelback',
-            'datetime' => '13 października 7:00',
-            'category' => 'Zdrowie',
-            'tags' => [
-                'Kocham Nickelback',
-                'Muzyka'
-            ],
-        ],
-    ];
-
-    /**
-     * Find all.
-     *
-     * @return array[] Result
-     *
-     * @psalm-return array<int, array<string, mixed>>
-     */
-    public function findAll(): array
+    public function __construct(ManagerRegistry $registry)
     {
-        return $this->data;
+        parent::__construct($registry, Event::class);
     }
 
-    /**
-     * Find one by Id.
-     *
-     * @param int $id Id
-     *
-     * @return array<string, mixed>|null Result
-     */
-    public function findOneById(int $id): ?array
+    public function add(Event $entity, bool $flush = false): void
     {
-        return count($this->data) && isset($this->data[$id])
-            ? $this->data[$id]
-            : null;
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
     }
+
+    public function remove(Event $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+//    /**
+//     * @return Event[] Returns an array of Event objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('e.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+//    public function findOneBySomeField($value): ?Event
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
 }
