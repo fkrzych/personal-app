@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Edit contact
+    {{ 'title.edit_contact'|trans }}
 {% endblock %}
 
 {% block body %}
     {% if contact is defined and contact|length %}
-        <h1>Edit Contact {{ contact.name }}</h1>
+        <h1>{{ contact.name }}</h1>
         <dl>
-            <dt>Contact Name</dt>
+            <dt>{{ 'label.contact_name'|trans }}</dt>
             <dd>{{ contact.name }}</dd>
-            <dt>Phone number</dt>
+            <dt>{{ 'label.phone'|trans }}</dt>
             <dd>{{ contact.phone }}</dd>
+        </dl>
         <a href="{{ url('contact_index') }}" title="back to contacts">Back to contacts</a>
     {% else %}
         <p>
-            Contact not found.
+            {{ 'message.record_not_found'|trans }}
         </p>
     {% endif %}
 {% endblock %}

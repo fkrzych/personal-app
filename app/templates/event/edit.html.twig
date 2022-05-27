@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Edit event
+    {{ 'title.edit_event'|trans }}
 {% endblock %}
 
 {% block body %}
     {% if event is defined and event|length %}
-        <h1>Edit Event {{ event.name }}</h1>
+        <h1>{{ event.name }}</h1>
         <dl>
-            <dt>Event Name</dt>
+            <dt>{{ 'label.event_name'|trans }}</dt>
             <dd>{{ event.name }}</dd>
-            <dt>Date and Time</dt>
+            <dt>{{ 'label.date'|trans }}</dt>
             <dd>{{ event.date|format_datetime('long')}}</dd>
-            <dt>Category</dt>
+            <dt>{{ 'label.category'|trans}}</dt>
             <dd>{{ event.category.name }}</dd>
         </dl>
         <a href="{{ url('event_index') }}" title="back to events">Back to events</a>
     {% else %}
         <p>
-            Event not found.
+            {{ 'message.record_not_found'|trans }}
         </p>
     {% endif %}
 {% endblock %}

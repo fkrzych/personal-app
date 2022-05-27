@@ -6,7 +6,10 @@
 namespace App\Controller;
 
 use App\Repository\ContactRepository;
+use App\Repository\EventRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,13 +29,15 @@ class ContactController extends AbstractController {
         name: 'contact_index',
         methods: 'GET'
     )]
-    public function index(ContactRepository $repository): Response {
-        $contacts = $repository->findAll();
-
-        return $this->render(
-            'contact/index.html.twig',
-            ['contacts' => $contacts]
+    public function index(Request $request, ContactRepository $contactRepository, PaginatorInterface $paginator): Response
+    {
+        $pagination = $paginator->paginate(
+            $contactRepository->queryAll(),
+            $request->query->getInt('page', 1),
+            ContactRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+
+        return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
