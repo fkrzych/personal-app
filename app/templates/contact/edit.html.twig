@@ -12,9 +12,6 @@
             <dd>{{ contact.name }}</dd>
             <dt>Phone number</dt>
             <dd>{{ contact.phone }}</dd>
-            <dt>Tags</dt>
-            <dd>{{ contact.tags|join(', ') }}</dd>
-        </dl>
         <a href="{{ url('contact_index') }}" title="back to contacts">Back to contacts</a>
     {% else %}
         <p>

@@ -20,6 +20,10 @@ class Event
     #[ORM\Column(type: 'datetime')]
     private $date;
 
+    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,5 +47,17 @@ class Event
     public function setDate(\DateTimeInterface $date): void
     {
         $this->date = $date;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

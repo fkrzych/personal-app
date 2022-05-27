@@ -13,7 +13,6 @@
                 <th>ID</th>
                 <th>Contact Name</th>
                 <th>Phone number</th>
-                <th>Tags</th>
                 <th scope="col">
                     Actions
                 </th>
@@ -25,7 +24,6 @@
                     <td>{{ contact.id }}</td>
                     <td>{{ contact.name }}</td>
                     <td>{{ contact.phone }}</td>
-                    <td>{{ contact.tags|join(', ') }}</td>
                     <td>
                         <a href="{{ url('contact_show', {'id': contact.id}) }}" title="edit contact">Edit contact</a>
                     </td>
@@ -39,5 +37,7 @@
         <p>
             List is empty.
         </p>
+
+        <a href="{{ url('event_index') }}" title="go to events">Go to events</a>
     {% endif %}
 {% endblock  %}

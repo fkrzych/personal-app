@@ -13,8 +13,7 @@
                 <th>ID</th>
                 <th>Event Name</th>
                 <th>Date and Time</th>
-                <th>Categories</th>
-                <th>Tags</th>
+                <th>Category</th>
                 <th scope="col">
                     Actions
                 </th>
@@ -25,7 +24,8 @@
                 <tr>
                     <td>{{ event.id }}</td>
                     <td>{{ event.name }}</td>
-                    <td>{{ event.date|format_date('long') }}</td>
+                    <td>{{ event.date|format_datetime('long') }}</td>
+                    <td>{{ event.category.name }}</td>
                     <td>
                         <a href="{{ url('event_show', {'id': event.id}) }}" title="edit event">Edit event</a>
                     </td>
@@ -39,5 +39,7 @@
         <p>
             List is empty.
         </p>
+
+        <a href="{{ url('contact_index') }}" title="go to contacts">Go to contacts</a>
     {% endif %}
 {% endblock  %}

@@ -1,40 +1,57 @@
 <?php
+/**
+ * Event fixtures.
+ */
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Event;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
-use Faker\Generator;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class EventFixtures extends Fixture
+/**
+ * Class EventFixtures.
+ */
+class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
-     * Faker.
+     * Load data.
      *
-     * @var Generator
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
-    protected Generator $faker;
-
-    /**
-     * Persistence object manager.
-     *
-     * @var ObjectManager
-     */
-    protected ObjectManager $manager;
-
-    public function load(ObjectManager $manager): void
+    public function loadData(): void
     {
-        $this->faker = Factory::create();
-
-        for ($i = 0; $i < 12; ++$i) {
-            $event = new Event();
-            $event->setName($this->faker->sentence);
-            $event->setDate($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $manager->persist($event);
+        if (null === $this->manager || null === $this->faker) {
+            return;
         }
 
-        $manager->flush();
+        $this->createMany(100, 'events', function (int $i) {
+            $event = new Event();
+            $event->setName($this->faker->sentence);
+            $event->setDate($this->faker->dateTime);
+            /** @var Category $category */
+            $category = $this->getRandomReference('categories');
+            $event->setCategory($category);
+
+            return $event;
+        });
+
+        $this->manager->flush();
+    }
+
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: CategoryFixtures::class}
+     */
+    public function getDependencies(): array
+    {
+        return [CategoryFixtures::class];
     }
 }
+

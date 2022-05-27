@@ -11,11 +11,9 @@
             <dt>Event Name</dt>
             <dd>{{ event.name }}</dd>
             <dt>Date and Time</dt>
-            <dd>{{ event.datetime }}</dd>
-            <dt>Categories</dt>
-            <dd>{{ event.category }}</dd>
-            <dt>Tags</dt>
-            <dd>{{ event.tags|join(', ') }}</dd>
+            <dd>{{ event.date|format_datetime('long')}}</dd>
+            <dt>Category</dt>
+            <dd>{{ event.category.name }}</dd>
         </dl>
         <a href="{{ url('event_index') }}" title="back to events">Back to events</a>
     {% else %}
