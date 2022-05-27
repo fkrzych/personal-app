@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Działania</target>
+      </trans-unit>
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="title.event_list">
+        <source>title.event_list</source>
+        <target>Wydarzenia</target>
+      </trans-unit>
+      <trans-unit id="label.event_name">
+        <source>label.event_name</source>
+        <target>Nazwa wydarzenia</target>
+      </trans-unit>
+      <trans-unit id="label.date">
+        <source>label.date</source>
+        <target>Data i godzina</target>
+      </trans-unit>
+      <trans-unit id="label.category">
+        <source>label.category</source>
+        <target>Kategoria</target>
+      </trans-unit>
+      <trans-unit id="edit.event">
+        <source>edit.event</source>
+        <target>Edytuj wydarzenie</target>
+      </trans-unit>
+      <trans-unit id="contacts.link">
+        <source>contacts.link</source>
+        <target>Idź do kontaktów</target>
+      </trans-unit>
+      <trans-unit id="events.link">
+        <source>events.link</source>
+        <target>Idź do wydarzeń</target>
+      </trans-unit>
+      <trans-unit id="title.contact_list">
+        <source>title.contact_list</source>
+        <target>Kontakty</target>
+      </trans-unit>
+      <trans-unit id="label.contact_name">
+        <source>label.contact_name</source>
+        <target>Nazwa kontaktu</target>
+      </trans-unit>
+      <trans-unit id="label.phone">
+        <source>label.phone</source>
+        <target>Numer telefonu</target>
+      </trans-unit>
+      <trans-unit id="edit.contact">
+        <source>edit.contact</source>
+        <target>Edytuj kontakt</target>
+      </trans-unit>
+      <trans-unit id="message.no_data">
+        <source>message.no_data</source>
+        <target>Brak danych.</target>
+      </trans-unit>
+      <trans-unit id="message.record_not_found">
+        <source>message.record_not_found</source>
+        <target>Rekordu nie znaleziono.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

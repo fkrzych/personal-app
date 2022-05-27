@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="title.event_list">
+        <source>title.event_list</source>
+        <target>Events</target>
+      </trans-unit>
+      <trans-unit id="label.event_name">
+        <source>label.event_name</source>
+        <target>Event Name</target>
+      </trans-unit>
+      <trans-unit id="label.date">
+        <source>label.date</source>
+        <target>Date and time</target>
+      </trans-unit>
+      <trans-unit id="label.category">
+        <source>label.category</source>
+        <target>Category</target>
+      </trans-unit>
+      <trans-unit id="edit.event">
+        <source>edit.event</source>
+        <target>Edit event</target>
+      </trans-unit>
+      <trans-unit id="contacts.link">
+        <source>contacts.link</source>
+        <target>Go to contacts</target>
+      </trans-unit>
+      <trans-unit id="title.edit_event">
+        <source>title.edit_event</source>
+        <target>Edit event</target>
+      </trans-unit>
+      <trans-unit id="events.link">
+        <source>events.link</source>
+        <target>Go to events</target>
+      </trans-unit>
+      <trans-unit id="title.contact_list">
+        <source>title.contact_list</source>
+        <target>Contacts</target>
+      </trans-unit>
+      <trans-unit id="label.contact_name">
+        <source>label.contact_name</source>
+        <target>Contact Name</target>
+      </trans-unit>
+      <trans-unit id="label.phone">
+        <source>label.phone</source>
+        <target>Phone Number</target>
+      </trans-unit>
+      <trans-unit id="edit.contact">
+        <source>edit.contact</source>
+        <target>Edit contact</target>
+      </trans-unit>
+      <trans-unit id="message.no_data">
+        <source>message.no_data</source>
+        <target>No data.</target>
+      </trans-unit>
+      <trans-unit id="message.record_not_found">
+        <source>message.record_not_found</source>
+        <target>Record not found.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

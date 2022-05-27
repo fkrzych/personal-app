@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.edit_event'|trans }}
+    {{ 'edit.event'|trans }} {{ event.name }}
 {% endblock %}
 
 {% block body %}
     {% if event is defined and event|length %}
-        <h1>{{ event.name }}</h1>
+        <h1>{{ 'edit.event'|trans }} {{ event.name }}</h1>
         <dl>
             <dt>{{ 'label.event_name'|trans }}</dt>
             <dd>{{ event.name }}</dd>
@@ -15,10 +15,10 @@
             <dt>{{ 'label.category'|trans}}</dt>
             <dd>{{ event.category.name }}</dd>
         </dl>
-        <a href="{{ url('event_index') }}" title="back to events">Back to events</a>
     {% else %}
         <p>
             {{ 'message.record_not_found'|trans }}
         </p>
     {% endif %}
+    <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
 {% endblock %}
