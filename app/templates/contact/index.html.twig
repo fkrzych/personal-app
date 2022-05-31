@@ -41,5 +41,7 @@
             {{ 'message.no_data'|trans }}
         </p>
     {% endif %}
-    <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+    <div class="link-centered">
+        <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+    </div>
 {% endblock  %}

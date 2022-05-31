@@ -43,5 +43,8 @@
             {{ 'message.no_data'|trans }}
         </p>
     {% endif %}
-    <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
+    <div class="link-centered">
+        <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
+    </div>
+
 {% endblock  %}
