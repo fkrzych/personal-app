@@ -14,7 +14,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'event.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.event_name'|trans, 'event.name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.date'|trans, 'event.date') }}</th>
-                <th>{{ 'label.category'|trans}}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.name') }}</th>
                 <th scope="col">
                     {{ 'label.actions'|trans }}
                 </th>
