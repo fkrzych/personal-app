@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 
 #[Route('/event')]
@@ -18,8 +19,16 @@ class EventController extends AbstractController {
 
     private EventServiceInterface $eventService;
 
-    public function __construct(EventServiceInterface $eventService) {
-        $this->eventService = $eventService;
+    /**
+     * Translator.
+     *
+     * @var TranslatorInterface
+     */
+    private TranslatorInterface $translator;
+
+    public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator) {
+        $this->contactService = $eventService;
+        $this->translator = $translator;
     }
 
     #[Route(
@@ -45,8 +54,43 @@ class EventController extends AbstractController {
         $event = $repository->findOneById($id);
 
         return $this->render(
-            'event/edit.html.twig',
+            'event/show.html.twig',
             ['event' => $event]
+        );
+    }
+
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
+    #[Route(
+        '/create',
+        name: 'event_create',
+        methods: 'GET|POST',
+    )]
+    public function create(Request $request): Response
+    {
+        $category = new Event();
+        $form = $this->createForm(EventType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->eventService->save($category);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.created_successfully')
+            );
+
+            return $this->redirectToRoute('contact_index');
+        }
+
+        return $this->render(
+            'event/create.html.twig',
+            ['form' => $form->createView()]
         );
     }
 }

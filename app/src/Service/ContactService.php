@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Contact;
 use App\Repository\ContactRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -22,5 +23,25 @@ class ContactService implements ContactServiceInterface {
             $page,
             ContactRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Contact $contact Contact entity
+     */
+    public function save(Contact $contact): void
+    {
+        $this->contactRepository->save($contact);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Contact $contact Contact entity
+     */
+    public function delete(Contact $contact): void
+    {
+        $this->contactRepository->delete($contact);
     }
 }

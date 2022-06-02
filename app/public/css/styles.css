@@ -21,4 +21,30 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
+    gap: 1rem;
+}
+
+a {
+    color: #9f00ff;
+}
+
+.page-item.active .page-link {
+    background-color: #9f00ff;
+    border-color: #9f00ff;
+}
+
+a.page-link:hover {
+    color: #9f00ff;
+}
+
+.page-link {
+    color: #9f00ff;
+}
+
+a:hover {
+    color: #9f40ff;
+}
+
+a {
+    text-decoration: none;
 }

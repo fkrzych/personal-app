@@ -6,6 +6,7 @@
 
 {% block body %}
     <h1>{{ 'title.contact_list'|trans }}</h1>
+    <a href="{{ url('contact_create') }}" title="create contact">{{ 'create.contact'|trans}}</a>
     {% if pagination is defined and pagination.items|length %}
 
         <table class="table table-striped">
@@ -26,7 +27,9 @@
                     <td>{{ contact.name }}</td>
                     <td>{{ contact.phone }}</td>
                     <td>
-                        <a href="{{ url('contact_show', {'id': contact.id}) }}" title="edit contact">{{ 'edit.contact'|trans}}</a>
+                        <a href="{{ url('contact_show', {'id': contact.id}) }}" title="show contact">{{ 'show.contact'|trans}}</a>
+                        <a href="{{ url('contact_edit', {'id': contact.id}) }}" title="edit contact">{{ 'edit.contact'|trans}}</a>
+                        <a href="{{ url('contact_delete', {'id': contact.id}) }}" title="delete contact">{{ 'delete.contact'|trans}}</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -43,5 +46,6 @@
     {% endif %}
     <div class="link-centered">
         <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+        <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
     </div>
 {% endblock  %}

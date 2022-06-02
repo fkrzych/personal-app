@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'edit.category'|trans }} {{ category.name }}
+{% endblock %}
+
+{% block body %}
+    {% if category is defined and category|length %}
+        <h1>{{ 'edit.contact'|trans }} {{ category.name }}</h1>
+        <dl>
+            <dt>{{ 'label.contact_name'|trans }}</dt>
+            <dd>{{ category.name }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+    <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
+{% endblock %}

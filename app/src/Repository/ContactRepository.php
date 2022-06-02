@@ -61,6 +61,28 @@ class ContactRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('contact');
     }
 
+    /**
+     * Save entity.
+     *
+     * @param Contact $contact Contact entity
+     */
+    public function save(Contact $contact): void
+    {
+        $this->_em->persist($contact);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Contact $contact Contact entity
+     */
+    public function delete(Contact $contact): void
+    {
+        $this->_em->remove($contact);
+        $this->_em->flush();
+    }
+
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */
