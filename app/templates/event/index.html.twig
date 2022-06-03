@@ -6,6 +6,7 @@
 
 {% block body %}
     <h1>{{ 'title.event_list'|trans }}</h1>
+    <a href="{{ url('event_create') }}" title="create event">{{ 'create.event'|trans}}</a>
     {% if pagination is defined and pagination.items|length %}
 
         <table class="table table-striped">
@@ -29,6 +30,8 @@
                     <td>{{ event.category.name }}</td>
                     <td>
                         <a href="{{ url('event_show', {'id': event.id}) }}" title="show event">{{ 'show.event'|trans}}</a>
+                        <a href="{{ url('event_edit', {'id': event.id}) }}" title="edit event">{{ 'edit.event'|trans}}</a>
+                        <a href="{{ url('event_delete', {'id': event.id}) }}" title="delete event">{{ 'delete.event'|trans}}</a>
                     </td>
                 </tr>
             {% endfor %}

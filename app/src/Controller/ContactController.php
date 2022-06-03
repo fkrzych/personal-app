@@ -156,7 +156,7 @@ class ContactController extends AbstractController {
      * Delete action.
      *
      * @param Request  $request  HTTP request
-     * @param Contact $contact Category entity
+     * @param Contact $contact Contact entity
      *
      * @return Response HTTP response
      */

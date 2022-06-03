@@ -63,6 +63,28 @@ class EventRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('event');
     }
 
+    /**
+     * Save entity.
+     *
+     * @param Event $event Event entity
+     */
+    public function save(Event $event): void
+    {
+        $this->_em->persist($event);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Event $event Event entity
+     */
+    public function delete(Event $event): void
+    {
+        $this->_em->remove($event);
+        $this->_em->flush();
+    }
+
 //    /**
 //     * @return Event[] Returns an array of Event objects
 //     */

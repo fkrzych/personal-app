@@ -2,6 +2,7 @@
 
     namespace App\Service;
 
+    use App\Entity\Event;
     use App\Repository\EventRepository;
     use Knp\Component\Pager\Pagination\PaginationInterface;
     use Knp\Component\Pager\PaginatorInterface;
@@ -23,4 +24,25 @@
                 EventRepository::PAGINATOR_ITEMS_PER_PAGE
             );
         }
+
+        /**
+         * Save entity.
+         *
+         * @param Event $event Event entity
+         */
+        public function save(Event $event): void
+        {
+            $this->eventRepository->save($event);
+        }
+
+        /**
+         * Delete entity.
+         *
+         * @param Event $event Event entity
+         */
+        public function delete(Event $event): void
+        {
+            $this->eventRepository->delete($event);
+        }
+
     }

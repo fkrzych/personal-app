@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Form\Type\EventType;
 use App\Repository\EventRepository;
 use App\Service\EventService;
 use App\Service\EventServiceInterface;
@@ -27,7 +28,7 @@ class EventController extends AbstractController {
     private TranslatorInterface $translator;
 
     public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator) {
-        $this->contactService = $eventService;
+        $this->eventService = $eventService;
         $this->translator = $translator;
     }
 
@@ -85,7 +86,7 @@ class EventController extends AbstractController {
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('contact_index');
+            return $this->redirectToRoute('event_index');
         }
 
         return $this->render(
@@ -93,4 +94,79 @@ class EventController extends AbstractController {
             ['form' => $form->createView()]
         );
     }
+
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param Event $event Event entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/edit', name: 'event_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Event $event): Response
+    {
+        $form = $this->createForm(EventType::class, $event, [
+            'method' => 'PUT',
+            'action' => $this->generateUrl('event_edit', ['id' => $event->getId()]),
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->eventService->save($event);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.created_successfully')
+            );
+
+            return $this->redirectToRoute('event_index');
+        }
+
+        return $this->render(
+            'event/edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'event' => $event,
+            ]
+        );
+    }
+
+    /**
+     * Delete action.
+     *
+     * @param Request $request  HTTP request
+     * @param Event $event entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/delete', name: 'event_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request,Event $event): Response
+    {
+        $form = $this->createForm(EventType::class, $event, [
+            'method' => 'DELETE',
+            'action' => $this->generateUrl('event_delete', ['id' => $event->getId()]),
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->eventService->delete($event);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
+
+            return $this->redirectToRoute('event_index');
+        }
+
+        return $this->render(
+            'event/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'event' => $event,
+            ]
+        );
+    }
+
 }
