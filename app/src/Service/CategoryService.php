@@ -4,16 +4,23 @@ namespace App\Service;
 
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
+use App\Repository\EventRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 class CategoryService implements CategoryServiceInterface {
+
     private CategoryRepository $categoryRepository;
+
+    private EventRepository $eventRepository;
 
     private PaginatorInterface $paginator;
 
-    public function __construct(CategoryRepository $contactRepository, PaginatorInterface $paginator) {
-        $this->categoryRepository = $contactRepository;
+    public function __construct(CategoryRepository $categoryRepository, EventRepository $eventRepository, PaginatorInterface $paginator) {
+        $this->categoryRepository = $categoryRepository;
+        $this->eventRepository = $eventRepository;
         $this->paginator = $paginator;
     }
 
@@ -33,6 +40,24 @@ class CategoryService implements CategoryServiceInterface {
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
+    }
+
+    /**
+     * Can Category be deleted?
+     *
+     * @param Category $category Category entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Category $category): bool
+    {
+        try {
+            $result = $this->eventRepository->countByCategory($category);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
     }
 
     /**

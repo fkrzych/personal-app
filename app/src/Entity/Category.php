@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
@@ -19,6 +20,14 @@ class Category
     #[ORM\Column(type: 'string', length: 45)]
     private $name;
 
+    /**
+     * Slug.
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 45)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private ?string $slug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -32,5 +41,17 @@ class Category
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }
