@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.contact_delete'|trans({'%id%': category.id|default('')}) }}
+    {{ 'delete.contact'|trans({'%id%': category.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.contact_delete'|trans({'%id%': contact.id|default('')}) }}</h1>
+    <h1>{{ 'delete.contact'|trans({'%id%': contact.id|default('')}) }} {{ contact.name }}</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

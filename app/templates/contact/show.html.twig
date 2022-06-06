@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'edit.contact'|trans }} {{ contact.name }}
+    {{ contact.name }}
 {% endblock %}
 
 {% block body %}
     {% if contact is defined and contact|length %}
-        <h1>{{ 'edit.contact'|trans }} {{ contact.name }}</h1>
+        <h1>{{ contact.name }}</h1>
         <dl>
             <dt>{{ 'label.contact_name'|trans }}</dt>
             <dd>{{ contact.name }}</dd>

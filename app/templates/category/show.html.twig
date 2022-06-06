@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'edit.category'|trans }} {{ category.name }}
+    {{ category.name }}
 {% endblock %}
 
 {% block body %}
     {% if category is defined and category|length %}
-        <h1>{{ 'edit.contact'|trans }} {{ category.name }}</h1>
         <dl>
-            <dt>{{ 'label.contact_name'|trans }}</dt>
+            <dt>{{ 'label.category_name'|trans }}</dt>
             <dd>{{ category.name }}</dd>
         </dl>
     {% else %}

@@ -53,3 +53,10 @@ a {
     background-color: #9f00ff;
     border-color: #9f00ff;
 }
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #9f40ff;
+    border-color: #9f40ff;
+}

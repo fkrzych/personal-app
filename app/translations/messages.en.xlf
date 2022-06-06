@@ -26,9 +26,21 @@
         <source>label.category</source>
         <target>Category</target>
       </trans-unit>
+      <trans-unit id="show.event">
+        <source>show.event</source>
+        <target>Show event</target>
+      </trans-unit>
       <trans-unit id="edit.event">
         <source>edit.event</source>
         <target>Edit event</target>
+      </trans-unit>
+      <trans-unit id="create.event">
+        <source>create.event</source>
+        <target>Create event</target>
+      </trans-unit>
+      <trans-unit id="delete.event">
+        <source>delete.event</source>
+        <target>Delete event</target>
       </trans-unit>
       <trans-unit id="contacts.link">
         <source>contacts.link</source>
@@ -54,9 +66,21 @@
         <source>label.phone</source>
         <target>Phone Number</target>
       </trans-unit>
+      <trans-unit id="create.contact">
+        <source>create.contact</source>
+        <target>Create contact</target>
+       </trans-unit>
+       <trans-unit id="show.contact">
+        <source>show.contact</source>
+        <target>Show contact</target>
+       </trans-unit>
       <trans-unit id="edit.contact">
         <source>edit.contact</source>
         <target>Edit contact</target>
+      </trans-unit>
+      <trans-unit id="delete.contact">
+        <source>delete.contact</source>
+        <target>Delete contact</target>
       </trans-unit>
       <trans-unit id="message.no_data">
         <source>message.no_data</source>
@@ -65,6 +89,62 @@
       <trans-unit id="message.record_not_found">
         <source>message.record_not_found</source>
         <target>Record not found.</target>
+      </trans-unit>
+      <trans-unit id="categories.link">
+        <source>categories.link</source>
+        <target>Go to categories</target>
+      </trans-unit>
+      <trans-unit id="title.category_list">
+        <source>title.category_list</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="category.id">
+         <source>category.id</source>
+         <target>Id</target>
+      </trans-unit>
+      <trans-unit id="label.category_name">
+         <source>label.category_name</source>
+         <target>Category Name</target>
+      </trans-unit>
+      <trans-unit id="create.category">
+         <source>create.category</source>
+         <target>Create category</target>
+       </trans-unit>
+       <trans-unit id="show.category">
+         <source>show.category</source>
+         <target>Show category</target>
+      </trans-unit>
+      <trans-unit id="edit.category">
+         <source>edit.category</source>
+         <target>Edit category</target>
+      </trans-unit>
+      <trans-unit id="delete.category">
+         <source>delete.category</source>
+         <target>Delete category</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+         <source>action.save</source>
+         <target>Save</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+         <source>action.delete</source>
+         <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="message.created_successfully">
+         <source>message.created_successfully</source>
+         <target>Created successfully!</target>
+      </trans-unit>
+      <trans-unit id="message.edited_successfully">
+         <source>message.edited_successfully</source>
+         <target>Edited successfully!</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+         <source>message.deleted_successfully</source>
+         <target>Deleted successfully!</target>
+      </trans-unit>
+      <trans-unit id="message.category_contains_events">
+         <source>message.category_contains_events</source>
+         <target>There are events related to this categry. You cannot delete it!</target>
       </trans-unit>
     </body>
   </file>

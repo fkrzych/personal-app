@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'edit.event'|trans }} {{ event.name }}
+    {{ event.name }}
 {% endblock %}
 
 {% block body %}
     {% if event is defined and event|length %}
-        <h1>{{ 'edit.event'|trans }} {{ event.name }}</h1>
+        <h1>{{ event.name }}</h1>
         <dl>
             <dt>{{ 'label.event_name'|trans }}</dt>
             <dd>{{ event.name }}</dd>

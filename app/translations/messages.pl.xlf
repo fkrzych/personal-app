@@ -26,9 +26,21 @@
         <source>label.category</source>
         <target>Kategoria</target>
       </trans-unit>
+      <trans-unit id="show.event">
+         <source>show.event</source>
+         <target>Pokaż wydarzenie</target>
+      </trans-unit>
       <trans-unit id="edit.event">
         <source>edit.event</source>
         <target>Edytuj wydarzenie</target>
+      </trans-unit>
+     <trans-unit id="create.event">
+         <source>create.event</source>
+         <target>Utwórz wydarzenie</target>
+      </trans-unit>
+      <trans-unit id="delete.event">
+         <source>delete.event</source>
+         <target>Usuń wydarzenie</target>
       </trans-unit>
       <trans-unit id="contacts.link">
         <source>contacts.link</source>
@@ -50,9 +62,21 @@
         <source>label.phone</source>
         <target>Numer telefonu</target>
       </trans-unit>
+      <trans-unit id="create.contact">
+         <source>create.contact</source>
+         <target>Utwórz kontakt</target>
+      </trans-unit>
+      <trans-unit id="show.contact">
+         <source>show.contact</source>
+         <target>Pokaż kontakt</target>
+      </trans-unit>
       <trans-unit id="edit.contact">
         <source>edit.contact</source>
         <target>Edytuj kontakt</target>
+      </trans-unit>
+      <trans-unit id="delete.contact">
+        <source>delete.contact</source>
+        <target>Usuń kontakt</target>
       </trans-unit>
       <trans-unit id="message.no_data">
         <source>message.no_data</source>
@@ -62,6 +86,62 @@
         <source>message.record_not_found</source>
         <target>Rekordu nie znaleziono.</target>
       </trans-unit>
+       <trans-unit id="categories.link">
+        <source>categories.link</source>
+        <target>Idź do kategorii</target>
+       </trans-unit>
+       <trans-unit id="title.category_list">
+        <source>title.category_list</source>
+        <target>Kategorie</target>
+       </trans-unit>
+       <trans-unit id="category.id">
+         <source>category.id</source>
+         <target>Id</target>
+       </trans-unit>
+       <trans-unit id="label.category_name">
+         <source>label.category_name</source>
+         <target>Nazwa kategorii</target>
+       </trans-unit>
+       <trans-unit id="create.category">
+         <source>create.category</source>
+         <target>Utwórz kategorię</target>
+       </trans-unit>
+       <trans-unit id="show.category">
+         <source>show.category</source>
+         <target>Pokaż kategorię</target>
+       </trans-unit>
+       <trans-unit id="edit.category">
+         <source>edit.category</source>
+         <target>Edytuj kategorię</target>
+       </trans-unit>
+       <trans-unit id="delete.category">
+         <source>delete.category</source>
+         <target>Usuń kategorię</target>
+       </trans-unit>
+       <trans-unit id="action.save">
+          <source>action.save</source>
+          <target>Zapisz</target>
+       </trans-unit>
+       <trans-unit id="action.delete">
+          <source>action.delete</source>
+          <target>Usuń</target>
+       </trans-unit>
+       <trans-unit id="message.created_successfully">
+          <source>message.created_successfully</source>
+          <target>Udało się poprawnie utworzyć!</target>
+       </trans-unit>
+       <trans-unit id="message.edited_successfully">
+          <source>message.edited_successfully</source>
+          <target>Udało się poprawnie edytować!</target>
+       </trans-unit>
+       <trans-unit id="message.deleted_successfully">
+          <source>message.deleted_successfully</source>
+          <target>Udało się poprawnie usunąć!</target>
+       </trans-unit>
+       <trans-unit id="message.category_contains_events">
+          <source>message.category_contains_events</source>
+          <target>Istnieją wydarzenia powiązane z tą kategorią. Nie możesz jej usunąć!</target>
+       </trans-unit>
     </body>
   </file>
 </xliff>

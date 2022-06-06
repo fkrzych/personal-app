@@ -33,7 +33,7 @@ class ContactType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'label.name',
+                'label' => 'label.contact_name',
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ])
