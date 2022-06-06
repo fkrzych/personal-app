@@ -146,6 +146,14 @@
          <source>message.category_contains_events</source>
          <target>There are events related to this categry. You cannot delete it!</target>
       </trans-unit>
+      <trans-unit id="main.link">
+         <source>main.link</source>
+         <target>Upcoming events</target>
+      </trans-unit>
+      <trans-unit id="title.upcoming_events_list">
+         <source>title.upcoming_events_list</source>
+         <target>Upcoming events</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

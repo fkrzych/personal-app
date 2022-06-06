@@ -54,6 +54,21 @@ class EventRepository extends ServiceEntityRepository
             ->orderBy('event.date', 'DESC');
     }
 
+
+    public function queryCurrent(): QueryBuilder
+    {
+          $now = new \DateTime();
+          $currentDate = $now->format('Y-m-d H:i:s');
+
+        return $this->getOrCreateQueryBuilder()
+            ->setParameter(':currentDate', $currentDate)
+            ->select('event', 'category')
+            ->where('event.date >= :currentDate')
+            ->join('event.category', 'category')
+            ->orderBy('event.date', 'DESC');
+    }
+
+
     /**
      * Count tasks by category.
      *

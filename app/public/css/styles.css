@@ -24,6 +24,13 @@ nav {
     gap: 1rem;
 }
 
+.link-space-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
 a {
     color: #9f00ff;
 }

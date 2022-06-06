@@ -142,6 +142,14 @@
           <source>message.category_contains_events</source>
           <target>Istnieją wydarzenia powiązane z tą kategorią. Nie możesz jej usunąć!</target>
        </trans-unit>
+       <trans-unit id="main.link">
+          <source>main.link</source>
+          <target>Nadchodzące wydarzenia</target>
+       </trans-unit>
+       <trans-unit id="title.upcoming_events_list">
+           <source>title.upcoming_events_list</source>
+           <target>Nadchodzące wydarzenia</target>
+       </trans-unit>
     </body>
   </file>
 </xliff>

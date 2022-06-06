@@ -6,7 +6,10 @@
 
 {% block body %}
     <h1>{{ 'title.category_list'|trans }}</h1>
-    <a href="{{ url('category_create') }}" title="create category">{{ 'create.category'|trans}}</a>
+    <div class="link-space-between">
+        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('category_create') }}" title="create category">{{ 'create.category'|trans}}</a>
+    </div>
     {% if pagination is defined and pagination.items|length %}
 
         <table class="table table-striped">
