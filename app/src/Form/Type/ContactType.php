@@ -7,6 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\Contact;
 use App\Entity\Tag;
+use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +19,23 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
  */
 class ContactType extends AbstractType
 {
+    /**
+     * Tags data transformer.
+     *
+     * @var TagsDataTransformer
+     */
+    private TagsDataTransformer $tagsDataTransformer;
+
+    /**
+     * Constructor.
+     *
+     * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
+     */
+    public function __construct(TagsDataTransformer $tagsDataTransformer)
+    {
+        $this->tagsDataTransformer = $tagsDataTransformer;
+    }
+
     /**
      * Builds the form.
      *
@@ -41,22 +59,20 @@ class ContactType extends AbstractType
             ->add('phone', TextType::class,
                 ['label' => 'label.phone',
                 'required' => true,
-                'attr' => ['max_length' => 20]])
-            ->add(
-                'tags',
-                EntityType::class,
-                [
-                    'class' => Tag::class,
-                    'choice_label' => function ($tag): string {
-                        return $tag->getName();
-                    },
-                    'label' => 'label.tags',
-                    'placeholder' => 'label.none',
-                    'required' => false,
-                    'expanded' => true,
-                    'multiple' => true,
-                ]
-            );
+                'attr' => ['max_length' => 20]]);
+        $builder->add(
+            'tags',
+            TextType::class,
+            [
+                'label' => 'label.tags',
+                'required' => false,
+                'attr' => ['max_length' => 45],
+            ]
+        );
+
+        $builder->get('tags')->addModelTransformer(
+            $this->tagsDataTransformer
+        );
     }
 
     /**
