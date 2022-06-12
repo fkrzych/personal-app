@@ -13,6 +13,7 @@
                 <th>{{ 'label.event_name'|trans }}</th>
                 <th>{{ 'label.date'|trans }}</th>
                 <th>{{ 'label.category_name'|trans }}</th>
+                <th>{{ 'label.tags'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +22,18 @@
                     <td>{{ event.name }}</td>
                     <td>{{ event.date|format_datetime('long') }}</td>
                     <td>{{ event.category.name }}</td>
+
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {% for tag in event.tags %}
+                                    <li class="dropdown-item">{{ tag.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </td>
+
                 </tr>
             {% endfor %}
             </tbody>
@@ -38,5 +51,6 @@
         <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
         <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
         <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('tag_index') }}" title="go to tags">{{ 'tags.link'|trans }}</a>
     </div>
 {% endblock %}

@@ -19,7 +19,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.event_name'|trans, 'event.name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.date'|trans, 'event.date') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.tags'|trans, 'tags.name') }}</th>
+                <th>{{ 'label.tags'|trans }}</th>
                 <th scope="col">
                     {{ 'label.actions'|trans }}
                 </th>
@@ -32,7 +32,18 @@
                     <td>{{ event.name }}</td>
                     <td>{{ event.date|format_datetime('long') }}</td>
                     <td>{{ event.category.name }}</td>
-{#                    <td>{{ event.events_tags.name }}</td>#}
+
+                    <td>
+                        <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {% for tag in event.tags %}
+                        <li class="dropdown-item">{{ tag.name }}</li>
+                    {% endfor %}
+                        </ul>
+                        </div>
+                    </td>
+
                     <td>
                         <a href="{{ url('event_show', {'id': event.id}) }}" title="show event">{{ 'show.event'|trans}}</a>
                         <a href="{{ url('event_edit', {'id': event.id}) }}" title="edit event">{{ 'edit.event'|trans}}</a>

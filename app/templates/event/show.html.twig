@@ -14,6 +14,14 @@
             <dd>{{ event.date|format_datetime('long')}}</dd>
             <dt>{{ 'label.category'|trans}}</dt>
             <dd>{{ event.category.name }}</dd>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            <dd>
+                <ul>
+                    {% for tag in event.tags %}
+                        <li>{{ tag.name }}</li>
+                    {% endfor %}
+                </ul>
+            </dd>
         </dl>
     {% else %}
         <p>

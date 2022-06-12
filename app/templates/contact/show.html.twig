@@ -12,6 +12,14 @@
             <dd>{{ contact.name }}</dd>
             <dt>{{ 'label.phone'|trans }}</dt>
             <dd>{{ contact.phone }}</dd>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            <dd>
+                <ul>
+                {% for tag in contact.tags %}
+                <li>{{ tag.name }}</li>
+                {% endfor %}
+                </ul>
+            </dd>
         </dl>
     {% else %}
         <p>

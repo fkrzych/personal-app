@@ -46,6 +46,8 @@ class ContactRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('contact', 'tag')
+            ->leftJoin('contact.tags', 'tag')
             ->orderBy('contact.name', 'DESC');
     }
 
