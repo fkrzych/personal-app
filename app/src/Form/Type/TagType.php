@@ -1,22 +1,20 @@
 <?php
 /**
- * Contact type.
+ * Tag type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\Contact;
 use App\Entity\Tag;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
- * Class ContactType.
+ * Class TagType.
  */
-class ContactType extends AbstractType
+class TagType extends AbstractType
 {
     /**
      * Builds the form.
@@ -34,29 +32,10 @@ class ContactType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'label.contact_name',
+                'label' => 'label.tag_name',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ])
-            ->add('phone', TextType::class,
-                ['label' => 'label.phone',
-                'required' => true,
-                'attr' => ['max_length' => 20]])
-            ->add(
-                'tags',
-                EntityType::class,
-                [
-                    'class' => Tag::class,
-                    'choice_label' => function ($tag): string {
-                        return $tag->getName();
-                    },
-                    'label' => 'label.tags',
-                    'placeholder' => 'label.none',
-                    'required' => false,
-                    'expanded' => true,
-                    'multiple' => true,
-                ]
-            );
+            ]);
     }
 
     /**
@@ -64,7 +43,7 @@ class ContactType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Contact::class]);
+        $resolver->setDefaults(['data_class' => Tag::class]);
     }
 
     /**
@@ -77,6 +56,6 @@ class ContactType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'contact';
+        return 'tag';
     }
 }

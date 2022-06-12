@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ tag.name }}
+{% endblock %}
+
+{% block body %}
+    {% if tag is defined and tag|length %}
+        <dl>
+            <dt>{{ 'label.tag_name'|trans }}</dt>
+            <dd>{{ tag.name }}</dd>
+            <dt>{{ 'label.createdAt'|trans }}</dt>
+            <dd>{{ tag.createdAt|format_datetime('long') }}</dd>
+            <dt>{{ 'label.updatedAt'|trans}}</dt>
+            <dd>{{ tag.updatedAt|format_datetime('long') }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+    <a href="{{ url('tag_index') }}" title="go to tags">{{ 'tags.link'|trans }}</a>
+{% endblock %}

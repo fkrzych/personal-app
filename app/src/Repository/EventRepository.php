@@ -65,7 +65,7 @@ class EventRepository extends ServiceEntityRepository
             ->select('event', 'category')
             ->where('event.date >= :currentDate')
             ->join('event.category', 'category')
-            ->orderBy('event.date', 'DESC');
+            ->orderBy('event.date', 'ASC');
     }
 
 
