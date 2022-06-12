@@ -7,6 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\Event;
 use App\Entity\Category;
+use App\Entity\Tag;
 use Faker\Provider\Text;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -61,8 +62,22 @@ class EventType extends AbstractType
                     'required' => true,
                     'expanded' => true,
                     'multiple' => false,
-                ]
-            );
+                ])
+         ->add(
+            'tags',
+            EntityType::class,
+            [
+                'class' => Tag::class,
+                'choice_label' => function ($tag): string {
+                    return $tag->getName();
+                },
+                'label' => 'label.tags',
+                'placeholder' => 'label.none',
+                'required' => false,
+                'expanded' => true,
+                'multiple' => true,
+            ]
+        );
     }
     /**
      * Configures the options for this type.

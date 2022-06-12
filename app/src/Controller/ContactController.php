@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\Type\ContactType;
+use App\Form\Type\DeleteType;
 use App\Repository\ContactRepository;
 use App\Service\ContactServiceInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -163,7 +164,7 @@ class ContactController extends AbstractController {
     #[Route('/{id}/delete', name: 'contact_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Contact $contact): Response
     {
-        $form = $this->createForm(ContactType::class, $contact, [
+        $form = $this->createForm(DeleteType::class, $contact, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('contact_delete', ['id' => $contact->getId()]),
         ]);
