@@ -56,14 +56,23 @@ a {
     text-decoration: none;
 }
 
-.btn-primary {
+.btn-primary,
+.btn {
     background-color: #9f00ff;
     border-color: #9f00ff;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn:hover,
+.btn:active,
+.btn:focus {
     background-color: #9f40ff;
     border-color: #9f40ff;
 }
+
+.btn {
+    color: #fff;
+}
+

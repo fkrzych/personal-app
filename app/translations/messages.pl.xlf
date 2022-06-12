@@ -150,6 +150,90 @@
            <source>title.upcoming_events_list</source>
            <target>Nadchodzące wydarzenia</target>
        </trans-unit>
+       <trans-unit id="label.tags">
+            <source>label.tags</source>
+            <target>Tagi</target>
+       </trans-unit>
+       <trans-unit id="tags.link">
+            <source>tags.link</source>
+            <target>Idź do tagów</target>
+       </trans-unit>
+       <trans-unit id="action_logout">
+            <source>action_logout</source>
+            <target>Wyloguj się</target>
+       </trans-unit>
+       <trans-unit id="action_login">
+            <source>action_login</source>
+            <target>Zaloguj się</target>
+       </trans-unit>
+       <trans-unit id="label.login">
+            <source>label.login</source>
+            <target>Logowanie</target>
+       </trans-unit>
+       <trans-unit id="label.register">
+           <source>label.register</source>
+           <target>Rejestracja</target>
+       </trans-unit>
+       <trans-unit id="action_register">
+            <source>action_register</source>
+            <target>Zarejestruj się</target>
+       </trans-unit>
+       <trans-unit id="title.tag_list">
+            <source>title.tag_list</source>
+            <target>Tagi</target>
+        </trans-unit>
+        <trans-unit id="tag.id">
+            <source>tag.id</source>
+            <target>Id</target>
+        </trans-unit>
+        <trans-unit id="label.tag_name">
+            <source>label.tag_name</source>
+            <target>Nazwa tagu</target>
+        </trans-unit>
+        <trans-unit id="label.createdAt">
+            <source>label.createdAt</source>
+            <target>Utworzono</target>
+        </trans-unit>
+        <trans-unit id="label.updatedAt">
+            <source>label.updatedAt</source>
+            <target>Edytowano</target>
+        </trans-unit>
+        <trans-unit id="create.tag">
+            <source>create.tag</source>
+            <target>Utwórz tag</target>
+          </trans-unit>
+          <trans-unit id="show.tag">
+            <source>show.tag</source>
+            <target>Pokaż tag</target>
+         </trans-unit>
+         <trans-unit id="edit.tag">
+            <source>edit.tag</source>
+            <target>Edytuj tag</target>
+         </trans-unit>
+         <trans-unit id="delete.tag">
+            <source>delete.tag</source>
+            <target>Usuń tag</target>
+         </trans-unit>
+         <trans-unit id="label.email">
+             <source>label.email</source>
+             <target>Email</target>
+          </trans-unit>
+          <trans-unit id="label.password">
+             <source>label.password</source>
+             <target>Hasło</target>
+          </trans-unit>
+         <trans-unit id="Email">
+            <source>Email</source>
+            <target>Email</target>
+         </trans-unit>
+         <trans-unit id="Password">
+            <source>Password</source>
+            <target>Hasło</target>
+         </trans-unit>
+         <trans-unit id="Agree terms">
+            <source>Agree terms</source>
+            <target>Akceptuję regulamin</target>
+         </trans-unit>
     </body>
   </file>
 </xliff>
