@@ -6,11 +6,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Contact;
+use App\Entity\Tag;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class EventFixtures.
  */
-class ContactFixtures extends AbstractBaseFixtures
+class ContactFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
@@ -29,10 +31,20 @@ class ContactFixtures extends AbstractBaseFixtures
             $contact = new Contact();
             $contact->setName($this->faker->firstName);
             $contact->setPhone($this->faker->phoneNumber);
+            /** @var Tag $tag */
+            for($i=0; $i<5; $i++) {
+                $tag = $this->getRandomReference('tags');
+                $contact->addTag($tag);
+            }
 
             return $contact;
         });
 
         $this->manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [TagFixtures::class];
     }
 }
