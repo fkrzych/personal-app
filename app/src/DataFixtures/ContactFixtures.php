@@ -37,14 +37,26 @@ class ContactFixtures extends AbstractBaseFixtures implements DependentFixtureIn
                 $contact->addTag($tag);
             }
 
+            /** @var User $author */
+            $author = $this->getRandomReference('users');
+            $contact->setAuthor($author);
+
             return $contact;
         });
 
         $this->manager->flush();
     }
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: TagFixtures::class, 1: UserFixtures::class}
+     */
     public function getDependencies(): array
     {
-        return [TagFixtures::class];
+        return [TagFixtures::class, UserFixtures::class];
     }
 }

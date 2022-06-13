@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\User;
 use App\Form\Type\ContactType;
 use App\Form\Type\DeleteType;
 use App\Repository\ContactRepository;
@@ -51,7 +52,8 @@ class ContactController extends AbstractController {
     public function index(Request $request, ContactRepository $contactRepository, PaginatorInterface $paginator): Response
     {
         $pagination = $this->contactService->getPaginatedList(
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            $this->getUser()
         );
 
         return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
@@ -95,12 +97,15 @@ class ContactController extends AbstractController {
     )]
     public function create(Request $request): Response
     {
-        $category = new Contact();
-        $form = $this->createForm(ContactType::class, $category);
+        /** @var User $user */
+        $user = $this->getUser();
+        $contact = new Contact();
+        $contact->setAuthor($user);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->contactService->save($category);
+            $this->contactService->save($contact);
 
             $this->addFlash(
                 'success',

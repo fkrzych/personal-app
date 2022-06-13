@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Contact;
+use App\Entity\User;
 use App\Repository\ContactRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,9 +18,18 @@ class ContactService implements ContactServiceInterface {
         $this->paginator = $paginator;
     }
 
-    public function getPaginatedList(int $page): PaginationInterface {
+    /**
+     * Get paginated list.
+     *
+     * @param int  $page   Page number
+     * @param User $author Author
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
+    public function getPaginatedList(int $page, User $author): PaginationInterface
+    {
         return $this->paginator->paginate(
-            $this->contactRepository->queryAll(),
+            $this->contactRepository->queryByAuthor($author),
             $page,
             ContactRepository::PAGINATOR_ITEMS_PER_PAGE
         );

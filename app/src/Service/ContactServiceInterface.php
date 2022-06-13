@@ -3,10 +3,11 @@
 namespace App\Service;
 
 use App\Entity\Contact;
+use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 interface ContactServiceInterface {
-    public function getPaginatedList(int $page): PaginationInterface;
+    public function getPaginatedList(int $page, User $author): PaginationInterface;
 
     /**
      * Save entity.
