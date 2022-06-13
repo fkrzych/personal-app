@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\User;
 use App\Form\Type\EventType;
 use App\Form\Type\DeleteType;
 use App\Repository\EventRepository;
-use App\Service\EventService;
 use App\Service\EventServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,6 +32,13 @@ class EventController extends AbstractController {
         $this->translator = $translator;
     }
 
+    /**
+     * Index action.
+     *
+     * @param Request $request HTTP Request
+     *
+     * @return Response HTTP response
+     */
     #[Route(
         name: 'event_index',
         methods: 'GET'
@@ -41,7 +48,8 @@ class EventController extends AbstractController {
         $filters = $this->getFilters($request);
 
         $pagination = $this->eventService->getPaginatedList(
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            $this->getUser()
         );
 
         return $this->render('event/index.html.twig', ['pagination' => $pagination]);
@@ -94,12 +102,15 @@ class EventController extends AbstractController {
     )]
     public function create(Request $request): Response
     {
-        $category = new Event();
-        $form = $this->createForm(EventType::class, $category);
+        /** @var User $user */
+        $user = $this->getUser();
+        $event = new Event();
+        $event->setAuthor($user);
+        $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->eventService->save($category);
+            $this->eventService->save($event);
 
             $this->addFlash(
                 'success',

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\User;
 use App\Form\Type\EventType;
 use App\Repository\EventRepository;
 use App\Service\EventService;
@@ -40,7 +41,8 @@ class MainController extends AbstractController
     public function index(Request $request, EventRepository $eventRepository, PaginatorInterface $paginator): Response
     {
         $pagination = $this->mainService->getPaginatedList(
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            $this->getUser()
         );
 
         return $this->render('main/index.html.twig', ['pagination' => $pagination]);

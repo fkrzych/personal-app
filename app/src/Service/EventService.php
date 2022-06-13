@@ -3,23 +3,64 @@
     namespace App\Service;
 
     use App\Entity\Event;
+    use App\Entity\User;
     use App\Repository\EventRepository;
+    use App\Repository\UserRepository;
     use Knp\Component\Pager\Pagination\PaginationInterface;
     use Knp\Component\Pager\PaginatorInterface;
 
     class EventService implements EventServiceInterface {
-        private EventRepository $eventRepository;
+        /**
+         * Category service.
+         */
+        private CategoryServiceInterface $categoryService;
 
+        /**
+         * Paginator.
+         */
         private PaginatorInterface $paginator;
 
-        public function __construct(EventRepository $eventRepository, PaginatorInterface $paginator) {
-            $this->eventRepository = $eventRepository;
+        /**
+         * Tag service.
+         */
+        private TagServiceInterface $tagService;
+
+        /**
+         * Event repository.
+         */
+        private EventRepository $eventRepository;
+
+        /**
+         * Constructor.
+         *
+         * @param CategoryServiceInterface $categoryService Category service
+         * @param PaginatorInterface       $paginator       Paginator
+         * @param TagServiceInterface      $tagService      Tag service
+         * @param EventRepository          $eventRepository  Event repository
+         */
+        public function __construct(
+            CategoryServiceInterface $categoryService,
+            PaginatorInterface $paginator,
+            TagServiceInterface $tagService,
+            EventRepository $eventRepository
+        ) {
+            $this->categoryService = $categoryService;
             $this->paginator = $paginator;
+            $this->tagService = $tagService;
+            $this->eventRepository = $eventRepository;
         }
 
-        public function getPaginatedList(int $page): PaginationInterface {
+        /**
+         * Get paginated list.
+         *
+         * @param int  $page   Page number
+         * @param User $author Author
+         *
+         * @return PaginationInterface<string, mixed> Paginated list
+         */
+        public function getPaginatedList(int $page, User $author): PaginationInterface {
             return $this->paginator->paginate(
-                $this->eventRepository->queryAll(),
+                $this->eventRepository->queryByAuthor($author),
                 $page,
                 EventRepository::PAGINATOR_ITEMS_PER_PAGE
             );
@@ -45,4 +86,30 @@
             $this->eventRepository->delete($event);
         }
 
+        /**
+         * Prepare filters for the tasks list.
+         *
+         * @param array<string, int> $filters Raw filters from request
+         *
+         * @return array<string, object> Result array of filters
+         */
+        private function prepareFilters(array $filters): array
+        {
+            $resultFilters = [];
+            if (!empty($filters['category_id'])) {
+                $category = $this->categoryService->findOneById($filters['category_id']);
+                if (null !== $category) {
+                    $resultFilters['category'] = $category;
+                }
+            }
+
+            if (!empty($filters['tag_id'])) {
+                $tag = $this->tagService->findOneById($filters['tag_id']);
+                if (null !== $tag) {
+                    $resultFilters['tag'] = $tag;
+                }
+            }
+
+            return $resultFilters;
+        }
     }
