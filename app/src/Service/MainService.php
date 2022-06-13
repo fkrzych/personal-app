@@ -31,7 +31,7 @@ class MainService implements MainServiceInterface
     public function getPaginatedList(int $page, User $author): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->eventRepository->queryByAuthor($author),
+            $this->eventRepository->queryByAuthorCurrent($author),
             $page,
             EventRepository::PAGINATOR_ITEMS_PER_PAGE
         );

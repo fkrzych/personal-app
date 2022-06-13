@@ -55,12 +55,16 @@
          *
          * @param int  $page   Page number
          * @param User $author Author
+         * @param array<string, int> $filters Filters array
          *
          * @return PaginationInterface<string, mixed> Paginated list
          */
-        public function getPaginatedList(int $page, User $author): PaginationInterface {
+        public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface {
+
+            $filters = $this->prepareFilters($filters);
+
             return $this->paginator->paginate(
-                $this->eventRepository->queryByAuthor($author),
+                $this->eventRepository->queryByAuthor($author, $filters),
                 $page,
                 EventRepository::PAGINATOR_ITEMS_PER_PAGE
             );
@@ -96,6 +100,7 @@
         private function prepareFilters(array $filters): array
         {
             $resultFilters = [];
+
             if (!empty($filters['category_id'])) {
                 $category = $this->categoryService->findOneById($filters['category_id']);
                 if (null !== $category) {

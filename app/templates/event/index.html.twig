@@ -8,6 +8,7 @@
     <h1>{{ 'title.event_list'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('event_index') }}" title="clear filters">{{ 'clear.filters'|trans }}</a>
         <a href="{{ url('event_create') }}" title="create event">{{ 'create.event'|trans}}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
@@ -31,15 +32,25 @@
                     <td>{{ event.id }}</td>
                     <td>{{ event.name }}</td>
                     <td>{{ event.date|format_datetime('long') }}</td>
-                    <td>{{ event.category.name }}</td>
+                    <td>
+                        <a href="{{ url('event_index', {'filters.category_id' : event.category.id}) }}" title="{{ event.category.name }}">
+                            {{ event.category.name }}
+                        </a>
+                    </td>
 
                     <td>
                         <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            {% if event.tags is defined and event.tags|length %}
                     {% for tag in event.tags %}
-                        <li class="dropdown-item">{{ tag.name }}</li>
+                        <li class="dropdown-item"><a href="{{ url('event_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.name }}">
+                                {{ tag.name }}
+                            </a></li>
                     {% endfor %}
+                            {% else %}
+                                &nbsp;
+                            {% endif %}
                         </ul>
                         </div>
                     </td>

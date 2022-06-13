@@ -234,6 +234,10 @@
             <source>Agree terms</source>
             <target>Akceptuję regulamin</target>
          </trans-unit>
+         <trans-unit id="clear.filters">
+             <source>clear.filters</source>
+             <target>Wyczyść filtry</target>
+          </trans-unit>
     </body>
   </file>
 </xliff>

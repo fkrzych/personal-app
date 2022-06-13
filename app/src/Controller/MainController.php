@@ -38,7 +38,7 @@ class MainController extends AbstractController
         name: 'main_index',
         methods: 'GET'
     )]
-    public function index(Request $request, EventRepository $eventRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
         $pagination = $this->mainService->getPaginatedList(
             $request->query->getInt('page', 1),

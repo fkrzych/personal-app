@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Event;
 use App\Entity\Category;
+use App\Entity\Tag;
 use App\Entity\User;
+use App\Service\CategoryServiceInterface;
+use App\Service\TagServiceInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -43,31 +46,39 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query all records.
+     * Query tasks by author.
+     *
+     * @param User $user User entity
+     * @param array<string, object> $filters Filters
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryByAuthor(User $user, array $filters = []): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
-            ->select('event', 'category', 'tag')
-            ->join('event.category', 'category')
-            ->leftJoin('event.tags', 'tag')
-            ->orderBy('event.date', 'DESC');
+        $queryBuilder = $this->queryAll($filters);
+
+        $queryBuilder->andWhere('event.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
     }
 
-
-    public function queryCurrent(): QueryBuilder
+    /**
+     * Query all records.
+     *
+     * @param array<string, object> $filters Filters
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryAll(array $filters): QueryBuilder
     {
-          $now = new \DateTime();
-          $currentDate = $now->format('Y-m-d H:i:s');
-
-        return $this->getOrCreateQueryBuilder()
-            ->setParameter(':currentDate', $currentDate)
-            ->select('event', 'category')
-            ->where('event.date >= :currentDate')
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select('event', 'category', 'tags')
             ->join('event.category', 'category')
-            ->orderBy('event.date', 'ASC');
+            ->leftJoin('event.tags', 'tags')
+            ->orderBy('event.date', 'DESC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
@@ -77,15 +88,31 @@ class EventRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryByAuthor(User $user): QueryBuilder
+    public function queryByAuthorCurrent(User $user): QueryBuilder
     {
-        $queryBuilder = $this->queryAll();
+        $queryBuilder = $this->queryCurrent();
 
         $queryBuilder->andWhere('event.author = :author')
             ->setParameter('author', $user);
 
         return $queryBuilder;
     }
+
+    public function queryCurrent(): QueryBuilder
+    {
+          $now = new \DateTime();
+          $currentDate = $now->format('Y-m-d H:i:s');
+
+        return $this->getOrCreateQueryBuilder()
+            ->setParameter(':currentDate', $currentDate)
+            ->select('event', 'category', 'tags')
+            ->where('event.date >= :currentDate')
+            ->join('event.category', 'category')
+            ->leftJoin('event.tags', 'tags')
+            ->orderBy('event.date', 'ASC');
+    }
+
+
 
     /**
      * Count tasks by category.
@@ -106,6 +133,57 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter(':category', $category)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    // ...
+    /**
+     * Prepare filters for the tasks list.
+     *
+     * @param array<string, int> $filters Raw filters from request
+     *
+     * @return array<string, object> Result array of filters
+     */
+    private function prepareFilters(array $filters): array
+    {
+        $resultFilters = [];
+        if (!empty($filters['category_id'])) {
+            $category = $this->categoryService->findOneById($filters['category_id']);
+            if (null !== $category) {
+                $resultFilters['category'] = $category;
+            }
+        }
+
+        if (!empty($filters['tag_id'])) {
+            $tag = $this->tagService->findOneById($filters['tag_id']);
+            if (null !== $tag) {
+                $resultFilters['tag'] = $tag;
+            }
+        }
+
+        return $resultFilters;
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['category']) && $filters['category'] instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters['category']);
+        }
+
+        if (isset($filters['tag']) && $filters['tag'] instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')
+                ->setParameter('tag', $filters['tag']);
+        }
+
+        return $queryBuilder;
     }
 
     /**

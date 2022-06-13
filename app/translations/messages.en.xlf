@@ -238,6 +238,10 @@
           <source>Password</source>
           <target>Password</target>
        </trans-unit>
+       <trans-unit id="clear.filters">
+          <source>clear.filters</source>
+          <target>Clear filters</target>
+       </trans-unit>
     </body>
   </file>
 </xliff>
