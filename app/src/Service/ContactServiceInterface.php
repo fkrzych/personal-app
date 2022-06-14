@@ -7,7 +7,7 @@ use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 interface ContactServiceInterface {
-    public function getPaginatedList(int $page, User $author): PaginationInterface;
+    public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface;
 
     /**
      * Save entity.

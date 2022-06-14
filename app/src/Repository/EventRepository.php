@@ -112,8 +112,6 @@ class EventRepository extends ServiceEntityRepository
             ->orderBy('event.date', 'ASC');
     }
 
-
-
     /**
      * Count tasks by category.
      *
@@ -133,34 +131,6 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter(':category', $category)
             ->getQuery()
             ->getSingleScalarResult();
-    }
-
-    // ...
-    /**
-     * Prepare filters for the tasks list.
-     *
-     * @param array<string, int> $filters Raw filters from request
-     *
-     * @return array<string, object> Result array of filters
-     */
-    private function prepareFilters(array $filters): array
-    {
-        $resultFilters = [];
-        if (!empty($filters['category_id'])) {
-            $category = $this->categoryService->findOneById($filters['category_id']);
-            if (null !== $category) {
-                $resultFilters['category'] = $category;
-            }
-        }
-
-        if (!empty($filters['tag_id'])) {
-            $tag = $this->tagService->findOneById($filters['tag_id']);
-            if (null !== $tag) {
-                $resultFilters['tag'] = $tag;
-            }
-        }
-
-        return $resultFilters;
     }
 
     /**

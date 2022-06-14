@@ -8,6 +8,7 @@
     <h1>{{ 'title.contact_list'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="clear filters">{{ 'clear.filters'|trans }}</a>
         <a href="{{ url('contact_create') }}" title="create contact">{{ 'create.contact'|trans}}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
@@ -35,9 +36,17 @@
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {% if contact.tags is defined and contact.tags|length %}
                                 {% for tag in contact.tags %}
-                                    <li class="dropdown-item">{{ tag.name }}</li>
+                                    <li class="dropdown-item">
+                                        <a href="{{ url('contact_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.name }}">
+                                            {{ tag.name }}
+                                        </a>
+                                    </li>
                                 {% endfor %}
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
                             </ul>
                         </div>
                     </td>

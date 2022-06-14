@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Contact;
+use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -40,16 +41,36 @@ class ContactRepository extends ServiceEntityRepository
     }
 
     /**
+     * Query tasks by author.
+     *
+     * @param User         $user    User entity
+     * @param array<string, object> $filters Filters
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user, array $filters = []): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll($filters);
+
+        $queryBuilder->andWhere('contact.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
+    }
+
+    /**
      * Query all records.
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
-            ->select('contact', 'tag')
-            ->leftJoin('contact.tags', 'tag')
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select('contact', 'tags')
+            ->leftJoin('contact.tags', 'tags')
             ->orderBy('contact.name', 'DESC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
@@ -62,23 +83,6 @@ class ContactRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('contact');
-    }
-
-    /**
-     * Query tasks by author.
-     *
-     * @param User $user User entity
-     *
-     * @return QueryBuilder Query builder
-     */
-    public function queryByAuthor(User $user): QueryBuilder
-    {
-        $queryBuilder = $this->queryAll();
-
-        $queryBuilder->andWhere('contact.author = :author')
-            ->setParameter('author', $user);
-
-        return $queryBuilder;
     }
 
     /**
@@ -101,6 +105,24 @@ class ContactRepository extends ServiceEntityRepository
     {
         $this->_em->remove($contact);
         $this->_em->flush();
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['tag']) && $filters['tag'] instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')
+                ->setParameter('tag', $filters['tag']);
+        }
+
+        return $queryBuilder;
     }
 
 //    /**
