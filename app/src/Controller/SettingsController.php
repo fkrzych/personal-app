@@ -23,8 +23,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 /**
  * Class TaskController.
  */
-#[Route('/user')]
-class UserController extends AbstractController
+
+class SettingsController extends AbstractController
 {
     /**
      * Task service.
@@ -55,27 +55,10 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'user_index', methods: 'GET')]
-    public function index(Request $request): Response
+    #[Route('settings/{id}', name: 'settings_index', methods: 'GET')]
+    public function index(): Response
     {
-        $pagination = $this->userService->getPaginatedList(
-            $request->query->getInt('page', 1)
-        );
-
-        return $this->render('user/index.html.twig', ['pagination' => $pagination]);
-    }
-
-    /**
-     * Show action.
-     *
-     * @param User $user User entity
-     *
-     * @return Response HTTP response
-     */
-    #[Route('/{id}', name: 'user_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', ['user' => $user]);
+        return $this->render('settings/index.html.twig');
     }
 
     /**
@@ -86,12 +69,12 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('/{id}/edit', name: 'settings_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('user_edit', ['id' => $user->getId()]),
+            'action' => $this->generateUrl('settings_edit', ['id' => $user->getId()]),
         ]);
         $form->handleRequest($request);
 
@@ -103,10 +86,10 @@ class UserController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('settings_index', ['id' => $user->getId()]);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('settings/edit.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);
@@ -120,12 +103,12 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/change_password', name: 'user_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('/{id}/change_password', name: 'settings_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function change_password(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ChangePasswordType::class, $user, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('user_change_password', ['id' => $user->getId()]),
+            'action' => $this->generateUrl('settings_change_password', ['id' => $user->getId()]),
         ]);
         $form->handleRequest($request);
 
@@ -145,44 +128,10 @@ class UserController extends AbstractController
                 $this->translator->trans('message.password_changed_successfully')
             );
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('settings_index', ['id' => $user->getId()]);
         }
 
-        return $this->render('user/change_password.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * Delete action.
-     *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
-     *
-     * @return Response HTTP response
-     */
-    #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request, User $user): Response
-    {
-        $form = $this->createForm(FormType::class, $user, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('user_delete', ['id' => $user->getId()]),
-        ]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->userService->delete($user);
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.deleted_successfully')
-            );
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/delete.html.twig', [
+        return $this->render('settings/change_password.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);

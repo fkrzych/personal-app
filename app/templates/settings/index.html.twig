@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.user_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.user_list'|trans }}</h1>
+    <div class="link-space-between">
+        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
+    </div>
+    <a href="{{ url('settings_edit', {'id': app.user.id}) }}" title="{{ 'edit.user_data'|trans}}">{{ 'edit.user_data'|trans}}</a>
+    <a href="{{ url('settings_change_password', {'id': app.user.id}) }}" title="{{ 'edit.change_password'|trans}}">{{ 'edit.change_password'|trans}}</a>
+    <div class="link-centered">
+        <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
+        <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('tag_index') }}" title="go to tags">{{ 'tags.link'|trans }}</a>
+    </div>
+{% endblock %}
