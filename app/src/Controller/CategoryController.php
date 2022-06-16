@@ -8,7 +8,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Service\CategoryServiceInterface;
 use App\Form\Type\CategoryType;
-use App\Form\Type\DeleteType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -169,7 +169,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('category_index');
         }
 
-        $form = $this->createForm(DeleteType::class, $category, [
+        $form = $this->createForm(FormType::class, $category, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
         ]);

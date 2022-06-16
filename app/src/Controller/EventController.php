@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\User;
 use App\Form\Type\EventType;
-use App\Form\Type\DeleteType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use App\Repository\EventRepository;
 use App\Service\EventServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -176,7 +176,7 @@ class EventController extends AbstractController {
     #[Route('/{id}/delete', name: 'event_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request,Event $event): Response
     {
-        $form = $this->createForm(DeleteType::class, $event, [
+        $form = $this->createForm(FormType::class, $event, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('event_delete', ['id' => $event->getId()]),
         ]);
