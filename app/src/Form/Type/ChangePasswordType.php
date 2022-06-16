@@ -1,33 +1,38 @@
 <?php
+/**
+ * User type.
+ */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+/**
+ * Class UserType.
+ */
+class ChangePasswordType extends AbstractType
 {
+    /**
+     * Builds the form.
+     *
+     * This method is called for each type in the hierarchy starting from the
+     * top most type. Type extensions can further modify the form.
+     *
+     * @param array<string, mixed> $options
+     *
+     * @see FormTypeExtensionInterface::buildForm()
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-            ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
-            ->add('password', RepeatedType::class, [
+        $builder->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'first_options'  => array('label' => 'Password'),
@@ -45,11 +50,24 @@ class RegistrationFormType extends AbstractType
                 ],
             ]);
     }
-
+    /**
+     * Configures the options for this type.
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-        ]);
+        $resolver->setDefaults(['data_class' => User::class]);
+    }
+
+    /**
+     * Returns the prefix of the template block name for this type.
+     *
+     * The block prefix defaults to the underscored short class name with
+     * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+     *
+     * @return string
+     */
+    public function getBlockPrefix(): string
+    {
+        return 'user';
     }
 }

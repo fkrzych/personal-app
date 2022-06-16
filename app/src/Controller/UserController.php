@@ -7,13 +7,18 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\UserType;
+use App\Form\Type\ChangePasswordType;
+use App\Security\LoginFormAuthenticator;
 use App\Service\UserServiceInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class TaskController.
@@ -107,7 +112,53 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/user_change_password', name: 'user_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function change_password(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ChangePasswordType::class, $user, [
+            'method' => 'PUT',
+            'action' => $this->generateUrl('user_change_password', ['id' => $user->getId()]),
+        ]);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.edited_successfully')
+            );
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render('user/change_password.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
 
     /**
      * Delete action.

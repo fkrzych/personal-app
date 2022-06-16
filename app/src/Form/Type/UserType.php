@@ -55,6 +55,6 @@ class UserType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'event';
+        return 'user';
     }
 }

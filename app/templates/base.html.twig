@@ -36,7 +36,7 @@
         <div>
             <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
             <a href="{{ url('user_edit', {'id': app.user.id}) }}" title="{{ 'edit.user_data'|trans}}">{{ 'edit.user_data'|trans}}</a>
-            <a href="{{ url('user_edit', {'id': app.user.id}) }}" title="{{ 'edit.user_data'|trans}}">{{ 'edit.user_data'|trans}}</a>
+            <a href="{{ url('user_change_password', {'id': app.user.id}) }}" title="{{ 'edit.user_change_password'|trans}}">{{ 'edit.user_change_password'|trans}}</a>
         </div>
     {% endif %}
     <div class="container-fluid">
