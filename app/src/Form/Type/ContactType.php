@@ -9,6 +9,7 @@ use App\Entity\Contact;
 use App\Entity\Tag;
 use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -68,7 +69,8 @@ class ContactType extends AbstractType
                 'required' => false,
                 'attr' => ['max_length' => 45],
             ]
-        );
+        )
+            ->add('note', TextareaType::class);
 
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer

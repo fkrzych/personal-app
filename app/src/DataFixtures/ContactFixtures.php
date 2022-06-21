@@ -31,6 +31,7 @@ class ContactFixtures extends AbstractBaseFixtures implements DependentFixtureIn
             $contact = new Contact();
             $contact->setName($this->faker->firstName);
             $contact->setPhone($this->faker->phoneNumber);
+            $contact->setNote($this->faker->sentence);
             /** @var Tag $tag */
             for($i=0; $i<5; $i++) {
                 $tag = $this->getRandomReference('tags');

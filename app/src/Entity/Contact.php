@@ -39,6 +39,9 @@ class Contact
     #[Assert\Type(User::class)]
     private ?User $author;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $note;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -97,6 +100,18 @@ class Contact
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): self
+    {
+        $this->note = $note;
 
         return $this;
     }

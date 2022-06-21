@@ -29,6 +29,14 @@ class Tag
     #[Gedmo\Timestampable(on: 'update')]
     private $updatedAt;
 
+    /**
+     * Slug.
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 45)]
+    #[Gedmo\Slug(fields: ['name'])]
+    private ?string $slug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,5 +70,17 @@ class Tag
     public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

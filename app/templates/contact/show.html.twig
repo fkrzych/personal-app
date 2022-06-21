@@ -20,6 +20,8 @@
                 {% endfor %}
                 </ul>
             </dd>
+            <dt>{{ 'label.note'|trans }}</dt>
+            <dd>{{ contact.note|markdown_to_html }}</dd>
         </dl>
     {% else %}
         <p>
