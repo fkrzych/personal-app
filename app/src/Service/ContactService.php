@@ -34,12 +34,10 @@ class ContactService implements ContactServiceInterface {
      * @param ContactRepository        $contactRepository  Contact repository
      */
     public function __construct(
-        CategoryServiceInterface $categoryService,
         PaginatorInterface $paginator,
         TagServiceInterface $tagService,
         ContactRepository $contactRepository
     ) {
-        $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->contactRepository = $contactRepository;
@@ -74,13 +72,6 @@ class ContactService implements ContactServiceInterface {
     private function prepareFilters(array $filters): array
     {
         $resultFilters = [];
-
-        if (!empty($filters['category_id'])) {
-            $category = $this->categoryService->findOneById($filters['category_id']);
-            if (null !== $category) {
-                $resultFilters['category'] = $category;
-            }
-        }
 
         if (!empty($filters['tag_id'])) {
             $tag = $this->tagService->findOneById($filters['tag_id']);

@@ -7,6 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,7 +36,14 @@ class UserType extends AbstractType
                 'label' => 'label.user_email',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]);
+            ])
+            ->add(
+                'roles', ChoiceType::class, [
+                    'choices' => ['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_USER' => 'ROLE_USER'],
+                    'expanded' => true,
+                    'multiple' => true,
+                ]
+            );
     }
     /**
      * Configures the options for this type.
