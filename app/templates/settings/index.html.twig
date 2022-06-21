@@ -13,8 +13,10 @@
     <a href="{{ url('settings_change_password', {'id': app.user.id}) }}" title="{{ 'edit.change_password'|trans}}">{{ 'edit.change_password'|trans}}</a>
     <div class="link-centered">
         <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+        {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
         <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
         <a href="{{ url('tag_index') }}" title="go to tags">{{ 'tags.link'|trans }}</a>
+        {% endif %}
     </div>
 {% endblock %}

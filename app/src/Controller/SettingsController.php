@@ -69,7 +69,7 @@ class SettingsController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'settings_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('settings/{id}/edit', name: 'settings_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user, [
@@ -103,9 +103,10 @@ class SettingsController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/change_password', name: 'settings_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('settings/{id}/change_password', name: 'settings_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function change_password(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+
         $form = $this->createForm(ChangePasswordType::class, $user, [
             'method' => 'PUT',
             'action' => $this->generateUrl('settings_change_password', ['id' => $user->getId()]),

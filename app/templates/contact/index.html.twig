@@ -71,8 +71,10 @@
     {% endif %}
     <div class="link-centered">
         <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+        {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
         <a href="{{ url('tag_index') }}" title="go to tags">{{ 'tags.link'|trans }}</a>
         <a href="{{ url('user_index') }}" title="go to user">{{ 'users.link'|trans }}</a>
+        {% endif %}
     </div>
 {% endblock  %}
