@@ -89,7 +89,10 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
+        $roles = $this->getUser()->getRoles();
+
         $form = $this->createForm(UserType::class, $user, [
+            'role' => $roles,
             'method' => 'PUT',
             'action' => $this->generateUrl('user_edit', ['id' => $user->getId()]),
         ]);

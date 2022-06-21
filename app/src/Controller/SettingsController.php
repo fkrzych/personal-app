@@ -72,7 +72,10 @@ class SettingsController extends AbstractController
     #[Route('settings/{id}/edit', name: 'settings_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserType::class, $user, [
+        $roles = $this->getUser()->getRoles();
+
+        $form = $this->createForm(UserType::class, $user,[
+            'role' => $roles,
             'method' => 'PUT',
             'action' => $this->generateUrl('settings_edit', ['id' => $user->getId()]),
         ]);

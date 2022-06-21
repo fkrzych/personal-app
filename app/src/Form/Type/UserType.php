@@ -36,21 +36,22 @@ class UserType extends AbstractType
                 'label' => 'label.user_email',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ])
-            ->add(
-                'roles', ChoiceType::class, [
+            ]);
+        if(in_array("ROLE_ADMIN", $options['role'])) {
+            $builder->add(  'roles', ChoiceType::class, [
                     'choices' => ['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_USER' => 'ROLE_USER'],
                     'expanded' => true,
                     'multiple' => true,
                 ]
             );
+        }
     }
     /**
      * Configures the options for this type.
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => User::class]);
+        $resolver->setDefaults(array('data_class' => User::class, 'role' => ["ROLE_USER"]));
     }
 
     /**
