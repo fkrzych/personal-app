@@ -32,6 +32,7 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $event = new Event();
             $event->setName($this->faker->sentence);
             $event->setDate($this->faker->dateTime);
+            $event->setNote($this->faker->sentence);
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $event->setCategory($category);

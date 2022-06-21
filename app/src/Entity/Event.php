@@ -44,6 +44,9 @@ class Event
     #[Assert\Type(User::class)]
     private ?User $author;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $note;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -112,5 +115,15 @@ class Event
     public function setAuthor(?User $author): void
     {
         $this->author = $author;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): void
+    {
+        $this->note = $note;
     }
 }
