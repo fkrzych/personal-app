@@ -25,8 +25,8 @@ class TagFixtures extends AbstractBaseFixtures
         $this->createMany(20, 'tags', function (int $i) {
             $tag = new Tag();
             $tag->setName($this->faker->unique()->word);
-            $tag->setCreatedAt($this->faker->dateTime);
-            $tag->setUpdatedAt($this->faker->dateTime);
+            $tag->setCreatedAt($this->faker->dateTimeBetween('-100 days', '4 days'));
+            $tag->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '4 days'));
 
             return $tag;
         });
