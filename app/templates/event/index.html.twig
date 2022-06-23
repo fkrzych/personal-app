@@ -12,7 +12,6 @@
         <a href="{{ url('event_create') }}" title="create event">{{ 'create.event'|trans}}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
-
         <table class="table table-striped">
             <thead>
             <tr>
@@ -37,24 +36,22 @@
                             {{ event.category.name }}
                         </a>
                     </td>
-
                     <td>
                         <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            {% if event.tags is defined and event.tags|length %}
-                    {% for tag in event.tags %}
-                        <li class="dropdown-item"><a href="{{ url('event_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.name }}">
-                                {{ tag.name }}
-                            </a></li>
-                    {% endfor %}
-                            {% else %}
-                                &nbsp;
-                            {% endif %}
-                        </ul>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {% if event.tags is defined and event.tags|length %}
+                        {% for tag in event.tags %}
+                            <li class="dropdown-item"><a href="{{ url('event_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.name }}">
+                                    {{ tag.name }}
+                                </a></li>
+                        {% endfor %}
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
+                            </ul>
                         </div>
                     </td>
-
                     <td>
                         <a href="{{ url('event_show', {'id': event.id}) }}" title="show event">{{ 'show.event'|trans}}</a>
                         <a href="{{ url('event_edit', {'id': event.id}) }}" title="edit event">{{ 'edit.event'|trans}}</a>
@@ -64,7 +61,6 @@
             {% endfor %}
             </tbody>
         </table>
-
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>

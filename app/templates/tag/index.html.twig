@@ -11,7 +11,6 @@
         <a href="{{ url('tag_create') }}" title="create category">{{ 'create.tag'|trans}}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
-
         <table class="table table-striped">
             <thead>
             <tr>
@@ -40,7 +39,6 @@
             {% endfor %}
             </tbody>
         </table>
-
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
