@@ -76,3 +76,9 @@ a {
     color: #fff;
 }
 
+.app-user-options {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+

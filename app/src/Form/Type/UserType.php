@@ -39,7 +39,8 @@ class UserType extends AbstractType
             ]);
         if(in_array("ROLE_ADMIN", $options['role'])) {
             $builder->add(  'roles', ChoiceType::class, [
-                    'choices' => ['ADMINISTRATOR' => 'ROLE_ADMIN', 'ZABLOKUJ' => 'ROLE_BLOCKED'],
+                    'label' =>'label.roles',
+                    'choices' => ['label.admin' => 'ROLE_ADMIN', 'label.block' => 'ROLE_BLOCKED'],
                     'expanded' => true,
                     'multiple' => true,
                 ]

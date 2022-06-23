@@ -44,11 +44,11 @@
       </trans-unit>
       <trans-unit id="contacts.link">
         <source>contacts.link</source>
-        <target>Idź do kontaktów</target>
+        <target>Kontakty</target>
       </trans-unit>
       <trans-unit id="events.link">
         <source>events.link</source>
-        <target>Idź do wydarzeń</target>
+        <target>Wydarzenia</target>
       </trans-unit>
       <trans-unit id="title.contact_list">
         <source>title.contact_list</source>
@@ -88,7 +88,7 @@
       </trans-unit>
        <trans-unit id="categories.link">
         <source>categories.link</source>
-        <target>Idź do kategorii</target>
+        <target>Kategorie</target>
        </trans-unit>
        <trans-unit id="title.category_list">
         <source>title.category_list</source>
@@ -156,7 +156,11 @@
        </trans-unit>
        <trans-unit id="tags.link">
             <source>tags.link</source>
-            <target>Idź do tagów</target>
+            <target>Tagi</target>
+       </trans-unit>
+        <trans-unit id="users.link">
+           <source>users.link</source>
+           <target>Użytkownicy</target>
        </trans-unit>
        <trans-unit id="action_logout">
             <source>action_logout</source>
@@ -222,21 +226,61 @@
              <source>label.password</source>
              <target>Hasło</target>
           </trans-unit>
-         <trans-unit id="Email">
-            <source>Email</source>
-            <target>Email</target>
+          <trans-unit id="label.repeat_password">
+            <source>label.repeat_password</source>
+            <target>Powtórz hasło</target>
          </trans-unit>
-         <trans-unit id="Password">
-            <source>Password</source>
-            <target>Hasło</target>
-         </trans-unit>
-         <trans-unit id="Agree terms">
-            <source>Agree terms</source>
+         <trans-unit id="label.agree_terms">
+            <source>label.agree_terms</source>
             <target>Akceptuję regulamin</target>
+         </trans-unit>
+         <trans-unit id="label.note">
+            <source>label.note</source>
+            <target>Notatka</target>
          </trans-unit>
          <trans-unit id="clear.filters">
              <source>clear.filters</source>
              <target>Wyczyść filtry</target>
+          </trans-unit>
+          <trans-unit id="edit.user">
+             <source>edit.user</source>
+             <target>Ustawienia konta</target>
+          </trans-unit>
+          <trans-unit id="label.user_email">
+             <source>label.user_email</source>
+             <target>Email użytkownika</target>
+          </trans-unit>
+          <trans-unit id="label.roles">
+             <source>label.roles</source>
+             <target>Role użytkownika</target>
+          </trans-unit>
+          <trans-unit id="edit.user_data">
+             <source>edit.user_data</source>
+             <target>Edytuj dane użytkownika</target>
+          </trans-unit>
+          <trans-unit id="show.user">
+             <source>show.user</source>
+             <target>Pokaż użytkownika</target>
+          </trans-unit>
+          <trans-unit id="delete.user">
+             <source>delete.user</source>
+             <target>Usuń użytkownika</target>
+          </trans-unit>
+          <trans-unit id="edit.user_change_password">
+             <source>edit.user_change_password</source>
+             <target>Zmień hasło</target>
+          </trans-unit>
+          <trans-unit id="title.user_list">
+             <source>title.user_list</source>
+             <target>Użytkownicy</target>
+          </trans-unit>
+          <trans-unit id="label.admin">
+             <source>label.admin</source>
+             <target>ADMINISTRATOR</target>
+          </trans-unit>
+          <trans-unit id="label.block">
+             <source>label.block</source>
+             <target>ZABLOKUJ</target>
           </trans-unit>
     </body>
   </file>

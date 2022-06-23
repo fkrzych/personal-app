@@ -32,10 +32,10 @@
     </head>
     <body>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div>{{ app.user.email }}</div>
-        <div>
-            <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
+        <div class="app-user-options">
+            <div>{{ app.user.email }}</div>
             <a href="{{ url('settings_index', {'id': app.user.id}) }}" title="{{ 'edit.user'|trans}}">{{ 'edit.user'|trans}}</a>
+            <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
         </div>
     {% endif %}
     <div class="container-fluid">

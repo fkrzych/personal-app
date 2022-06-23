@@ -34,6 +34,9 @@
                         </div>
                     </td>
 
+                    <td>
+                        <a href="{{ url('event_show', {'id': event.id}) }}" title="show event">{{ 'show.event'|trans}}</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

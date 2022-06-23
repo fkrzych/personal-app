@@ -47,4 +47,19 @@ class MainController extends AbstractController
 
         return $this->render('main/index.html.twig', ['pagination' => $pagination]);
     }
+
+    #[Route(
+        '/{id}',
+        name: 'main_show',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET'
+    )]
+    public function show(EventRepository $repository, int $id): Response {
+        $event = $repository->findOneById($id);
+
+        return $this->render(
+            'event/show.html.twig',
+            ['event' => $event]
+        );
+    }
 }
