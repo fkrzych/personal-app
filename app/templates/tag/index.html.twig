@@ -48,9 +48,9 @@
         </p>
     {% endif %}
     <div class="link-centered">
-        <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
-        <a href="{{ url('contact_index') }}" title="go to contacts">{{ 'contacts.link'|trans }}</a>
-        <a href="{{ url('category_index') }}" title="go to categories">{{ 'categories.link'|trans }}</a>
-        <a href="{{ url('user_index') }}" title="go to user">{{ 'users.link'|trans }}</a>
+        <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
+        <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('user_index') }}" title="{{ 'users.link'|trans }}">{{ 'users.link'|trans }}</a>
     </div>
 {% endblock  %}
