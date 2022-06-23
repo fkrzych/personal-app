@@ -1,4 +1,7 @@
 <?php
+/**
+ * Event controller.
+ */
 
 namespace App\Controller;
 
@@ -14,10 +17,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-
+/**
+ * Class EventController.
+ */
 #[Route('/event')]
 class EventController extends AbstractController {
 
+    /**
+     * Event service.
+     */
     private EventServiceInterface $eventService;
 
     /**

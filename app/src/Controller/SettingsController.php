@@ -1,6 +1,6 @@
 <?php
 /**
- * Task controller.
+ * Settings controller.
  */
 
 namespace App\Controller;
@@ -8,26 +8,22 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\UserType;
 use App\Form\Type\ChangePasswordType;
-use App\Security\LoginFormAuthenticator;
 use App\Service\UserServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Class TaskController.
+ * Class SettingsController.
  */
-
 class SettingsController extends AbstractController
 {
     /**
-     * Task service.
+     * User service.
      */
     private UserServiceInterface $userService;
 
@@ -50,8 +46,6 @@ class SettingsController extends AbstractController
 
     /**
      * Index action.
-     *
-     * @param Request $request HTTP Request
      *
      * @return Response HTTP response
      */

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Contact repository.
+ */
 
 namespace App\Repository;
 
@@ -10,12 +13,14 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Contact>
+ * Class ContactRepository.
  *
  * @method Contact|null find($id, $lockMode = null, $lockVersion = null)
  * @method Contact|null findOneBy(array $criteria, array $orderBy = null)
  * @method Contact[]    findAll()
  * @method Contact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
+ * @extends ServiceEntityRepository<Contact>
  */
 class ContactRepository extends ServiceEntityRepository
 {
@@ -41,7 +46,7 @@ class ContactRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query tasks by author.
+     * Query contacts by author.
      *
      * @param User         $user    User entity
      * @param array<string, object> $filters Filters
@@ -124,29 +129,4 @@ class ContactRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
-
-//    /**
-//     * @return Contact[] Returns an array of Contact objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Contact
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

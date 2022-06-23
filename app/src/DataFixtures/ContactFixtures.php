@@ -1,6 +1,6 @@
 <?php
 /**
- * Event fixtures.
+ * Contact fixtures.
  */
 
 namespace App\DataFixtures;
@@ -10,7 +10,7 @@ use App\Entity\Tag;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class EventFixtures.
+ * Class ContactFixtures.
  */
 class ContactFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {

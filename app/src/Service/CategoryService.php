@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category service.
+ */
 
 namespace App\Service;
 
@@ -10,20 +13,46 @@ use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
-class CategoryService implements CategoryServiceInterface {
-
+/**
+ * Class CategoryService.
+ */
+class CategoryService implements CategoryServiceInterface
+{
+    /**
+     * Category repository.
+     */
     private CategoryRepository $categoryRepository;
 
+    /**
+     * Event repository.
+     */
     private EventRepository $eventRepository;
 
+    /**
+     * Paginator.
+     */
     private PaginatorInterface $paginator;
 
+    /**
+     * Constructor.
+     *
+     * @param CategoryRepository $categoryRepository
+     * @param EventRepository $eventRepository
+     * @param PaginatorInterface $paginator Paginator
+     */
     public function __construct(CategoryRepository $categoryRepository, EventRepository $eventRepository, PaginatorInterface $paginator) {
         $this->categoryRepository = $categoryRepository;
         $this->eventRepository = $eventRepository;
         $this->paginator = $paginator;
     }
 
+    /**
+     * Get paginated list.
+     *
+     * @param int $page Page number
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
     public function getPaginatedList(int $page): PaginationInterface {
         return $this->paginator->paginate(
             $this->categoryRepository->queryAll(),

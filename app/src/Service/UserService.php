@@ -1,6 +1,6 @@
 <?php
 /**
- * Task service.
+ * User service.
  */
 
 namespace App\Service;
@@ -11,12 +11,12 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class TaskService.
+ * Class UserService.
  */
 class UserService implements UserServiceInterface
 {
     /**
-     * Task repository.
+     * User repository.
      */
     private UserRepository $userRepository;
 
@@ -73,6 +73,11 @@ class UserService implements UserServiceInterface
         $this->userRepository->delete($user);
     }
 
+    /**
+     * Remove user.
+     *
+     * @param User $user User entity
+     */
     public function remove(User $user): void
     {
         $this->userRepository->remove($user);

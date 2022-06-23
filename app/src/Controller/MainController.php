@@ -1,25 +1,29 @@
 <?php
+/**
+ * Main controller.
+ */
 
 namespace App\Controller;
 
-use App\Entity\Event;
+
 use App\Entity\User;
-use App\Form\Type\EventType;
 use App\Repository\EventRepository;
-use App\Service\EventService;
-use App\Service\EventServiceInterface;
 use App\Service\MainServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class MainController.
+ */
 #[Route('/main')]
 class MainController extends AbstractController
 {
-
+    /**
+     * Main service.
+     */
     private MainServiceInterface $mainService;
 
     /**

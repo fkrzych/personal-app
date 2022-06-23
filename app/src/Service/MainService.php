@@ -1,19 +1,36 @@
 <?php
+/**
+ * Main service.
+ */
 
 namespace App\Service;
 
-use App\Entity\Event;
 use App\Entity\User;
 use App\Repository\EventRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class MainService.
+ */
 class MainService implements MainServiceInterface
 {
+    /**
+     * Event repository.
+     */
     private EventRepository $eventRepository;
 
+    /**
+     * Paginator.
+     */
     private PaginatorInterface $paginator;
 
+    /**
+     * Constructor.
+     *
+     * @param EventRepository $eventRepository Event repository
+     * @param PaginatorInterface $paginator Paginator
+     */
     public function __construct(EventRepository $eventRepository, PaginatorInterface $paginator)
     {
         $this->eventRepository = $eventRepository;

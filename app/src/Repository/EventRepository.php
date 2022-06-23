@@ -1,4 +1,7 @@
 <?php
+/**
+ * Event repository.
+ */
 
 namespace App\Repository;
 
@@ -6,8 +9,6 @@ use App\Entity\Event;
 use App\Entity\Category;
 use App\Entity\Tag;
 use App\Entity\User;
-use App\Service\CategoryServiceInterface;
-use App\Service\TagServiceInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -15,12 +16,14 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * @extends ServiceEntityRepository<Event>
+ * Class EventRepository.
  *
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
  * @method Event|null findOneBy(array $criteria, array $orderBy = null)
  * @method Event[]    findAll()
  * @method Event[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
+ * @extends ServiceEntityRepository<Event>
  */
 class EventRepository extends ServiceEntityRepository
 {
@@ -46,7 +49,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query tasks by author.
+     * Query events by author.
      *
      * @param User $user User entity
      * @param array<string, object> $filters Filters
@@ -82,7 +85,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query tasks by author.
+     * Query events by author.
      *
      * @param User $user User entity
      *
@@ -98,6 +101,11 @@ class EventRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
+    /**
+     * Query current events.
+     *
+     * @return QueryBuilder Query builder
+     */
     public function queryCurrent(): QueryBuilder
     {
           $now = new \DateTime();

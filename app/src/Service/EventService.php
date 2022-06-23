@@ -1,15 +1,22 @@
 <?php
+/**
+ * Event service.
+ */
 
-    namespace App\Service;
+namespace App\Service;
 
-    use App\Entity\Event;
-    use App\Entity\User;
-    use App\Repository\EventRepository;
-    use App\Repository\UserRepository;
-    use Knp\Component\Pager\Pagination\PaginationInterface;
-    use Knp\Component\Pager\PaginatorInterface;
+use App\Entity\Event;
+use App\Entity\User;
+use App\Repository\EventRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
-    class EventService implements EventServiceInterface {
+/**
+ * Class EventService.
+ */
+class EventService implements EventServiceInterface
+{
         /**
          * Category service.
          */
@@ -53,11 +60,12 @@
         /**
          * Get paginated list.
          *
-         * @param int  $page   Page number
+         * @param int $page Page number
          * @param User $author Author
          * @param array<string, int> $filters Filters array
          *
          * @return PaginationInterface<string, mixed> Paginated list
+         * @throws NonUniqueResultException
          */
         public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface {
 
@@ -96,6 +104,7 @@
          * @param array<string, int> $filters Raw filters from request
          *
          * @return array<string, object> Result array of filters
+         * @throws NonUniqueResultException
          */
         private function prepareFilters(array $filters): array
         {

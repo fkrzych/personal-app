@@ -1,6 +1,6 @@
 <?php
 /**
- * Category fixtures.
+ * Tag fixtures.
  */
 
 namespace App\DataFixtures;
@@ -8,7 +8,7 @@ namespace App\DataFixtures;
 use App\Entity\Tag;
 
 /**
- * Class CategoryFixtures.
+ * Class TagFixtures.
  *
  * @psalm-suppress MissingConstructor
  */

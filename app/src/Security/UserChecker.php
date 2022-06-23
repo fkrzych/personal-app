@@ -1,14 +1,27 @@
 <?php
+/**
+ * User checker.
+ */
 
-    namespace App\Security;
 
-    use App\Entity\User;
+namespace App\Security;
+
+use App\Entity\User;
     use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
     use Symfony\Component\Security\Core\User\UserCheckerInterface;
     use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * Class UserChecker.
+ */
     class UserChecker implements UserCheckerInterface
     {
+        /**
+         * Check roles before authorization.
+         *
+         * @param UserInterface $user
+         * @return void Query builder
+         */
         public function checkPreAuth(UserInterface $user): void
         {
             if (!$user instanceof User) {

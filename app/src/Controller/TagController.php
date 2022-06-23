@@ -16,13 +16,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class CategoryController.
+ * Class TagController.
  */
 #[Route('/tag')]
 class TagController extends AbstractController
 {
     /**
-     * Category service.
+     * Tag service.
      */
     private TagServiceInterface $tagService;
 
@@ -62,7 +62,7 @@ class TagController extends AbstractController
     /**
      * Show action.
      *
-     * @param Tag $tag Category
+     * @param Tag $tag Tag
      *
      * @return Response HTTP response
      */
@@ -116,7 +116,7 @@ class TagController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Tag $tag Category entity
+     * @param Tag $tag Tag entity
      *
      * @return Response HTTP response
      */
