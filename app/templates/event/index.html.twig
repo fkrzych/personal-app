@@ -7,9 +7,9 @@
 {% block body %}
     <h1>{{ 'title.event_list'|trans }}</h1>
     <div class="link-space-between">
-        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
-        <a href="{{ url('event_index') }}" title="clear filters">{{ 'clear.filters'|trans }}</a>
-        <a href="{{ url('event_create') }}" title="create event">{{ 'create.event'|trans}}</a>
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('event_index') }}" title="{{ 'clear.filters'|trans }}">{{ 'clear.filters'|trans }}</a>
+        <a href="{{ url('event_create') }}" title="{{ 'create.event'|trans }}">{{ 'create.event'|trans }}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
@@ -53,9 +53,9 @@
                         </div>
                     </td>
                     <td>
-                        <a href="{{ url('event_show', {'id': event.id}) }}" title="show event">{{ 'show.event'|trans}}</a>
-                        <a href="{{ url('event_edit', {'id': event.id}) }}" title="edit event">{{ 'edit.event'|trans}}</a>
-                        <a href="{{ url('event_delete', {'id': event.id}) }}" title="delete event">{{ 'delete.event'|trans}}</a>
+                        <a href="{{ url('event_show', {'id': event.id}) }}" title="{{ 'show.event'|trans }}">{{ 'show.event'|trans }}</a>
+                        <a href="{{ url('event_edit', {'id': event.id}) }}" title="{{ 'edit.event'|trans }}">{{ 'edit.event'|trans }}</a>
+                        <a href="{{ url('event_delete', {'id': event.id}) }}" title="{{ 'delete.event'|trans }}">{{ 'delete.event'|trans }}</a>
                     </td>
                 </tr>
             {% endfor %}

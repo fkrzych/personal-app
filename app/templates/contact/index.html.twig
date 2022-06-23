@@ -7,9 +7,9 @@
 {% block body %}
     <h1>{{ 'title.contact_list'|trans }}</h1>
     <div class="link-space-between">
-        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
-        <a href="{{ url('contact_index') }}" title="clear filters">{{ 'clear.filters'|trans }}</a>
-        <a href="{{ url('contact_create') }}" title="create contact">{{ 'create.contact'|trans}}</a>
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="{{ 'clear.filters'|trans }}">{{ 'clear.filters'|trans }}</a>
+        <a href="{{ url('contact_create') }}" title="{{ 'create.contact'|trans }}">{{ 'create.contact'|trans }}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
@@ -50,9 +50,9 @@
                         </div>
                     </td>
                     <td>
-                        <a href="{{ url('contact_show', {'id': contact.id}) }}" title="show contact">{{ 'show.contact'|trans}}</a>
-                        <a href="{{ url('contact_edit', {'id': contact.id}) }}" title="edit contact">{{ 'edit.contact'|trans}}</a>
-                        <a href="{{ url('contact_delete', {'id': contact.id}) }}" title="delete contact">{{ 'delete.contact'|trans}}</a>
+                        <a href="{{ url('contact_show', {'id': contact.id}) }}" title="{{ 'show.contact'|trans }}">{{ 'show.contact'|trans }}</a>
+                        <a href="{{ url('contact_edit', {'id': contact.id}) }}" title="{{ 'edit.contact'|trans }}">{{ 'edit.contact'|trans }}</a>
+                        <a href="{{ url('contact_delete', {'id': contact.id}) }}" title="{{ 'delete.contact'|trans }}">{{ 'delete.contact'|trans }}</a>
                     </td>
                 </tr>
             {% endfor %}

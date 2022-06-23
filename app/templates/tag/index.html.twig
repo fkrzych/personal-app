@@ -7,8 +7,8 @@
 {% block body %}
     <h1>{{ 'title.tag_list'|trans }}</h1>
     <div class="link-space-between">
-        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
-        <a href="{{ url('tag_create') }}" title="create category">{{ 'create.tag'|trans}}</a>
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('tag_create') }}" title="{{ 'create.tag'|trans }}">{{ 'create.tag'|trans }}</a>
     </div>
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
@@ -31,9 +31,9 @@
                     <td>{{ tag.createdAt|format_datetime('long') }}</td>
                     <td>{{ tag.updatedAt|format_datetime('long') }}</td>
                     <td>
-                        <a href="{{ url('tag_show', {'id': tag.id}) }}" title="show tag">{{ 'show.tag'|trans}}</a>
-                        <a href="{{ url('tag_edit', {'id': tag.id}) }}" title="edit tag">{{ 'edit.tag'|trans}}</a>
-                        <a href="{{ url('tag_delete', {'id': tag.id}) }}" title="delete category">{{ 'delete.tag'|trans}}</a>
+                        <a href="{{ url('tag_show', {'id': tag.id}) }}" title="{{ 'show.tag'|trans }}">{{ 'show.tag'|trans }}</a>
+                        <a href="{{ url('tag_edit', {'id': tag.id}) }}" title="{{ 'edit.tag'|trans }}">{{ 'edit.tag'|trans }}</a>
+                        <a href="{{ url('tag_delete', {'id': tag.id}) }}" title="{{ 'delete.tag'|trans }}">{{ 'delete.tag'|trans }}</a>
                     </td>
                 </tr>
             {% endfor %}

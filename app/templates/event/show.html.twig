@@ -7,7 +7,7 @@
 {% block body %}
     {% if event is defined and event|length %}
         <h1>{{ event.name }}</h1>
-        <a href="{{ url('main_index') }}" title="go to upcoming events">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
         <dl>
             <dt>{{ 'label.event_name'|trans }}</dt>
             <dd>{{ event.name }}</dd>
@@ -31,5 +31,5 @@
             {{ 'message.record_not_found'|trans }}
         </p>
     {% endif %}
-    <a href="{{ url('event_index') }}" title="go to events">{{ 'events.link'|trans }}</a>
+    <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
 {% endblock %}
