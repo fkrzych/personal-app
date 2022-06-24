@@ -121,7 +121,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Count tasks by category.
+     * Count events by category.
      *
      * @param Category $category Category
      *

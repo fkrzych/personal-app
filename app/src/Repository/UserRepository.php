@@ -99,6 +99,22 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
+     * Query admins.
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function countAdmins(): array
+    {
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select('user')
+            ->where("JSON_SEARCH(user.roles, 'one', 'ROLE_ADMIN') IS NOT NULL")
+            ->getQuery()
+            ->getScalarResult();
+
+        return $queryBuilder;
+    }
+
+    /**
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder

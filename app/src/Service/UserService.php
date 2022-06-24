@@ -53,6 +53,10 @@ class UserService implements UserServiceInterface
         );
     }
 
+    public function getAdminsNumber() {
+        return count($this->userRepository->countAdmins());
+    }
+
     /**
      * Save entity.
      *
@@ -60,7 +64,7 @@ class UserService implements UserServiceInterface
      */
     public function save(User $user): void
     {
-        $this->userRepository->save($user);
+            $this->userRepository->save($user);
     }
 
     /**

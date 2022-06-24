@@ -8,6 +8,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\UserType;
 use App\Form\Type\ChangePasswordType;
+use App\Form\Type\ChangeEntitlementsType;
+use App\Form\Type\ChangeEntitlementsDisabledType;
 use App\Service\UserServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -59,6 +61,8 @@ class UserController extends AbstractController
         $pagination = $this->userService->getPaginatedList(
             $request->query->getInt('page', 1)
         );
+
+        echo $this->userService->getAdminsNumber();
 
         return $this->render('user/index.html.twig', ['pagination' => $pagination]);
     }
@@ -115,6 +119,55 @@ class UserController extends AbstractController
 
     /**
      * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/change_entitlements', name: 'user_change_entitlements', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function changeEntitlements(Request $request, User $user): Response
+    {
+        $roles = $this->getUser()->getRoles();
+
+            if($this->userService->getAdminsNumber() > 1) {
+                $form = $this->createForm(ChangeEntitlementsType::class, $user, [
+                    'role' => $roles,
+                    'method' => 'PUT',
+                    'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
+                ]);
+                $form->handleRequest($request);
+            } else {
+                $form = $this->createForm(ChangeEntitlementsDisabledType::class, $user, [
+                    'role' => $roles,
+                    'method' => 'PUT',
+                    'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
+                ]);
+                $form->handleRequest($request);
+            }
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->save($user);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.edited_successfully')
+            );
+
+            return $this->redirectToRoute('user_index');
+        }
+
+
+        return $this->render('user/change_entitlements.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * Change password action.
      *
      * @param Request $request HTTP request
      * @param User    $user    User entity
