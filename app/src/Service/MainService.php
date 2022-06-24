@@ -28,8 +28,8 @@ class MainService implements MainServiceInterface
     /**
      * Constructor.
      *
-     * @param EventRepository $eventRepository Event repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param EventRepository    $eventRepository Event repository
+     * @param PaginatorInterface $paginator       Paginator
      */
     public function __construct(EventRepository $eventRepository, PaginatorInterface $paginator)
     {

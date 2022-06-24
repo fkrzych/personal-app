@@ -36,8 +36,8 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $event->setCategory($category);
-            /** @var Tag $tag */
-            for($i=0; $i<5; $i++) {
+            /* @var Tag $tag */
+            for ($i = 0; $i < 5; ++$i) {
                 $tag = $this->getRandomReference('tags');
                 $event->addTag($tag);
             }
@@ -45,7 +45,6 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             /** @var User $author */
             $author = $this->getRandomReference('users');
             $event->setAuthor($author);
-
 
             return $event;
         });
@@ -66,4 +65,3 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         return [CategoryFixtures::class, TagFixtures::class, UserFixtures::class];
     }
 }
-

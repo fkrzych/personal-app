@@ -34,8 +34,8 @@ class ChangePasswordType extends AbstractType
         $builder->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -49,6 +49,7 @@ class ChangePasswordType extends AbstractType
                 ],
             ]);
     }
+
     /**
      * Configures the options for this type.
      */
@@ -62,8 +63,6 @@ class ChangePasswordType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     *
-     * @return string
      */
     public function getBlockPrefix(): string
     {

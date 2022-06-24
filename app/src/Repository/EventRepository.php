@@ -51,7 +51,7 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Query events by author.
      *
-     * @param User $user User entity
+     * @param User                  $user    User entity
      * @param array<string, object> $filters Filters
      *
      * @return QueryBuilder Query builder
@@ -108,8 +108,8 @@ class EventRepository extends ServiceEntityRepository
      */
     public function queryCurrent(): QueryBuilder
     {
-          $now = new \DateTime();
-          $currentDate = $now->format('Y-m-d H:i:s');
+        $now = new \DateTime();
+        $currentDate = $now->format('Y-m-d H:i:s');
 
         return $this->getOrCreateQueryBuilder()
             ->setParameter(':currentDate', $currentDate)
@@ -197,8 +197,6 @@ class EventRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('event');
     }
-
-
 
 //    /**
 //     * @return Event[] Returns an array of Event objects

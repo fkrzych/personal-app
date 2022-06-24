@@ -35,9 +35,9 @@ class ContactService implements ContactServiceInterface
     /**
      * Constructor.
      *
-     * @param PaginatorInterface $paginator Paginator
-     * @param TagServiceInterface $tagService Tag service
-     * @param ContactRepository $contactRepository Contact repository
+     * @param PaginatorInterface  $paginator         Paginator
+     * @param TagServiceInterface $tagService        Tag service
+     * @param ContactRepository   $contactRepository Contact repository
      */
     public function __construct(
         PaginatorInterface $paginator,
@@ -52,10 +52,11 @@ class ContactService implements ContactServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int  $page   Page number
      * @param User $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
+     *
      * @throws NonUniqueResultException
      */
     public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface
@@ -75,6 +76,7 @@ class ContactService implements ContactServiceInterface
      * @param array<string, int> $filters Raw filters from request
      *
      * @return array<string, object> Result array of filters
+     *
      * @throws NonUniqueResultException
      */
     private function prepareFilters(array $filters): array

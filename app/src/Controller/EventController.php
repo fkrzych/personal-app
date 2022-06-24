@@ -21,8 +21,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class EventController.
  */
 #[Route('/event')]
-class EventController extends AbstractController {
-
+class EventController extends AbstractController
+{
     /**
      * Event service.
      */
@@ -30,12 +30,11 @@ class EventController extends AbstractController {
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
-    public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator) {
+    public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator)
+    {
         $this->eventService = $eventService;
         $this->translator = $translator;
     }
@@ -89,7 +88,8 @@ class EventController extends AbstractController {
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(EventRepository $repository, int $id): Response {
+    public function show(EventRepository $repository, int $id): Response
+    {
         $event = $repository->findOneById($id);
 
         return $this->render(
@@ -140,7 +140,7 @@ class EventController extends AbstractController {
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Event $event Event entity
+     * @param Event   $event   Event entity
      *
      * @return Response HTTP response
      */
@@ -176,13 +176,13 @@ class EventController extends AbstractController {
     /**
      * Delete action.
      *
-     * @param Request $request  HTTP request
-     * @param Event $event entity
+     * @param Request $request HTTP request
+     * @param Event   $event   entity
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'event_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request,Event $event): Response
+    public function delete(Request $request, Event $event): Response
     {
         $form = $this->createForm(FormType::class, $event, [
             'method' => 'DELETE',
@@ -209,5 +209,4 @@ class EventController extends AbstractController {
             ]
         );
     }
-
 }

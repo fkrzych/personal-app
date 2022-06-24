@@ -14,8 +14,8 @@ use Knp\Component\Pager\PaginatorInterface;
 /**
  * Class TagService.
  */
-class TagService implements TagServiceInterface {
-
+class TagService implements TagServiceInterface
+{
     /**
      * Tag repository.
      */
@@ -29,10 +29,10 @@ class TagService implements TagServiceInterface {
     /**
      * Constructor.
      *
-     * @param TagRepository $tagRepository
      * @param PaginatorInterface $paginator Paginator
      */
-    public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator) {
+    public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator)
+    {
         $this->tagRepository = $tagRepository;
         $this->paginator = $paginator;
     }
@@ -41,9 +41,11 @@ class TagService implements TagServiceInterface {
      * Get paginated list.
      *
      * @param int $page Page number
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface {
+    public function getPaginatedList(int $page): PaginationInterface
+    {
         return $this->paginator->paginate(
             $this->tagRepository->queryAll(),
             $page,

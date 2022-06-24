@@ -48,7 +48,7 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Query contacts by author.
      *
-     * @param User         $user    User entity
+     * @param User                  $user    User entity
      * @param array<string, object> $filters Filters
      *
      * @return QueryBuilder Query builder

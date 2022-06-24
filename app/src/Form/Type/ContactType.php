@@ -20,8 +20,6 @@ class ContactType extends AbstractType
 {
     /**
      * Tags data transformer.
-     *
-     * @var TagsDataTransformer
      */
     private TagsDataTransformer $tagsDataTransformer;
 
@@ -54,11 +52,15 @@ class ContactType extends AbstractType
                 'label' => 'label.contact_name',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ])
-            ->add('phone', TextType::class,
+            ]
+        )
+            ->add(
+                'phone',
+                TextType::class,
                 ['label' => 'label.phone',
                 'required' => true,
-                'attr' => ['max_length' => 20]]);
+                'attr' => ['max_length' => 20], ]
+            );
         $builder->add(
             'tags',
             TextType::class,
@@ -88,8 +90,6 @@ class ContactType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     *
-     * @return string
      */
     public function getBlockPrefix(): string
     {

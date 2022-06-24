@@ -36,11 +36,10 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryRepository $categoryRepository
-     * @param EventRepository $eventRepository
      * @param PaginatorInterface $paginator Paginator
      */
-    public function __construct(CategoryRepository $categoryRepository, EventRepository $eventRepository, PaginatorInterface $paginator) {
+    public function __construct(CategoryRepository $categoryRepository, EventRepository $eventRepository, PaginatorInterface $paginator)
+    {
         $this->categoryRepository = $categoryRepository;
         $this->eventRepository = $eventRepository;
         $this->paginator = $paginator;
@@ -53,7 +52,8 @@ class CategoryService implements CategoryServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface {
+    public function getPaginatedList(int $page): PaginationInterface
+    {
         return $this->paginator->paginate(
             $this->categoryRepository->queryAll(),
             $page,

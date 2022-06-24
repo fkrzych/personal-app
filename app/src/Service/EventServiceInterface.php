@@ -21,19 +21,19 @@ interface EventServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-     public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface;
+    public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface;
 
-     /**
+    /**
      * Save entity.
      *
      * @param Event $event Event entity
      */
-     public function save(Event $event): void;
+    public function save(Event $event): void;
 
-     /**
+    /**
      * Delete entity.
      *
      * @param Event $event Event entity
      */
-     public function delete(Event $event): void;
-    }
+    public function delete(Event $event): void;
+}

@@ -5,8 +5,6 @@
 
 namespace App\Controller;
 
-
-use App\Entity\User;
 use App\Repository\EventRepository;
 use App\Service\MainServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,12 +26,11 @@ class MainController extends AbstractController
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
-    public function __construct(MainServiceInterface $mainService, TranslatorInterface $translator) {
+    public function __construct(MainServiceInterface $mainService, TranslatorInterface $translator)
+    {
         $this->mainService = $mainService;
         $this->translator = $translator;
     }
@@ -58,7 +55,8 @@ class MainController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(EventRepository $repository, int $id): Response {
+    public function show(EventRepository $repository, int $id): Response
+    {
         $event = $repository->findOneById($id);
 
         return $this->render(

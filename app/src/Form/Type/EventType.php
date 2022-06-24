@@ -23,8 +23,6 @@ class EventType extends AbstractType
 {
     /**
      * Tags data transformer.
-     *
-     * @var TagsDataTransformer
      */
     private TagsDataTransformer $tagsDataTransformer;
 
@@ -57,15 +55,17 @@ class EventType extends AbstractType
                 'label' => 'label.event_name',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ])
+            ]
+        )
             ->add(
                 'date',
                 DateTimeType::class,
                 [
                     'label' => 'label.date',
                     'required' => true,
-                    'attr' => ['max_length' => 20]
-                ])
+                    'attr' => ['max_length' => 20],
+                ]
+            )
             ->add(
                 'category',
                 EntityType::class,
@@ -79,7 +79,8 @@ class EventType extends AbstractType
                     'required' => true,
                     'expanded' => true,
                     'multiple' => false,
-                ]);
+                ]
+            );
         $builder->add(
             'tags',
             TextType::class,
@@ -95,6 +96,7 @@ class EventType extends AbstractType
             $this->tagsDataTransformer
         );
     }
+
     /**
      * Configures the options for this type.
      */
@@ -108,8 +110,6 @@ class EventType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     *
-     * @return string
      */
     public function getBlockPrefix(): string
     {

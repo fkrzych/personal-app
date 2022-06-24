@@ -36,10 +36,14 @@ class UserType extends AbstractType
                 'label' => 'label.user_email',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]);
-        if(in_array("ROLE_ADMIN", $options['role'])) {
-            $builder->add(  'roles', ChoiceType::class, [
-                    'label' =>'label.roles',
+            ]
+        );
+        if (in_array('ROLE_ADMIN', $options['role'])) {
+            $builder->add(
+                'roles',
+                ChoiceType::class,
+                [
+                    'label' => 'label.roles',
                     'choices' => ['label.admin' => 'ROLE_ADMIN', 'label.block' => 'ROLE_BLOCKED'],
                     'expanded' => true,
                     'multiple' => true,
@@ -47,12 +51,13 @@ class UserType extends AbstractType
             );
         }
     }
+
     /**
      * Configures the options for this type.
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(array('data_class' => User::class, 'role' => ["ROLE_USER"]));
+        $resolver->setDefaults(['data_class' => User::class, 'role' => ['ROLE_USER']]);
     }
 
     /**
@@ -60,8 +65,6 @@ class UserType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     *
-     * @return string
      */
     public function getBlockPrefix(): string
     {

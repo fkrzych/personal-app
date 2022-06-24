@@ -21,8 +21,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class ContactController.
  */
 #[Route('/contact')]
-class ContactController extends AbstractController {
-
+class ContactController extends AbstractController
+{
     /**
      * Contact service.
      */
@@ -30,12 +30,11 @@ class ContactController extends AbstractController {
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
-    public function __construct(ContactServiceInterface $contactService, TranslatorInterface $translator) {
+    public function __construct(ContactServiceInterface $contactService, TranslatorInterface $translator)
+    {
         $this->contactService = $contactService;
         $this->translator = $translator;
     }
@@ -87,7 +86,7 @@ class ContactController extends AbstractController {
      * Show action.
      *
      * @param ContactRepository $repository Record repository
-     * @param int              $id         Record id
+     * @param int               $id         Record id
      *
      * @return Response HTTP response
      */
@@ -185,7 +184,7 @@ class ContactController extends AbstractController {
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
+     * @param Request $request HTTP request
      * @param Contact $contact Contact entity
      *
      * @return Response HTTP response
@@ -219,4 +218,3 @@ class ContactController extends AbstractController {
         );
     }
 }
-

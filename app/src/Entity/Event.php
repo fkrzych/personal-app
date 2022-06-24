@@ -54,7 +54,7 @@ class Event
      *
      * @var Category
      */
-    #[ORM\ManyToOne(targetEntity: Category::class, fetch: "EXTRA_LAZY")]
+    #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[Assert\Type(Category::class)]
     #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false)]
