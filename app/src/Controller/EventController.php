@@ -209,4 +209,39 @@ class EventController extends AbstractController
             ]
         );
     }
+
+    /**
+     * Get pattern from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return string Pattern
+     *
+     */
+    private function getPattern(Request $request): string
+    {
+        return $request->query->getAlnum('pattern', '');
+    }
+
+    /**
+     * Search action.
+     *
+     * @param Request $request HTTP request
+     * @return Response HTTP response
+     */
+    #[Route('/search', name: 'event_search', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    public function search(Request $request): Response
+    {
+        $pattern = $this->getPattern($request);
+
+        /** @var User $user */
+        $user = $this->getUser();
+        $pagination = $this->eventService->getPaginatedListSearch(
+            $request->query->getInt('page', 1),
+            $user,
+            $pattern
+        );
+
+        return $this->render('event/index.html.twig', ['pagination' => $pagination]);
+    }
 }

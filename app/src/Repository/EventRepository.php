@@ -9,6 +9,7 @@ use App\Entity\Event;
 use App\Entity\Category;
 use App\Entity\Tag;
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -108,7 +109,7 @@ class EventRepository extends ServiceEntityRepository
      */
     public function queryCurrent(): QueryBuilder
     {
-        $now = new \DateTime();
+        $now = new DateTime();
         $currentDate = $now->format('Y-m-d H:i:s');
 
         return $this->getOrCreateQueryBuilder()
@@ -118,6 +119,30 @@ class EventRepository extends ServiceEntityRepository
             ->join('event.category', 'category')
             ->leftJoin('event.tags', 'tags')
             ->orderBy('event.date', 'ASC');
+    }
+
+    /**
+     * Query all records.
+     *
+     * @param User $user
+     * @param $pattern
+     * @return QueryBuilder Query builder
+     */
+    public function querySearch(User $user, $pattern): QueryBuilder
+    {
+        $pattern = $pattern . '%';
+
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select('event', 'category', 'tags')
+            ->join('event.category', 'category')
+            ->leftJoin('event.tags', 'tags')
+            ->orderBy('event.date', 'DESC')
+            ->where('event.name like :pattern')
+            ->setParameter(':pattern', $pattern)
+            ->andWhere('event.author = :author')
+            ->setParameter(':author', $user);
+
+        return $queryBuilder;
     }
 
     /**

@@ -79,6 +79,17 @@ class EventService implements EventServiceInterface
         );
     }
 
+    public function getPaginatedListSearch(int $page, User $author, string $pattern): PaginationInterface
+    {
+        $pattern = $this->preparePattern($pattern);
+
+        return $this->paginator->paginate(
+            $this->eventRepository->querySearch($author, $pattern),
+            $page,
+            EventRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
+    }
+
     /**
      * Save entity.
      *
@@ -127,5 +138,16 @@ class EventService implements EventServiceInterface
         }
 
         return $resultFilters;
+    }
+
+    /**
+     * Prepare filters for the tasks list.
+     *
+     * @param string $pattern
+     * @return string Result array of filters
+     */
+    public function preparePattern(string $pattern): string
+    {
+        return $pattern;
     }
 }
