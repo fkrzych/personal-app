@@ -10,7 +10,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
-use League\CommonMark\Node\Inline\Text;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -47,6 +46,7 @@ class Event
      * @var DateTime|null
      */
     #[ORM\Column(type: 'datetime')]
+    #[Assert\Type(DateTime::class)]
     private ?DateTime $date;
 
     /**
@@ -84,10 +84,12 @@ class Event
     /**
      * Note.
      *
-     * @var Text|null
+     * @var string|null
      */
     #[ORM\Column(type: 'text', nullable: true)]
-    private $note;
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 255)]
+    private ?string $note;
 
     /**
      * Constructor.

@@ -36,15 +36,18 @@ class Contact
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 1, max: 245)]
+    #[Assert\Length(min: 2, max: 45)]
     private ?string $name;
 
     /**
-     * Date.
+     * Phone.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 20)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 8, max: 20)]
     private ?string $phone;
 
     /**
@@ -71,10 +74,12 @@ class Contact
     /**
      * Note.
      *
-     * @var Text|null
+     * @var string|null
      */
     #[ORM\Column(type: 'text', nullable: true)]
-    private $note;
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 255)]
+    private ?string $note;
 
     /**
      * Constructor.

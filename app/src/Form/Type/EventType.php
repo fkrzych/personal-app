@@ -90,7 +90,9 @@ class EventType extends AbstractType
                 'attr' => ['max_length' => 45],
             ]
         )
-            ->add('note', TextareaType::class);
+            ->add('note', TextareaType::class, [
+                'required' => false,
+            ]);
 
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer
