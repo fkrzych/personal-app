@@ -49,7 +49,6 @@ class Tag
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
-    #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 64)]
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug;

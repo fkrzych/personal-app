@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.user_list'|trans }}
+    {{ 'edit.user'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.user_list'|trans }}</h1>
+    <h1>{{ 'edit.user'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
     </div>
@@ -19,6 +19,7 @@
         <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
         <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>
         <a href="{{ url('tag_index') }}" title="{{ 'tags.link'|trans }}">{{ 'tags.link'|trans }}</a>
+        <a href="{{ url('user_index') }}" title="{{ 'users.link'|trans }}">{{ 'users.link'|trans }}</a>
         {% endif %}
     </div>
 {% endblock %}

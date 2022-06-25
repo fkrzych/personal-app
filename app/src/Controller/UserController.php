@@ -13,7 +13,6 @@ use App\Form\Type\ChangeEntitlementsDisabledType;
 use App\Service\UserServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -61,8 +60,6 @@ class UserController extends AbstractController
         $pagination = $this->userService->getPaginatedList(
             $request->query->getInt('page', 1)
         );
-
-        echo $this->userService->getAdminsNumber();
 
         return $this->render('user/index.html.twig', ['pagination' => $pagination]);
     }
@@ -200,40 +197,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/change_password.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * Delete action.
-     *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
-     *
-     * @return Response HTTP response
-     */
-    #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request, User $user): Response
-    {
-        $form = $this->createForm(FormType::class, $user, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('user_delete', ['id' => $user->getId()]),
-        ]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->userService->delete($user);
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.deleted_successfully')
-            );
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/delete.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);

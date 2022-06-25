@@ -54,8 +54,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Password.
      *
-     * @Assert\NotBlank(message="password.not_blank")
-     *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180)]

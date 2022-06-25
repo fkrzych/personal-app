@@ -72,24 +72,4 @@ class UserService implements UserServiceInterface
     {
         $this->userRepository->save($user);
     }
-
-    /**
-     * Delete entity.
-     *
-     * @param User $user User entity
-     */
-    public function delete(User $user): void
-    {
-        $this->userRepository->delete($user);
-    }
-
-    /**
-     * Remove user.
-     *
-     * @param User $user User entity
-     */
-    public function remove(User $user): void
-    {
-        $this->userRepository->remove($user);
-    }
 }

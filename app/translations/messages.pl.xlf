@@ -288,7 +288,11 @@
           </trans-unit>
           <trans-unit id="label.block">
              <source>label.block</source>
-             <target>ZABLOKUJ</target>
+             <target>Zablokuj użytkownika</target>
+          </trans-unit>
+          <trans-unit id="label.blocked">
+             <source>label.blocked</source>
+             <target>ZABLOKOWANY</target>
           </trans-unit>
           <trans-unit id="user.details">
               <source>user.details</source>

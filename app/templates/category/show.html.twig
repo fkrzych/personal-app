@@ -9,6 +9,10 @@
         <dl>
             <dt>{{ 'label.category_name'|trans }}</dt>
             <dd>{{ category.name }}</dd>
+            <dt>{{ 'label.createdAt'|trans }}</dt>
+            <dd>{{ category.createdAt|format_datetime('long') }}</dd>
+            <dt>{{ 'label.updatedAt'|trans }}</dt>
+            <dd>{{ category.updatedAt|format_datetime('long') }}</dd>
         </dl>
     {% else %}
         <p>
