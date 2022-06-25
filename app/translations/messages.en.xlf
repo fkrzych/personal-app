@@ -146,6 +146,10 @@
          <source>message.category_contains_events</source>
          <target>There are events related to this categry. You cannot delete it!</target>
       </trans-unit>
+      <trans-unit id="message.password_changed_successfully">
+         <source>message.password_changed_successfully</source>
+         <target>Password changed successfully!</target>
+      </trans-unit>
       <trans-unit id="main.link">
          <source>main.link</source>
          <target>Upcoming events</target>
@@ -274,6 +278,10 @@
           <source>edit.user_change_password</source>
           <target>Change password</target>
        </trans-unit>
+       <trans-unit id="edit.user_change_entitlements">
+          <source>edit.user_change_entitlements</source>
+          <target>Change entitlements</target>
+       </trans-unit>
        <trans-unit id="title.user_list">
           <source>title.user_list</source>
           <target>Users</target>
@@ -285,6 +293,26 @@
        <trans-unit id="label.block">
           <source>label.block</source>
           <target>BLOCK</target>
+       </trans-unit>
+       <trans-unit id="user.details">
+          <source>user.details</source>
+          <target>User details</target>
+       </trans-unit>
+       <trans-unit id="contact.details">
+          <source>contact.details</source>
+          <target>Contact details</target>
+       </trans-unit>
+       <trans-unit id="category.details">
+          <source>category.details</source>
+          <target>Category details</target>
+       </trans-unit>
+       <trans-unit id="tag.details">
+          <source>tag.details</source>
+          <target>Tag details</target>
+       </trans-unit>
+       <trans-unit id="event.details">
+          <source>event.details</source>
+          <target>Event details</target>
        </trans-unit>
     </body>
   </file>

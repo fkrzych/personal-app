@@ -613,7 +613,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\Contact\u003A\u003A\u0024phone",
             "name": "phone",
-            "summary": "Date.",
+            "summary": "Phone.",
             "url": "classes/App-Entity-Contact.html#property_phone"
         },                {
             "fqsen": "\\App\\Entity\\Contact\u003A\u003A\u0024tags",
@@ -1785,16 +1785,6 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-UserServiceInterface.html#method_delete"
-        },                {
-            "fqsen": "\\App\\Controller\\MailerController",
-            "name": "MailerController",
-            "summary": "",
-            "url": "classes/App-Controller-MailerController.html"
-        },                {
-            "fqsen": "\\App\\Controller\\MailerController\u003A\u003AsendEmail\u0028\u0029",
-            "name": "sendEmail",
-            "summary": "",
-            "url": "classes/App-Controller-MailerController.html#method_sendEmail"
         },                {
             "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType",
             "name": "ChangeEntitlementsDisabledType",

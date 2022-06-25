@@ -142,6 +142,10 @@
           <source>message.category_contains_events</source>
           <target>Istnieją wydarzenia powiązane z tą kategorią. Nie możesz jej usunąć!</target>
        </trans-unit>
+       <trans-unit id="message.password_changed_successfully">
+            <source>message.password_changed_successfully</source>
+             <target>Udało się poprawnie zmienić hasło!</target>
+       </trans-unit>
        <trans-unit id="main.link">
           <source>main.link</source>
           <target>Nadchodzące wydarzenia</target>
@@ -270,6 +274,10 @@
              <source>edit.user_change_password</source>
              <target>Zmień hasło</target>
           </trans-unit>
+          <trans-unit id="edit.user_change_entitlements">
+             <source>edit.user_change_entitlements</source>
+             <target>Zmień uprawnienia</target>
+          </trans-unit>
           <trans-unit id="title.user_list">
              <source>title.user_list</source>
              <target>Użytkownicy</target>
@@ -282,6 +290,26 @@
              <source>label.block</source>
              <target>ZABLOKUJ</target>
           </trans-unit>
+          <trans-unit id="user.details">
+              <source>user.details</source>
+              <target>Szczegóły użytkownika</target>
+           </trans-unit>
+           <trans-unit id="contact.details">
+              <source>contact.details</source>
+              <target>Szczegóły kontaktu</target>
+           </trans-unit>
+           <trans-unit id="category.details">
+              <source>category.details</source>
+              <target>Szczegóły kategorii</target>
+           </trans-unit>
+           <trans-unit id="tag.details">
+              <source>tag.details</source>
+              <target>Szczegóły tagu</target>
+           </trans-unit>
+           <trans-unit id="event.details">
+              <source>event.details</source>
+              <target>Szczegóły wydarzenia</target>
+           </trans-unit>
     </body>
   </file>
 </xliff>
