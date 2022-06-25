@@ -53,7 +53,13 @@ class UserService implements UserServiceInterface
         );
     }
 
-    public function getAdminsNumber() {
+    /**
+     * Get number of admins.
+     *
+     * @return int|void Paginated list
+     */
+    public function getAdminsNumber()
+    {
         return count($this->userRepository->countAdmins());
     }
 
@@ -64,7 +70,7 @@ class UserService implements UserServiceInterface
      */
     public function save(User $user): void
     {
-            $this->userRepository->save($user);
+        $this->userRepository->save($user);
     }
 
     /**

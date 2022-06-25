@@ -306,9 +306,14 @@ Search.appendIndex(
             "summary": "Edit\u0020action.",
             "url": "classes/App-Controller-UserController.html#method_edit"
         },                {
+            "fqsen": "\\App\\Controller\\UserController\u003A\u003AchangeEntitlements\u0028\u0029",
+            "name": "changeEntitlements",
+            "summary": "Change\u0020entitlements\u0020action.",
+            "url": "classes/App-Controller-UserController.html#method_changeEntitlements"
+        },                {
             "fqsen": "\\App\\Controller\\UserController\u003A\u003Achange_password\u0028\u0029",
             "name": "change_password",
-            "summary": "Edit\u0020action.",
+            "summary": "Change\u0020password\u0020action.",
             "url": "classes/App-Controller-UserController.html#method_change_password"
         },                {
             "fqsen": "\\App\\Controller\\UserController\u003A\u003Adelete\u0028\u0029",
@@ -1213,7 +1218,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AcountByCategory\u0028\u0029",
             "name": "countByCategory",
-            "summary": "Count\u0020tasks\u0020by\u0020category.",
+            "summary": "Count\u0020events\u0020by\u0020category.",
             "url": "classes/App-Repository-EventRepository.html#method_countByCategory"
         },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AapplyFiltersToList\u0028\u0029",
@@ -1315,6 +1320,11 @@ Search.appendIndex(
             "name": "queryAll",
             "summary": "Query\u0020all\u0020records.",
             "url": "classes/App-Repository-UserRepository.html#method_queryAll"
+        },                {
+            "fqsen": "\\App\\Repository\\UserRepository\u003A\u003AcountAdmins\u0028\u0029",
+            "name": "countAdmins",
+            "summary": "Query\u0020admins.",
+            "url": "classes/App-Repository-UserRepository.html#method_countAdmins"
         },                {
             "fqsen": "\\App\\Repository\\UserRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
             "name": "getOrCreateQueryBuilder",
@@ -1726,6 +1736,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-UserService.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\UserService\u003A\u003AgetAdminsNumber\u0028\u0029",
+            "name": "getAdminsNumber",
+            "summary": "Get\u0020number\u0020of\u0020admins.",
+            "url": "classes/App-Service-UserService.html#method_getAdminsNumber"
+        },                {
             "fqsen": "\\App\\Service\\UserService\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -1770,6 +1785,56 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-UserServiceInterface.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Controller\\MailerController",
+            "name": "MailerController",
+            "summary": "",
+            "url": "classes/App-Controller-MailerController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MailerController\u003A\u003AsendEmail\u0028\u0029",
+            "name": "sendEmail",
+            "summary": "",
+            "url": "classes/App-Controller-MailerController.html#method_sendEmail"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType",
+            "name": "ChangeEntitlementsDisabledType",
+            "summary": "Class\u0020ChangeEntitlementsDisabledType.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsDisabledType.html"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType\u003A\u003AbuildForm\u0028\u0029",
+            "name": "buildForm",
+            "summary": "Builds\u0020the\u0020form.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsDisabledType.html#method_buildForm"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType\u003A\u003AconfigureOptions\u0028\u0029",
+            "name": "configureOptions",
+            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsDisabledType.html#method_configureOptions"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType\u003A\u003AgetBlockPrefix\u0028\u0029",
+            "name": "getBlockPrefix",
+            "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsDisabledType.html#method_getBlockPrefix"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsType",
+            "name": "ChangeEntitlementsType",
+            "summary": "Class\u0020ChangeEntitlementsDisabledType.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsType.html"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsType\u003A\u003AbuildForm\u0028\u0029",
+            "name": "buildForm",
+            "summary": "Builds\u0020the\u0020form.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsType.html#method_buildForm"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsType\u003A\u003AconfigureOptions\u0028\u0029",
+            "name": "configureOptions",
+            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsType.html#method_configureOptions"
+        },                {
+            "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsType\u003A\u003AgetBlockPrefix\u0028\u0029",
+            "name": "getBlockPrefix",
+            "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
+            "url": "classes/App-Form-Type-ChangeEntitlementsType.html#method_getBlockPrefix"
         },                {
             "fqsen": "\\",
             "name": "\\",

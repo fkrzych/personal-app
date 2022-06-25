@@ -1,6 +1,6 @@
 <?php
 /**
- * User type.
+ * Change Entitlements Disabled type.
  */
 
 namespace App\Form\Type;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserType.
+ * Class ChangeEntitlementsDisabledType.
  */
 class ChangeEntitlementsDisabledType extends AbstractType
 {

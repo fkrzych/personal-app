@@ -118,7 +118,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Edit action.
+     * Change entitlements action.
      *
      * @param Request $request HTTP request
      * @param User    $user    User entity
@@ -130,23 +130,21 @@ class UserController extends AbstractController
     {
         $roles = $this->getUser()->getRoles();
 
-            if($this->userService->getAdminsNumber() > 1) {
-                $form = $this->createForm(ChangeEntitlementsType::class, $user, [
+        if ($this->userService->getAdminsNumber() > 1) {
+            $form = $this->createForm(ChangeEntitlementsType::class, $user, [
                     'role' => $roles,
                     'method' => 'PUT',
                     'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
                 ]);
-                $form->handleRequest($request);
-            } else {
-                $form = $this->createForm(ChangeEntitlementsDisabledType::class, $user, [
+            $form->handleRequest($request);
+        } else {
+            $form = $this->createForm(ChangeEntitlementsDisabledType::class, $user, [
                     'role' => $roles,
                     'method' => 'PUT',
                     'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
                 ]);
-                $form->handleRequest($request);
-            }
-
-
+            $form->handleRequest($request);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->save($user);
@@ -158,7 +156,6 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('user_index');
         }
-
 
         return $this->render('user/change_entitlements.html.twig', [
             'form' => $form->createView(),

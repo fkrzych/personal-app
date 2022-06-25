@@ -101,7 +101,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * Query admins.
      *
-     * @return QueryBuilder Query builder
+     * @return array Query builder
      */
     public function countAdmins(): array
     {
