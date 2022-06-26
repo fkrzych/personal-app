@@ -6,6 +6,7 @@
 
 {% block body %}
     <h1>{{ 'title.upcoming_events_list'|trans }}</h1>
+    <a href="{{ url('main_email') }}" title="{{ 'remind.event'|trans }}">{{ 'remind.event'|trans }}</a>
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
             <thead>

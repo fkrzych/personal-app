@@ -8,10 +8,10 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\User;
 use App\Form\Type\ContactType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use App\Repository\ContactRepository;
 use App\Service\ContactServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,6 +53,7 @@ class ContactController extends AbstractController
     public function index(Request $request): Response
     {
         $filters = $this->getFilters($request);
+
         /** @var User $user */
         $user = $this->getUser();
         $pagination = $this->contactService->getPaginatedList(
@@ -62,24 +63,6 @@ class ContactController extends AbstractController
         );
 
         return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
-    }
-
-    /**
-     * Get filters from request.
-     *
-     * @param Request $request HTTP request
-     *
-     * @return array<string, int> Array of filters
-     *
-     * @psalm-return array{category_id: int, tag_id: int, status_id: int}
-     */
-    private function getFilters(Request $request): array
-    {
-        $filters = [];
-        $filters['category_id'] = $request->query->getInt('filters_category_id');
-        $filters['tag_id'] = $request->query->getInt('filters_tag_id');
-
-        return $filters;
     }
 
     /**
@@ -246,18 +229,6 @@ class ContactController extends AbstractController
     }
 
     /**
-     * Get pattern from request.
-     *
-     * @param Request $request HTTP request
-     *
-     * @return string Pattern
-     */
-    private function getPattern(Request $request): string
-    {
-        return $request->query->getAlnum('pattern', '');
-    }
-
-    /**
      * Search action.
      *
      * @param Request $request HTTP request
@@ -278,5 +249,35 @@ class ContactController extends AbstractController
         );
 
         return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
+    }
+
+    /**
+     * Get filters from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return array<string, int> Array of filters
+     *
+     * @psalm-return array{category_id: int, tag_id: int, status_id: int}
+     */
+    private function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['category_id'] = $request->query->getInt('filters_category_id');
+        $filters['tag_id'] = $request->query->getInt('filters_tag_id');
+
+        return $filters;
+    }
+
+    /**
+     * Get pattern from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return string Pattern
+     */
+    private function getPattern(Request $request): string
+    {
+        return $request->query->getAlnum('pattern', '');
     }
 }

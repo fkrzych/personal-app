@@ -8,8 +8,11 @@ namespace App\Controller;
 use App\Repository\EventRepository;
 use App\Service\MainServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -63,5 +66,37 @@ class MainController extends AbstractController
             'event/show.html.twig',
             ['event' => $event]
         );
+    }
+
+    /**
+     * Email action.
+     *
+     * @throws TransportExceptionInterface
+     */
+    #[Route('/email', name: 'main_email')]
+    public function sendEmail(MailerInterface $mailer): Response
+    {
+        $email = (new Email())
+            ->from('hello@example.com')
+            ->to($this->getUser()->getEmail())
+            ->subject($this->translator->trans('message.current_events'))
+            ->text($this->translator->trans('message.hello').' '.$this->getUser()->getEmail().'!'.PHP_EOL.PHP_EOL.$this->translator->trans('message.remember_about_events'))
+        ;
+
+        if ($this->mainService->notification($this->getUser())) {
+            $mailer->send($email);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.email_sent')
+            );
+        } else {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.email_not_sent')
+            );
+        }
+        
+        return $this->redirectToRoute('main_index');
     }
 }

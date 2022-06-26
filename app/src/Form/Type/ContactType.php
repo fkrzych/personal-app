@@ -71,6 +71,7 @@ class ContactType extends AbstractType
             ]
         )
             ->add('note', TextareaType::class, [
+                'label' => 'label.note',
                 'required' => false,
             ]);
 

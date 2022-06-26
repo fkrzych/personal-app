@@ -102,7 +102,7 @@ class SettingsController extends AbstractController
     }
 
     /**
-     * Edit action.
+     * Change password action.
      *
      * @param Request $request HTTP request
      * @param User    $user    User entity

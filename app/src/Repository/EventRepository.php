@@ -5,22 +5,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Event;
 use App\Entity\Category;
+use App\Entity\Event;
 use App\Entity\Tag;
 use App\Entity\User;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * Class EventRepository.
  *
- * @method Event|null find($id, $lockMode = null, $lockVersion = null)
- * @method Event|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Event find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Event findOneBy(array $criteria, array $orderBy = null)
  * @method Event[]    findAll()
  * @method Event[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
@@ -62,7 +62,8 @@ class EventRepository extends ServiceEntityRepository
         $queryBuilder = $this->queryAll($filters);
 
         $queryBuilder->andWhere('event.author = :author')
-            ->setParameter('author', $user);
+            ->setParameter('author', $user)
+        ;
 
         return $queryBuilder;
     }
@@ -80,7 +81,8 @@ class EventRepository extends ServiceEntityRepository
             ->select('event', 'category', 'tags')
             ->join('event.category', 'category')
             ->leftJoin('event.tags', 'tags')
-            ->orderBy('event.date', 'DESC');
+            ->orderBy('event.date', 'DESC')
+        ;
 
         return $this->applyFiltersToList($queryBuilder, $filters);
     }
@@ -97,7 +99,8 @@ class EventRepository extends ServiceEntityRepository
         $queryBuilder = $this->queryCurrent();
 
         $queryBuilder->andWhere('event.author = :author')
-            ->setParameter('author', $user);
+            ->setParameter('author', $user)
+        ;
 
         return $queryBuilder;
     }
@@ -118,12 +121,14 @@ class EventRepository extends ServiceEntityRepository
             ->where('event.date >= :currentDate')
             ->join('event.category', 'category')
             ->leftJoin('event.tags', 'tags')
-            ->orderBy('event.date', 'ASC');
+            ->orderBy('event.date', 'ASC')
+        ;
     }
 
     /**
      * Query for searching.
      *
+     * @param User $user
      * @param $pattern
      *
      * @return QueryBuilder Query builder
@@ -132,7 +137,7 @@ class EventRepository extends ServiceEntityRepository
     {
         $pattern = $pattern.'%';
 
-        $queryBuilder = $this->getOrCreateQueryBuilder()
+        return $this->getOrCreateQueryBuilder()
             ->select('event', 'category', 'tags')
             ->join('event.category', 'category')
             ->leftJoin('event.tags', 'tags')
@@ -140,9 +145,32 @@ class EventRepository extends ServiceEntityRepository
             ->where('event.name like :pattern')
             ->setParameter(':pattern', $pattern)
             ->andWhere('event.author = :author')
-            ->setParameter(':author', $user);
+            ->setParameter(':author', $user)
+        ;
+    }
 
-        return $queryBuilder;
+    /**
+     * Count current events.
+     *
+     * @return array Query builder
+     */
+    public function countCurrent(User $user): array
+    {
+        $now = new DateTime();
+        $currentDate = $now->format('Y-m-d H:i:s');
+
+        return $this->getOrCreateQueryBuilder()
+            ->setParameter(':currentDate', $currentDate)
+            ->select('event', 'category', 'tags')
+            ->where('event.date >= :currentDate')
+            ->join('event.category', 'category')
+            ->leftJoin('event.tags', 'tags')
+            ->orderBy('event.date', 'ASC')
+            ->andWhere('event.author = :author')
+            ->setParameter('author', $user)
+            ->getQuery()
+            ->getScalarResult()
+            ;
     }
 
     /**
@@ -150,10 +178,10 @@ class EventRepository extends ServiceEntityRepository
      *
      * @param Category $category Category
      *
-     * @return int Number of events in category
-     *
      * @throws NoResultException
      * @throws NonUniqueResultException
+     *
+     * @return int Number of events in category
      */
     public function countByCategory(Category $category): int
     {
@@ -163,30 +191,8 @@ class EventRepository extends ServiceEntityRepository
             ->where('event.category = :category')
             ->setParameter(':category', $category)
             ->getQuery()
-            ->getSingleScalarResult();
-    }
-
-    /**
-     * Apply filters to paginated list.
-     *
-     * @param QueryBuilder          $queryBuilder Query builder
-     * @param array<string, object> $filters      Filters array
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
-    {
-        if (isset($filters['category']) && $filters['category'] instanceof Category) {
-            $queryBuilder->andWhere('category = :category')
-                ->setParameter('category', $filters['category']);
-        }
-
-        if (isset($filters['tag']) && $filters['tag'] instanceof Tag) {
-            $queryBuilder->andWhere('tags IN (:tag)')
-                ->setParameter('tag', $filters['tag']);
-        }
-
-        return $queryBuilder;
+            ->getSingleScalarResult()
+        ;
     }
 
     /**
@@ -212,9 +218,34 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['category']) && $filters['category'] instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters['category'])
+            ;
+        }
+
+        if (isset($filters['tag']) && $filters['tag'] instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')
+                ->setParameter('tag', $filters['tag'])
+            ;
+        }
+
+        return $queryBuilder;
+    }
+
+    /**
      * Get or create new query builder.
      *
-     * @param QueryBuilder|null $queryBuilder Query builder
+     * @param null|QueryBuilder $queryBuilder Query builder
      *
      * @return QueryBuilder Query builder
      */
@@ -222,29 +253,4 @@ class EventRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('event');
     }
-
-//    /**
-//     * @return Event[] Returns an array of Event objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Event
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

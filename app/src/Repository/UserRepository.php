@@ -91,11 +91,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      */
     public function queryAll(): QueryBuilder
     {
-        $queryBuilder = $this->getOrCreateQueryBuilder()
+        return $this->getOrCreateQueryBuilder()
             ->select('user')
             ->orderBy('user.id', 'ASC');
-
-        return $queryBuilder;
     }
 
     /**
@@ -105,13 +103,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      */
     public function countAdmins(): array
     {
-        $queryBuilder = $this->getOrCreateQueryBuilder()
+        return $this->getOrCreateQueryBuilder()
             ->select('user')
             ->where("JSON_SEARCH(user.roles, 'one', 'ROLE_ADMIN') IS NOT NULL")
             ->getQuery()
             ->getScalarResult();
-
-        return $queryBuilder;
     }
 
     /**

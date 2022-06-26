@@ -47,10 +47,19 @@ class MainService implements MainServiceInterface
      */
     public function getPaginatedList(int $page, User $author): PaginationInterface
     {
+
         return $this->paginator->paginate(
             $this->eventRepository->queryByAuthorCurrent($author),
             $page,
             EventRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    public function notification(User $author) {
+        if(count($this->eventRepository->countCurrent($author))) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
