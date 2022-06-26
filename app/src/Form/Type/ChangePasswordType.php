@@ -31,7 +31,7 @@ class ChangePasswordType extends AbstractType
     {
         $builder->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'message.password_not_match',
                 'first_options' => ['label' => 'label.password'],
                 'second_options' => ['label' => 'label.repeat_password'],
             ]);

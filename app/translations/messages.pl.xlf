@@ -143,8 +143,12 @@
           <target>Istnieją wydarzenia powiązane z tą kategorią. Nie możesz jej usunąć!</target>
        </trans-unit>
        <trans-unit id="message.password_changed_successfully">
-            <source>message.password_changed_successfully</source>
-             <target>Udało się poprawnie zmienić hasło!</target>
+           <source>message.password_changed_successfully</source>
+           <target>Udało się poprawnie zmienić hasło!</target>
+       </trans-unit>
+       <trans-unit id="message.account_blocked">
+          <source>message.account_blocked</source>
+          <target>Twoje konto jest zablokowane.</target>
        </trans-unit>
        <trans-unit id="main.link">
           <source>main.link</source>
@@ -293,6 +297,10 @@
           <trans-unit id="label.blocked">
              <source>label.blocked</source>
              <target>ZABLOKOWANY</target>
+          </trans-unit>
+          <trans-unit id="label.search">
+             <source>label.search</source>
+             <target>Szukaj</target>
           </trans-unit>
           <trans-unit id="user.details">
               <source>user.details</source>

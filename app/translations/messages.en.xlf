@@ -150,9 +150,9 @@
          <source>message.password_changed_successfully</source>
          <target>Password changed successfully!</target>
       </trans-unit>
-      <trans-unit id="message.account_blocked">
+       <trans-unit id="message.account_blocked">
          <source>message.account_blocked</source>
-         <target>Your account is blocked!</target>
+         <target>Your account is blocked.</target>
       </trans-unit>
       <trans-unit id="main.link">
          <source>main.link</source>
@@ -301,6 +301,10 @@
        <trans-unit id="label.blocked">
           <source>label.blocked</source>
           <target>BLOCKED</target>
+       </trans-unit>
+       <trans-unit id="label.search">
+          <source>label.search</source>
+          <target>Search</target>
        </trans-unit>
        <trans-unit id="user.details">
           <source>user.details</source>
