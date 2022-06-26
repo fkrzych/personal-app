@@ -11,7 +11,7 @@ namespace App\Security;
     use Symfony\Component\Security\Core\User\UserInterface;
     use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
+    /**
      * Class UserChecker.
      */
     class UserChecker implements UserCheckerInterface
@@ -41,6 +41,5 @@ namespace App\Security;
 
         public function checkPostAuth(UserInterface $user): void
         {
-
         }
     }

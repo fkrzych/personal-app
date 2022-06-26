@@ -100,6 +100,15 @@ class ContactController extends AbstractController
     {
         $contact = $repository->findOneById($id);
 
+        if ($contact->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('contact_index');
+        }
+
         return $this->render(
             'contact/show.html.twig',
             ['contact' => $contact]
@@ -172,6 +181,15 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
 
+        if ($contact->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('contact_index');
+        }
+
         return $this->render(
             'contact/edit.html.twig',
             [
@@ -209,6 +227,15 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
 
+        if ($contact->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('contact_index');
+        }
+
         return $this->render(
             'contact/delete.html.twig',
             [
@@ -224,7 +251,6 @@ class ContactController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return string Pattern
-     *
      */
     private function getPattern(Request $request): string
     {
@@ -235,6 +261,7 @@ class ContactController extends AbstractController
      * Search action.
      *
      * @param Request $request HTTP request
+     *
      * @return Response HTTP response
      */
     #[Route('/search', name: 'contact_search', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]

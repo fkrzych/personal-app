@@ -39,7 +39,7 @@ class Tag
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 45)]
+    #[Assert\Length(min: 2, max: 45)]
     private ?string $name;
 
     /**
@@ -49,7 +49,7 @@ class Tag
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 2, max: 64)]
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug;
 

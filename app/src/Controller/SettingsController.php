@@ -86,6 +86,15 @@ class SettingsController extends AbstractController
             return $this->redirectToRoute('settings_index', ['id' => $user->getId()]);
         }
 
+        if ($user->getId() !== $this->getUser()->getId()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.operation_not_permitted')
+            );
+
+            return $this->redirectToRoute('settings_index', ['id' => $this->getUser()->getId()]);
+        }
+
         return $this->render('settings/edit.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
@@ -126,6 +135,15 @@ class SettingsController extends AbstractController
             );
 
             return $this->redirectToRoute('settings_index', ['id' => $user->getId()]);
+        }
+
+        if ($user->getId() !== $this->getUser()->getId()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.operation_not_permitted')
+            );
+
+            return $this->redirectToRoute('settings_index', ['id' => $this->getUser()->getId()]);
         }
 
         return $this->render('settings/change_password.html.twig', [

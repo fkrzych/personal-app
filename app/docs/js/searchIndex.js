@@ -86,6 +86,16 @@ Search.appendIndex(
             "summary": "Delete\u0020action.",
             "url": "classes/App-Controller-ContactController.html#method_delete"
         },                {
+            "fqsen": "\\App\\Controller\\ContactController\u003A\u003AgetPattern\u0028\u0029",
+            "name": "getPattern",
+            "summary": "Get\u0020pattern\u0020from\u0020request.",
+            "url": "classes/App-Controller-ContactController.html#method_getPattern"
+        },                {
+            "fqsen": "\\App\\Controller\\ContactController\u003A\u003Asearch\u0028\u0029",
+            "name": "search",
+            "summary": "Search\u0020action.",
+            "url": "classes/App-Controller-ContactController.html#method_search"
+        },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003A\u0024contactService",
             "name": "contactService",
             "summary": "Contact\u0020service.",
@@ -135,6 +145,16 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020action.",
             "url": "classes/App-Controller-EventController.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Controller\\EventController\u003A\u003AgetPattern\u0028\u0029",
+            "name": "getPattern",
+            "summary": "Get\u0020pattern\u0020from\u0020request.",
+            "url": "classes/App-Controller-EventController.html#method_getPattern"
+        },                {
+            "fqsen": "\\App\\Controller\\EventController\u003A\u003Asearch\u0028\u0029",
+            "name": "search",
+            "summary": "Search\u0020action.",
+            "url": "classes/App-Controller-EventController.html#method_search"
         },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003A\u0024eventService",
             "name": "eventService",
@@ -315,11 +335,6 @@ Search.appendIndex(
             "name": "change_password",
             "summary": "Change\u0020password\u0020action.",
             "url": "classes/App-Controller-UserController.html#method_change_password"
-        },                {
-            "fqsen": "\\App\\Controller\\UserController\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Delete\u0020action.",
-            "url": "classes/App-Controller-UserController.html#method_delete"
         },                {
             "fqsen": "\\App\\Controller\\UserController\u003A\u003A\u0024userService",
             "name": "userService",
@@ -1161,6 +1176,11 @@ Search.appendIndex(
             "summary": "Query\u0020all\u0020records.",
             "url": "classes/App-Repository-ContactRepository.html#method_queryAll"
         },                {
+            "fqsen": "\\App\\Repository\\ContactRepository\u003A\u003AquerySearch\u0028\u0029",
+            "name": "querySearch",
+            "summary": "Query\u0020for\u0020searching.",
+            "url": "classes/App-Repository-ContactRepository.html#method_querySearch"
+        },                {
             "fqsen": "\\App\\Repository\\ContactRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
             "name": "getOrCreateQueryBuilder",
             "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
@@ -1215,6 +1235,11 @@ Search.appendIndex(
             "name": "queryCurrent",
             "summary": "Query\u0020current\u0020events.",
             "url": "classes/App-Repository-EventRepository.html#method_queryCurrent"
+        },                {
+            "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AquerySearch\u0028\u0029",
+            "name": "querySearch",
+            "summary": "Query\u0020for\u0020searching.",
+            "url": "classes/App-Repository-EventRepository.html#method_querySearch"
         },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AcountByCategory\u0028\u0029",
             "name": "countByCategory",
@@ -1336,11 +1361,6 @@ Search.appendIndex(
             "summary": "Save\u0020entity.",
             "url": "classes/App-Repository-UserRepository.html#method_save"
         },                {
-            "fqsen": "\\App\\Repository\\UserRepository\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Delete\u0020entity.",
-            "url": "classes/App-Repository-UserRepository.html#method_delete"
-        },                {
             "fqsen": "\\App\\Repository\\UserRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
             "summary": "Items\u0020per\u0020page.",
@@ -1396,6 +1416,11 @@ Search.appendIndex(
             "summary": "Class\u0020UserChecker.",
             "url": "classes/App-Security-UserChecker.html"
         },                {
+            "fqsen": "\\App\\Security\\UserChecker\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Security-UserChecker.html#method___construct"
+        },                {
             "fqsen": "\\App\\Security\\UserChecker\u003A\u003AcheckPreAuth\u0028\u0029",
             "name": "checkPreAuth",
             "summary": "Check\u0020roles\u0020before\u0020authorization.",
@@ -1405,6 +1430,11 @@ Search.appendIndex(
             "name": "checkPostAuth",
             "summary": "",
             "url": "classes/App-Security-UserChecker.html#method_checkPostAuth"
+        },                {
+            "fqsen": "\\App\\Security\\UserChecker\u003A\u003A\u0024translator",
+            "name": "translator",
+            "summary": "",
+            "url": "classes/App-Security-UserChecker.html#property_translator"
         },                {
             "fqsen": "\\App\\Service\\CategoryService",
             "name": "CategoryService",
@@ -1496,6 +1526,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-ContactService.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\ContactService\u003A\u003AgetPaginatedListSearch\u0028\u0029",
+            "name": "getPaginatedListSearch",
+            "summary": "Get\u0020paginated\u0020list\u0020for\u0020search.",
+            "url": "classes/App-Service-ContactService.html#method_getPaginatedListSearch"
+        },                {
             "fqsen": "\\App\\Service\\ContactService\u003A\u003AprepareFilters\u0028\u0029",
             "name": "prepareFilters",
             "summary": "Prepare\u0020filters\u0020for\u0020the\u0020tasks\u0020list.",
@@ -1510,6 +1545,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-ContactService.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Service\\ContactService\u003A\u003ApreparePattern\u0028\u0029",
+            "name": "preparePattern",
+            "summary": "Prepare\u0020pattern.",
+            "url": "classes/App-Service-ContactService.html#method_preparePattern"
         },                {
             "fqsen": "\\App\\Service\\ContactService\u003A\u003A\u0024contactRepository",
             "name": "contactRepository",
@@ -1561,6 +1601,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-EventService.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\EventService\u003A\u003AgetPaginatedListSearch\u0028\u0029",
+            "name": "getPaginatedListSearch",
+            "summary": "Get\u0020paginated\u0020list\u0020for\u0020search.",
+            "url": "classes/App-Service-EventService.html#method_getPaginatedListSearch"
+        },                {
             "fqsen": "\\App\\Service\\EventService\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -1575,6 +1620,11 @@ Search.appendIndex(
             "name": "prepareFilters",
             "summary": "Prepare\u0020filters\u0020for\u0020the\u0020tasks\u0020list.",
             "url": "classes/App-Service-EventService.html#method_prepareFilters"
+        },                {
+            "fqsen": "\\App\\Service\\EventService\u003A\u003ApreparePattern\u0028\u0029",
+            "name": "preparePattern",
+            "summary": "Prepare\u0020pattern.",
+            "url": "classes/App-Service-EventService.html#method_preparePattern"
         },                {
             "fqsen": "\\App\\Service\\EventService\u003A\u003A\u0024categoryService",
             "name": "categoryService",
@@ -1746,16 +1796,6 @@ Search.appendIndex(
             "summary": "Save\u0020entity.",
             "url": "classes/App-Service-UserService.html#method_save"
         },                {
-            "fqsen": "\\App\\Service\\UserService\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Delete\u0020entity.",
-            "url": "classes/App-Service-UserService.html#method_delete"
-        },                {
-            "fqsen": "\\App\\Service\\UserService\u003A\u003Aremove\u0028\u0029",
-            "name": "remove",
-            "summary": "Remove\u0020user.",
-            "url": "classes/App-Service-UserService.html#method_remove"
-        },                {
             "fqsen": "\\App\\Service\\UserService\u003A\u003A\u0024userRepository",
             "name": "userRepository",
             "summary": "User\u0020repository.",
@@ -1780,11 +1820,6 @@ Search.appendIndex(
             "name": "save",
             "summary": "Save\u0020entity.",
             "url": "classes/App-Service-UserServiceInterface.html#method_save"
-        },                {
-            "fqsen": "\\App\\Service\\UserServiceInterface\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Delete\u0020entity.",
-            "url": "classes/App-Service-UserServiceInterface.html#method_delete"
         },                {
             "fqsen": "\\App\\Form\\Type\\ChangeEntitlementsDisabledType",
             "name": "ChangeEntitlementsDisabledType",

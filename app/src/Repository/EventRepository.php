@@ -124,13 +124,13 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Query for searching.
      *
-     * @param User $user
      * @param $pattern
+     *
      * @return QueryBuilder Query builder
      */
     public function querySearch(User $user, $pattern): QueryBuilder
     {
-        $pattern = $pattern . '%';
+        $pattern = $pattern.'%';
 
         $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select('event', 'category', 'tags')

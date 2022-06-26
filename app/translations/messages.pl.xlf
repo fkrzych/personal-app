@@ -150,6 +150,10 @@
           <source>message.account_blocked</source>
           <target>Twoje konto jest zablokowane.</target>
        </trans-unit>
+       <trans-unit id="message.operation_not_permitted">
+          <source>message.operation_not_permitted</source>
+          <target>Nie możesz tego zrobić.</target>
+       </trans-unit>
        <trans-unit id="main.link">
           <source>main.link</source>
           <target>Nadchodzące wydarzenia</target>

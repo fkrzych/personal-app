@@ -154,6 +154,10 @@
          <source>message.account_blocked</source>
          <target>Your account is blocked.</target>
       </trans-unit>
+      <trans-unit id="message.operation_not_permitted">
+         <source>message.operation_not_permitted</source>
+         <target>You cannot do this.</target>
+      </trans-unit>
       <trans-unit id="main.link">
          <source>main.link</source>
          <target>Upcoming events</target>

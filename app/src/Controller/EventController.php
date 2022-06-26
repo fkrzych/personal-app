@@ -92,6 +92,15 @@ class EventController extends AbstractController
     {
         $event = $repository->findOneById($id);
 
+        if ($event->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('event_index');
+        }
+
         return $this->render(
             'event/show.html.twig',
             ['event' => $event]
@@ -164,6 +173,15 @@ class EventController extends AbstractController
             return $this->redirectToRoute('event_index');
         }
 
+        if ($event->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('event_index');
+        }
+
         return $this->render(
             'event/edit.html.twig',
             [
@@ -201,6 +219,15 @@ class EventController extends AbstractController
             return $this->redirectToRoute('event_index');
         }
 
+        if ($event->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('event_index');
+        }
+
         return $this->render(
             'event/delete.html.twig',
             [
@@ -216,7 +243,6 @@ class EventController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return string Pattern
-     *
      */
     private function getPattern(Request $request): string
     {
@@ -227,6 +253,7 @@ class EventController extends AbstractController
      * Search action.
      *
      * @param Request $request HTTP request
+     *
      * @return Response HTTP response
      */
     #[Route('/search', name: 'event_search', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
