@@ -71,6 +71,26 @@ class ContactService implements ContactServiceInterface
     }
 
     /**
+     * Get paginated list for search.
+     *
+     * @param int $page Page number
+     * @param User $author Author
+     * @param string $pattern
+     * @return PaginationInterface<string, mixed> Paginated list
+     *
+     */
+    public function getPaginatedListSearch(int $page, User $author, string $pattern): PaginationInterface
+    {
+        $pattern = $this->preparePattern($pattern);
+
+        return $this->paginator->paginate(
+            $this->contactRepository->querySearch($author, $pattern),
+            $page,
+            ContactRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
+    }
+
+    /**
      * Prepare filters for the tasks list.
      *
      * @param array<string, int> $filters Raw filters from request
@@ -111,5 +131,16 @@ class ContactService implements ContactServiceInterface
     public function delete(Contact $contact): void
     {
         $this->contactRepository->delete($contact);
+    }
+
+    /**
+     * Prepare pattern.
+     *
+     * @param string $pattern
+     * @return string Result pattern
+     */
+    public function preparePattern(string $pattern): string
+    {
+        return $pattern;
     }
 }

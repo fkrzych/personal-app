@@ -8,10 +8,12 @@
     <h1>{{ 'title.event_list'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
-        <form action="{{ url('event_search') }}" method="get">
-            <input type="text" name="pattern"><br>
-            <input type="submit">
-        </form>
+        <div>
+            <form action="{{ url('event_search') }}" method="get">
+                <input type="text" name="pattern"><br>
+                <input type="submit" value="{{ 'label.search'|trans }}">
+            </form>
+        </div>
         <a href="{{ url('event_index') }}" title="{{ 'clear.filters'|trans }}">{{ 'clear.filters'|trans }}</a>
         <a href="{{ url('event_create') }}" title="{{ 'create.event'|trans }}">{{ 'create.event'|trans }}</a>
     </div>

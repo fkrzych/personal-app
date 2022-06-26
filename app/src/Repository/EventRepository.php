@@ -122,7 +122,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query all records.
+     * Query for searching.
      *
      * @param User $user
      * @param $pattern

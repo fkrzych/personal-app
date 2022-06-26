@@ -8,6 +8,12 @@
     <h1>{{ 'title.contact_list'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <div>
+            <form action="{{ url('contact_search') }}" method="get">
+                <input type="text" name="pattern"><br>
+                <input type="submit" value="{{ 'label.search'|trans }}">
+            </form>
+        </div>
         <a href="{{ url('contact_index') }}" title="{{ 'clear.filters'|trans }}">{{ 'clear.filters'|trans }}</a>
         <a href="{{ url('contact_create') }}" title="{{ 'create.contact'|trans }}">{{ 'create.contact'|trans }}</a>
     </div>

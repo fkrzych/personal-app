@@ -217,4 +217,39 @@ class ContactController extends AbstractController
             ]
         );
     }
+
+    /**
+     * Get pattern from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return string Pattern
+     *
+     */
+    private function getPattern(Request $request): string
+    {
+        return $request->query->getAlnum('pattern', '');
+    }
+
+    /**
+     * Search action.
+     *
+     * @param Request $request HTTP request
+     * @return Response HTTP response
+     */
+    #[Route('/search', name: 'contact_search', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    public function search(Request $request): Response
+    {
+        $pattern = $this->getPattern($request);
+
+        /** @var User $user */
+        $user = $this->getUser();
+        $pagination = $this->contactService->getPaginatedListSearch(
+            $request->query->getInt('page', 1),
+            $user,
+            $pattern
+        );
+
+        return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
+    }
 }

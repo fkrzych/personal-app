@@ -79,6 +79,29 @@ class ContactRepository extends ServiceEntityRepository
     }
 
     /**
+     * Query for searching.
+     *
+     * @param User $user
+     * @param $pattern
+     * @return QueryBuilder Query builder
+     */
+    public function querySearch(User $user, $pattern): QueryBuilder
+    {
+        $pattern = $pattern . '%';
+
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select('contact', 'tags')
+            ->leftJoin('contact.tags', 'tags')
+             ->orderBy('contact.name', 'DESC')
+            ->where('contact.name like :pattern')
+            ->setParameter(':pattern', $pattern)
+            ->andWhere('contact.author = :author')
+            ->setParameter(':author', $user);
+
+        return $queryBuilder;
+    }
+
+    /**
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder
