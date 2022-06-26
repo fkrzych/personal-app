@@ -39,6 +39,11 @@ namespace App\Security;
             }
         }
 
+        /**
+         * Check roles after authorization.
+         *
+         * @return void Query builder
+         */
         public function checkPostAuth(UserInterface $user): void
         {
         }

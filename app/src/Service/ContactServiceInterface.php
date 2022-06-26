@@ -24,6 +24,16 @@ interface ContactServiceInterface
     public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface;
 
     /**
+     * Get paginated list for search.
+     *
+     * @param int  $page   Page number
+     * @param User $author Author
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
+    public function getPaginatedListSearch(int $page, User $author, string $pattern): PaginationInterface;
+
+    /**
      * Save entity.
      *
      * @param Contact $contact Contact entity
@@ -36,4 +46,11 @@ interface ContactServiceInterface
      * @param Contact $contact Contact entity
      */
     public function delete(Contact $contact): void;
+
+    /**
+     * Prepare pattern.
+     *
+     * @return string Result pattern
+     */
+    public function preparePattern(string $pattern): string;
 }

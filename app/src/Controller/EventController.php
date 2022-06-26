@@ -33,6 +33,9 @@ class EventController extends AbstractController
      */
     private TranslatorInterface $translator;
 
+    /**
+     * Constructor.
+     */
     public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator)
     {
         $this->eventService = $eventService;
@@ -65,6 +68,14 @@ class EventController extends AbstractController
         return $this->render('event/index.html.twig', ['pagination' => $pagination]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param EventRepository $repository Record repository
+     * @param int $id Record id
+     *
+     * @return Response HTTP response
+     */
     #[Route(
         '/{id}',
         name: 'event_show',

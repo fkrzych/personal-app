@@ -47,7 +47,6 @@ class MainService implements MainServiceInterface
      */
     public function getPaginatedList(int $page, User $author): PaginationInterface
     {
-
         return $this->paginator->paginate(
             $this->eventRepository->queryByAuthorCurrent($author),
             $page,
@@ -55,8 +54,16 @@ class MainService implements MainServiceInterface
         );
     }
 
-    public function notification(User $author) {
-        if(count($this->eventRepository->countCurrent($author))) {
+    /**
+     * If currents exists.
+     *
+     * @param User $author Author
+     *
+     * @return int Paginated list
+     */
+    public function ifCurrentsExist(User $author): int
+    {
+        if (count($this->eventRepository->countCurrent($author))) {
             return 1;
         } else {
             return 0;

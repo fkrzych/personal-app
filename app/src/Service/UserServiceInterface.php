@@ -23,6 +23,13 @@ interface UserServiceInterface
     public function getPaginatedList(int $page): PaginationInterface;
 
     /**
+     * Get number of admins.
+     *
+     * @return int Admin number
+     */
+    public function getAdminsNumber(): int;
+
+    /**
      * Save entity.
      *
      * @param User $user User entity

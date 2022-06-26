@@ -56,9 +56,9 @@ class UserService implements UserServiceInterface
     /**
      * Get number of admins.
      *
-     * @return int|void Paginated list
+     * @return int Admin number
      */
-    public function getAdminsNumber()
+    public function getAdminsNumber(): int
     {
         return count($this->userRepository->countAdmins());
     }

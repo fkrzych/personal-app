@@ -32,12 +32,22 @@ class MainController extends AbstractController
      */
     private TranslatorInterface $translator;
 
+    /**
+     * Constructor.
+     */
     public function __construct(MainServiceInterface $mainService, TranslatorInterface $translator)
     {
         $this->mainService = $mainService;
         $this->translator = $translator;
     }
 
+    /**
+     * Index action.
+     *
+     * @param Request $request HTTP Request
+     *
+     * @return Response HTTP response
+     */
     #[Route(
         name: 'main_index',
         methods: 'GET'
@@ -52,6 +62,14 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', ['pagination' => $pagination]);
     }
 
+    /**
+     * Show action.
+     *
+     * @param EventRepository $repository Record repository
+     * @param int $id Record id
+     *
+     * @return Response HTTP response
+     */
     #[Route(
         '/{id}',
         name: 'main_show',
@@ -83,7 +101,7 @@ class MainController extends AbstractController
             ->text($this->translator->trans('message.hello').' '.$this->getUser()->getEmail().'!'.PHP_EOL.PHP_EOL.$this->translator->trans('message.remember_about_events'))
         ;
 
-        if ($this->mainService->notification($this->getUser())) {
+        if ($this->mainService->ifCurrentsExist($this->getUser())) {
             $mailer->send($email);
 
             $this->addFlash(

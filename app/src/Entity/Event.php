@@ -170,6 +170,8 @@ class Event
     }
 
     /**
+     * Getter for Tags
+     *
      * @return Collection<int, Tag>
      */
     public function getTags(): Collection

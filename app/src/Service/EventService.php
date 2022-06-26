@@ -153,7 +153,7 @@ class EventService implements EventServiceInterface
      *
      * @return string Result pattern
      */
-    public function preparePattern(string $pattern): string
+    private function preparePattern(string $pattern): string
     {
         return $pattern;
     }

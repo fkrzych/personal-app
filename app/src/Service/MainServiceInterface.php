@@ -21,4 +21,13 @@ interface MainServiceInterface
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, User $author): PaginationInterface;
+
+    /**
+     * If currents exists.
+     *
+     * @param User $author Author
+     *
+     * @return int Paginated list
+     */
+    public function ifCurrentsExist(User $author): int;
 }
