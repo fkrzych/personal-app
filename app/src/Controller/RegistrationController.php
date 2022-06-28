@@ -24,7 +24,11 @@ class RegistrationController extends AbstractController
     /**
      * Register action.
      *
-     * @param Request $request HTTP Request
+     * @param Request                     $request            HTTP Request
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @param UserAuthenticatorInterface  $userAuthenticator
+     * @param LoginFormAuthenticator      $authenticator
+     * @param EntityManagerInterface      $entityManager
      *
      * @return Response HTTP response
      */

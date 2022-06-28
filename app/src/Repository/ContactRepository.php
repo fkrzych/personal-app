@@ -66,6 +66,8 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
+     * @param array $filters
+     *
      * @return QueryBuilder Query builder
      */
     public function queryAll(array $filters): QueryBuilder
@@ -90,7 +92,7 @@ class ContactRepository extends ServiceEntityRepository
     {
         $pattern = $pattern.'%';
 
-        $queryBuilder = $this->getOrCreateQueryBuilder()
+        return $this->getOrCreateQueryBuilder()
             ->select('contact', 'tags')
             ->leftJoin('contact.tags', 'tags')
              ->orderBy('contact.name', 'DESC')
@@ -98,20 +100,6 @@ class ContactRepository extends ServiceEntityRepository
             ->setParameter(':pattern', $pattern)
             ->andWhere('contact.author = :author')
             ->setParameter(':author', $user);
-
-        return $queryBuilder;
-    }
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('contact');
     }
 
     /**
@@ -152,5 +140,17 @@ class ContactRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('contact');
     }
 }

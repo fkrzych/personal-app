@@ -170,7 +170,7 @@ class Event
     }
 
     /**
-     * Getter for Tags
+     * Getter for Tags.
      *
      * @return Collection<int, Tag>
      */

@@ -132,14 +132,14 @@ class UserController extends AbstractController
                     'role' => $roles,
                     'method' => 'PUT',
                     'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
-                ]);
+            ]);
             $form->handleRequest($request);
         } else {
             $form = $this->createForm(ChangeEntitlementsDisabledType::class, $user, [
                     'role' => $roles,
                     'method' => 'PUT',
                     'action' => $this->generateUrl('user_change_entitlements', ['id' => $user->getId()]),
-                ]);
+            ]);
             $form->handleRequest($request);
         }
 
@@ -163,13 +163,15 @@ class UserController extends AbstractController
     /**
      * Change password action.
      *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
+     * @param Request                     $request            HTTP request
+     * @param User                        $user               User entity
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @param EntityManagerInterface      $entityManager
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/change_password', name: 'user_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function change_password(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function changePassword(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ChangePasswordType::class, $user, [
             'method' => 'PUT',

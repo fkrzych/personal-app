@@ -34,6 +34,9 @@ class MainController extends AbstractController
 
     /**
      * Constructor.
+     *
+     * @param MainServiceInterface $mainService
+     * @param TranslatorInterface  $translator
      */
     public function __construct(MainServiceInterface $mainService, TranslatorInterface $translator)
     {
@@ -66,7 +69,7 @@ class MainController extends AbstractController
      * Show action.
      *
      * @param EventRepository $repository Record repository
-     * @param int $id Record id
+     * @param int             $id         Record id
      *
      * @return Response HTTP response
      */
@@ -88,6 +91,10 @@ class MainController extends AbstractController
 
     /**
      * Email action.
+     *
+     * @param MailerInterface $mailer
+     *
+     * @return Response
      *
      * @throws TransportExceptionInterface
      */
@@ -114,7 +121,7 @@ class MainController extends AbstractController
                 $this->translator->trans('message.email_not_sent')
             );
         }
-        
+
         return $this->redirectToRoute('main_index');
     }
 }

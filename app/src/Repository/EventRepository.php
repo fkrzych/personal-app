@@ -19,8 +19,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * Class EventRepository.
  *
- * @method null|Event find($id, $lockMode = null, $lockVersion = null)
- * @method null|Event findOneBy(array $criteria, array $orderBy = null)
+ * @method Event|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Event|null findOneBy(array $criteria, array $orderBy = null)
  * @method Event[]    findAll()
  * @method Event[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
@@ -152,6 +152,8 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Count current events.
      *
+     * @param User $user
+     *
      * @return array Query builder
      */
     public function countCurrent(User $user): array
@@ -245,7 +247,7 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Get or create new query builder.
      *
-     * @param null|QueryBuilder $queryBuilder Query builder
+     * @param QueryBuilder|null $queryBuilder Query builder
      *
      * @return QueryBuilder Query builder
      */

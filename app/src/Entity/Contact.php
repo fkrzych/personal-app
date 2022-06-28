@@ -184,11 +184,9 @@ class Contact
      *
      * @param User|null $author Author
      */
-    public function setAuthor(?User $author): self
+    public function setAuthor(?User $author): void
     {
         $this->author = $author;
-
-        return $this;
     }
 
     /**
@@ -206,10 +204,8 @@ class Contact
      *
      * @param string|null $note Note
      */
-    public function setNote(?string $note): self
+    public function setNote(?string $note): void
     {
         $this->note = $note;
-
-        return $this;
     }
 }

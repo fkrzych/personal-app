@@ -48,6 +48,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Add user.
+     *
+     * @param User $entity
+     * @param bool $flush
      */
     public function add(User $entity, bool $flush = false): void
     {
@@ -60,6 +63,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Remove user.
+     *
+     * @param User $entity
+     * @param bool $flush
      */
     public function remove(User $entity, bool $flush = false): void
     {
@@ -72,6 +78,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     *
+     * @param PasswordAuthenticatedUserInterface $user
+     * @param string                             $newHashedPassword
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
@@ -111,6 +120,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
+     * Save entity.
+     *
+     * @param User $user User entity
+     */
+    public function save(User $user): void
+    {
+        $this->_em->persist($user);
+        $this->_em->flush();
+    }
+
+    /**
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder
@@ -120,16 +140,5 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('user');
-    }
-
-    /**
-     * Save entity.
-     *
-     * @param User $user User entity
-     */
-    public function save(User $user): void
-    {
-        $this->_em->persist($user);
-        $this->_em->flush();
     }
 }

@@ -227,13 +227,6 @@
 <dd>Get paginated list for search.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Service-EventService.html#method_preparePattern">preparePattern()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Prepare pattern.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Service-EventService.html#method_save">save()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -246,6 +239,13 @@
                                 &nbsp;: array&lt;string, object&gt;    </span>
 </dt>
 <dd>Prepare filters for the tasks list.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/App-Service-EventService.html#method_preparePattern">preparePattern()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Prepare pattern.</dd>
 
         </dl>
 
@@ -668,52 +668,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_preparePattern">
-        preparePattern()
-        <a href="classes/App-Service-EventService.html#method_preparePattern" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/EventService.php"><a href="files/src-service-eventservice.html"><abbr title="src/Service/EventService.php">EventService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">156</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Prepare pattern.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">preparePattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$pattern</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Result pattern</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_save">
         save()
         <a href="classes/App-Service-EventService.html#method_save" class="headerlink"><i class="fas fa-link"></i></a>
@@ -810,6 +764,52 @@
     <span class="phpdocumentor-signature__response_type">array&lt;string, object&gt;</span>
             &mdash;
             <section class="phpdocumentor-description"><p>Result array of filters</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_preparePattern">
+        preparePattern()
+        <a href="classes/App-Service-EventService.html#method_preparePattern" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/EventService.php"><a href="files/src-service-eventservice.html"><abbr title="src/Service/EventService.php">EventService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">156</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Prepare pattern.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">preparePattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pattern</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Result pattern</p>
 </section>
 
     

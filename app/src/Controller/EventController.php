@@ -35,6 +35,9 @@ class EventController extends AbstractController
 
     /**
      * Constructor.
+     *
+     * @param EventServiceInterface $eventService
+     * @param TranslatorInterface   $translator
      */
     public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator)
     {
@@ -71,8 +74,8 @@ class EventController extends AbstractController
     /**
      * Show action.
      *
-     * @param EventRepository $repository Record repository
-     * @param int $id Record id
+     * @param EventRepository $repository Event repository
+     * @param int             $id         Event id
      *
      * @return Response HTTP response
      */

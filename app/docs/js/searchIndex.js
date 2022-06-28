@@ -53,18 +53,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor.",
             "url": "classes/App-Controller-ContactController.html#method___construct"
         },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Index\u0020action.",
             "url": "classes/App-Controller-ContactController.html#method_index"
-        },                {
-            "fqsen": "\\App\\Controller\\ContactController\u003A\u003AgetFilters\u0028\u0029",
-            "name": "getFilters",
-            "summary": "Get\u0020filters\u0020from\u0020request.",
-            "url": "classes/App-Controller-ContactController.html#method_getFilters"
         },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
@@ -86,15 +81,20 @@ Search.appendIndex(
             "summary": "Delete\u0020action.",
             "url": "classes/App-Controller-ContactController.html#method_delete"
         },                {
-            "fqsen": "\\App\\Controller\\ContactController\u003A\u003AgetPattern\u0028\u0029",
-            "name": "getPattern",
-            "summary": "Get\u0020pattern\u0020from\u0020request.",
-            "url": "classes/App-Controller-ContactController.html#method_getPattern"
-        },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003Asearch\u0028\u0029",
             "name": "search",
             "summary": "Search\u0020action.",
             "url": "classes/App-Controller-ContactController.html#method_search"
+        },                {
+            "fqsen": "\\App\\Controller\\ContactController\u003A\u003AgetFilters\u0028\u0029",
+            "name": "getFilters",
+            "summary": "Get\u0020filters\u0020from\u0020request.",
+            "url": "classes/App-Controller-ContactController.html#method_getFilters"
+        },                {
+            "fqsen": "\\App\\Controller\\ContactController\u003A\u003AgetPattern\u0028\u0029",
+            "name": "getPattern",
+            "summary": "Get\u0020pattern\u0020from\u0020request.",
+            "url": "classes/App-Controller-ContactController.html#method_getPattern"
         },                {
             "fqsen": "\\App\\Controller\\ContactController\u003A\u003A\u0024contactService",
             "name": "contactService",
@@ -113,7 +113,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor.",
             "url": "classes/App-Controller-EventController.html#method___construct"
         },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003Aindex\u0028\u0029",
@@ -121,14 +121,9 @@ Search.appendIndex(
             "summary": "Index\u0020action.",
             "url": "classes/App-Controller-EventController.html#method_index"
         },                {
-            "fqsen": "\\App\\Controller\\EventController\u003A\u003AgetFilters\u0028\u0029",
-            "name": "getFilters",
-            "summary": "Get\u0020filters\u0020from\u0020request.",
-            "url": "classes/App-Controller-EventController.html#method_getFilters"
-        },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Show\u0020action.",
             "url": "classes/App-Controller-EventController.html#method_show"
         },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003Acreate\u0028\u0029",
@@ -146,15 +141,20 @@ Search.appendIndex(
             "summary": "Delete\u0020action.",
             "url": "classes/App-Controller-EventController.html#method_delete"
         },                {
-            "fqsen": "\\App\\Controller\\EventController\u003A\u003AgetPattern\u0028\u0029",
-            "name": "getPattern",
-            "summary": "Get\u0020pattern\u0020from\u0020request.",
-            "url": "classes/App-Controller-EventController.html#method_getPattern"
-        },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003Asearch\u0028\u0029",
             "name": "search",
             "summary": "Search\u0020action.",
             "url": "classes/App-Controller-EventController.html#method_search"
+        },                {
+            "fqsen": "\\App\\Controller\\EventController\u003A\u003AgetFilters\u0028\u0029",
+            "name": "getFilters",
+            "summary": "Get\u0020filters\u0020from\u0020request.",
+            "url": "classes/App-Controller-EventController.html#method_getFilters"
+        },                {
+            "fqsen": "\\App\\Controller\\EventController\u003A\u003AgetPattern\u0028\u0029",
+            "name": "getPattern",
+            "summary": "Get\u0020pattern\u0020from\u0020request.",
+            "url": "classes/App-Controller-EventController.html#method_getPattern"
         },                {
             "fqsen": "\\App\\Controller\\EventController\u003A\u003A\u0024eventService",
             "name": "eventService",
@@ -173,18 +173,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\MainController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor.",
             "url": "classes/App-Controller-MainController.html#method___construct"
         },                {
             "fqsen": "\\App\\Controller\\MainController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Index\u0020action.",
             "url": "classes/App-Controller-MainController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\MainController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Show\u0020action.",
             "url": "classes/App-Controller-MainController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Controller\\MainController\u003A\u003AsendEmail\u0028\u0029",
+            "name": "sendEmail",
+            "summary": "Email\u0020action.",
+            "url": "classes/App-Controller-MainController.html#method_sendEmail"
         },                {
             "fqsen": "\\App\\Controller\\MainController\u003A\u003A\u0024mainService",
             "name": "mainService",
@@ -243,7 +248,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\SettingsController\u003A\u003Achange_password\u0028\u0029",
             "name": "change_password",
-            "summary": "Edit\u0020action.",
+            "summary": "Change\u0020password\u0020action.",
             "url": "classes/App-Controller-SettingsController.html#method_change_password"
         },                {
             "fqsen": "\\App\\Controller\\SettingsController\u003A\u003A\u0024userService",
@@ -713,7 +718,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Entity\\Event\u003A\u003AgetTags\u0028\u0029",
             "name": "getTags",
-            "summary": "",
+            "summary": "Getter\u0020for\u0020Tags",
             "url": "classes/App-Entity-Event.html#method_getTags"
         },                {
             "fqsen": "\\App\\Entity\\Event\u003A\u003AaddTag\u0028\u0029",
@@ -1136,11 +1141,6 @@ Search.appendIndex(
             "summary": "Query\u0020all\u0020records.",
             "url": "classes/App-Repository-CategoryRepository.html#method_queryAll"
         },                {
-            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
-            "name": "getOrCreateQueryBuilder",
-            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
-            "url": "classes/App-Repository-CategoryRepository.html#method_getOrCreateQueryBuilder"
-        },                {
             "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -1150,6 +1150,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Repository-CategoryRepository.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
+            "name": "getOrCreateQueryBuilder",
+            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
+            "url": "classes/App-Repository-CategoryRepository.html#method_getOrCreateQueryBuilder"
         },                {
             "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
@@ -1241,15 +1246,15 @@ Search.appendIndex(
             "summary": "Query\u0020for\u0020searching.",
             "url": "classes/App-Repository-EventRepository.html#method_querySearch"
         },                {
+            "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AcountCurrent\u0028\u0029",
+            "name": "countCurrent",
+            "summary": "Count\u0020current\u0020events.",
+            "url": "classes/App-Repository-EventRepository.html#method_countCurrent"
+        },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AcountByCategory\u0028\u0029",
             "name": "countByCategory",
             "summary": "Count\u0020events\u0020by\u0020category.",
             "url": "classes/App-Repository-EventRepository.html#method_countByCategory"
-        },                {
-            "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AapplyFiltersToList\u0028\u0029",
-            "name": "applyFiltersToList",
-            "summary": "Apply\u0020filters\u0020to\u0020paginated\u0020list.",
-            "url": "classes/App-Repository-EventRepository.html#method_applyFiltersToList"
         },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003Asave\u0028\u0029",
             "name": "save",
@@ -1260,6 +1265,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Repository-EventRepository.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AapplyFiltersToList\u0028\u0029",
+            "name": "applyFiltersToList",
+            "summary": "Apply\u0020filters\u0020to\u0020paginated\u0020list.",
+            "url": "classes/App-Repository-EventRepository.html#method_applyFiltersToList"
         },                {
             "fqsen": "\\App\\Repository\\EventRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
             "name": "getOrCreateQueryBuilder",
@@ -1428,7 +1438,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Security\\UserChecker\u003A\u003AcheckPostAuth\u0028\u0029",
             "name": "checkPostAuth",
-            "summary": "",
+            "summary": "Check\u0020roles\u0020after\u0020authorization.",
             "url": "classes/App-Security-UserChecker.html#method_checkPostAuth"
         },                {
             "fqsen": "\\App\\Security\\UserChecker\u003A\u003A\u0024translator",
@@ -1511,6 +1521,11 @@ Search.appendIndex(
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-CategoryServiceInterface.html#method_delete"
         },                {
+            "fqsen": "\\App\\Service\\CategoryServiceInterface\u003A\u003AfindOneById\u0028\u0029",
+            "name": "findOneById",
+            "summary": "Find\u0020by\u0020id.",
+            "url": "classes/App-Service-CategoryServiceInterface.html#method_findOneById"
+        },                {
             "fqsen": "\\App\\Service\\ContactService",
             "name": "ContactService",
             "summary": "Class\u0020ContactService.",
@@ -1576,6 +1591,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-ContactServiceInterface.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\ContactServiceInterface\u003A\u003AgetPaginatedListSearch\u0028\u0029",
+            "name": "getPaginatedListSearch",
+            "summary": "Get\u0020paginated\u0020list\u0020for\u0020search.",
+            "url": "classes/App-Service-ContactServiceInterface.html#method_getPaginatedListSearch"
+        },                {
             "fqsen": "\\App\\Service\\ContactServiceInterface\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -1585,6 +1605,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-ContactServiceInterface.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Service\\ContactServiceInterface\u003A\u003ApreparePattern\u0028\u0029",
+            "name": "preparePattern",
+            "summary": "Prepare\u0020pattern.",
+            "url": "classes/App-Service-ContactServiceInterface.html#method_preparePattern"
         },                {
             "fqsen": "\\App\\Service\\EventService",
             "name": "EventService",
@@ -1656,6 +1681,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-EventServiceInterface.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\EventServiceInterface\u003A\u003AgetPaginatedListSearch\u0028\u0029",
+            "name": "getPaginatedListSearch",
+            "summary": "Get\u0020paginated\u0020list\u0020for\u0020search.",
+            "url": "classes/App-Service-EventServiceInterface.html#method_getPaginatedListSearch"
+        },                {
             "fqsen": "\\App\\Service\\EventServiceInterface\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -1681,6 +1711,11 @@ Search.appendIndex(
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-MainService.html#method_getPaginatedList"
         },                {
+            "fqsen": "\\App\\Service\\MainService\u003A\u003AifCurrentsExist\u0028\u0029",
+            "name": "ifCurrentsExist",
+            "summary": "If\u0020currents\u0020exists.",
+            "url": "classes/App-Service-MainService.html#method_ifCurrentsExist"
+        },                {
             "fqsen": "\\App\\Service\\MainService\u003A\u003A\u0024eventRepository",
             "name": "eventRepository",
             "summary": "Event\u0020repository.",
@@ -1700,6 +1735,11 @@ Search.appendIndex(
             "name": "getPaginatedList",
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-MainServiceInterface.html#method_getPaginatedList"
+        },                {
+            "fqsen": "\\App\\Service\\MainServiceInterface\u003A\u003AifCurrentsExist\u0028\u0029",
+            "name": "ifCurrentsExist",
+            "summary": "If\u0020currents\u0020exists.",
+            "url": "classes/App-Service-MainServiceInterface.html#method_ifCurrentsExist"
         },                {
             "fqsen": "\\App\\Service\\TagService",
             "name": "TagService",
@@ -1771,6 +1811,11 @@ Search.appendIndex(
             "summary": "Find\u0020by\u0020name.",
             "url": "classes/App-Service-TagServiceInterface.html#method_findOneByName"
         },                {
+            "fqsen": "\\App\\Service\\TagServiceInterface\u003A\u003AfindOneById\u0028\u0029",
+            "name": "findOneById",
+            "summary": "Find\u0020by\u0020id.",
+            "url": "classes/App-Service-TagServiceInterface.html#method_findOneById"
+        },                {
             "fqsen": "\\App\\Service\\UserService",
             "name": "UserService",
             "summary": "Class\u0020UserService.",
@@ -1815,6 +1860,11 @@ Search.appendIndex(
             "name": "getPaginatedList",
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-UserServiceInterface.html#method_getPaginatedList"
+        },                {
+            "fqsen": "\\App\\Service\\UserServiceInterface\u003A\u003AgetAdminsNumber\u0028\u0029",
+            "name": "getAdminsNumber",
+            "summary": "Get\u0020number\u0020of\u0020admins.",
+            "url": "classes/App-Service-UserServiceInterface.html#method_getAdminsNumber"
         },                {
             "fqsen": "\\App\\Service\\UserServiceInterface\u003A\u003Asave\u0028\u0029",
             "name": "save",

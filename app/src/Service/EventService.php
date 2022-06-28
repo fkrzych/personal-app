@@ -45,12 +45,8 @@ class EventService implements EventServiceInterface
      * @param TagServiceInterface      $tagService      Tag service
      * @param EventRepository          $eventRepository Event repository
      */
-    public function __construct(
-        CategoryServiceInterface $categoryService,
-        PaginatorInterface $paginator,
-        TagServiceInterface $tagService,
-        EventRepository $eventRepository
-    ) {
+    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, EventRepository $eventRepository)
+    {
         $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
@@ -82,8 +78,9 @@ class EventService implements EventServiceInterface
     /**
      * Get paginated list for search.
      *
-     * @param int  $page   Page number
-     * @param User $author Author
+     * @param int    $page    Page number
+     * @param User   $author  Author
+     * @param string $pattern
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -150,6 +147,8 @@ class EventService implements EventServiceInterface
 
     /**
      * Prepare pattern.
+     *
+     * @param string $pattern
      *
      * @return string Result pattern
      */

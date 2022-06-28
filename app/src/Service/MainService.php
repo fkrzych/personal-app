@@ -65,8 +65,8 @@ class MainService implements MainServiceInterface
     {
         if (count($this->eventRepository->countCurrent($author))) {
             return 1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

@@ -23,6 +23,7 @@ class ChangePasswordType extends AbstractType
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
+     * @param FormBuilderInterface $builder
      * @param array<string, mixed> $options
      *
      * @see FormTypeExtensionInterface::buildForm()
@@ -34,11 +35,13 @@ class ChangePasswordType extends AbstractType
                 'invalid_message' => 'message.password_not_match',
                 'first_options' => ['label' => 'label.password'],
                 'second_options' => ['label' => 'label.repeat_password'],
-            ]);
+        ]);
     }
 
     /**
      * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -50,6 +53,8 @@ class ChangePasswordType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+     *
+     * @return string
      */
     public function getBlockPrefix(): string
     {

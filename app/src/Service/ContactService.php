@@ -39,11 +39,8 @@ class ContactService implements ContactServiceInterface
      * @param TagServiceInterface $tagService        Tag service
      * @param ContactRepository   $contactRepository Contact repository
      */
-    public function __construct(
-        PaginatorInterface $paginator,
-        TagServiceInterface $tagService,
-        ContactRepository $contactRepository
-    ) {
+    public function __construct(PaginatorInterface $paginator, TagServiceInterface $tagService, ContactRepository $contactRepository)
+    {
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->contactRepository = $contactRepository;
@@ -52,8 +49,9 @@ class ContactService implements ContactServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int  $page   Page number
-     * @param User $author Author
+     * @param int   $page    Page number
+     * @param User  $author  Author
+     * @param array $filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      *
@@ -73,8 +71,9 @@ class ContactService implements ContactServiceInterface
     /**
      * Get paginated list for search.
      *
-     * @param int  $page   Page number
-     * @param User $author Author
+     * @param int    $page    Page number
+     * @param User   $author  Author
+     * @param string $pattern
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -87,29 +86,6 @@ class ContactService implements ContactServiceInterface
             $page,
             ContactRepository::PAGINATOR_ITEMS_PER_PAGE
         );
-    }
-
-    /**
-     * Prepare filters for the tasks list.
-     *
-     * @param array<string, int> $filters Raw filters from request
-     *
-     * @return array<string, object> Result array of filters
-     *
-     * @throws NonUniqueResultException
-     */
-    private function prepareFilters(array $filters): array
-    {
-        $resultFilters = [];
-
-        if (!empty($filters['tag_id'])) {
-            $tag = $this->tagService->findOneById($filters['tag_id']);
-            if (null !== $tag) {
-                $resultFilters['tag'] = $tag;
-            }
-        }
-
-        return $resultFilters;
     }
 
     /**
@@ -135,10 +111,35 @@ class ContactService implements ContactServiceInterface
     /**
      * Prepare pattern.
      *
+     * @param string $pattern
+     *
      * @return string Result pattern
      */
     public function preparePattern(string $pattern): string
     {
         return $pattern;
+    }
+
+    /**
+     * Prepare filters for the tasks list.
+     *
+     * @param array<string, int> $filters Raw filters from request
+     *
+     * @return array<string, object> Result array of filters
+     *
+     * @throws NonUniqueResultException
+     */
+    private function prepareFilters(array $filters): array
+    {
+        $resultFilters = [];
+
+        if (!empty($filters['tag_id'])) {
+            $tag = $this->tagService->findOneById($filters['tag_id']);
+            if (null !== $tag) {
+                $resultFilters['tag'] = $tag;
+            }
+        }
+
+        return $resultFilters;
     }
 }

@@ -13,8 +13,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * Class CategoryRepository.
  *
- * @method null|Category find($id, $lockMode = null, $lockVersion = null)
- * @method null|Category findOneBy(array $criteria, array $orderBy = null)
+ * @method Category|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Category|null findOneBy(array $criteria, array $orderBy = null)
  * @method Category[]    findAll()
  * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
@@ -81,7 +81,7 @@ class CategoryRepository extends ServiceEntityRepository
     /**
      * Get or create new query builder.
      *
-     * @param null|QueryBuilder $queryBuilder Query builder
+     * @param QueryBuilder|null $queryBuilder Query builder
      *
      * @return QueryBuilder Query builder
      */

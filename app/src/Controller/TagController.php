@@ -33,6 +33,9 @@ class TagController extends AbstractController
 
     /**
      * Constructor.
+     *
+     * @param TagServiceInterface $tagService
+     * @param TranslatorInterface $translator
      */
     public function __construct(TagServiceInterface $tagService, TranslatorInterface $translator)
     {

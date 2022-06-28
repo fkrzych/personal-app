@@ -14,37 +14,49 @@ namespace App\Security;
     /**
      * Class UserChecker.
      */
-    class UserChecker implements UserCheckerInterface
+class UserChecker implements UserCheckerInterface
+{
+    /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
+     * Constructor.
+     *
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
     {
-        private TranslatorInterface $translator;
+        $this->translator = $translator;
+    }
 
-        public function __construct(TranslatorInterface $translator)
-        {
-            $this->translator = $translator;
+    /**
+     * Check roles before authorization.
+     *
+     * @param UserInterface $user
+     *
+     * @return void Query builder
+     */
+    public function checkPreAuth(UserInterface $user): void
+    {
+        if (!$user instanceof User) {
+            return;
         }
 
-        /**
-         * Check roles before authorization.
-         *
-         * @return void Query builder
-         */
-        public function checkPreAuth(UserInterface $user): void
-        {
-            if (!$user instanceof User) {
-                return;
-            }
-
-            if (in_array('ROLE_BLOCKED', $user->getRoles())) {
-                throw new CustomUserMessageAccountStatusException($this->translator->trans('message.account_blocked'));
-            }
-        }
-
-        /**
-         * Check roles after authorization.
-         *
-         * @return void Query builder
-         */
-        public function checkPostAuth(UserInterface $user): void
-        {
+        if (in_array('ROLE_BLOCKED', $user->getRoles())) {
+            throw new CustomUserMessageAccountStatusException($this->translator->trans('message.account_blocked'));
         }
     }
+
+    /**
+     * Check roles after authorization.
+     *
+     * @param UserInterface $user
+     *
+     * @return void Query builder
+     */
+    public function checkPostAuth(UserInterface $user): void
+    {
+    }
+}

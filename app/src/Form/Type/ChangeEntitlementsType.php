@@ -23,6 +23,7 @@ class ChangeEntitlementsType extends AbstractType
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
+     * @param FormBuilderInterface $builder
      * @param array<string, mixed> $options
      *
      * @see FormTypeExtensionInterface::buildForm()
@@ -46,6 +47,8 @@ class ChangeEntitlementsType extends AbstractType
 
     /**
      * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -57,6 +60,8 @@ class ChangeEntitlementsType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+     *
+     * @return string
      */
     public function getBlockPrefix(): string
     {
