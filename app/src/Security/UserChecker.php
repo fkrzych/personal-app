@@ -11,9 +11,9 @@ namespace App\Security;
     use Symfony\Component\Security\Core\User\UserInterface;
     use Symfony\Contracts\Translation\TranslatorInterface;
 
-    /**
-     * Class UserChecker.
-     */
+/**
+ * Class UserChecker.
+ */
 class UserChecker implements UserCheckerInterface
 {
     /**

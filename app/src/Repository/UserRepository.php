@@ -50,7 +50,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      * Add user.
      *
      * @param User $entity User entity
-     * @param bool $flush bool
+     * @param bool $flush  bool
      */
     public function add(User $entity, bool $flush = false): void
     {
@@ -65,7 +65,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      * Remove user.
      *
      * @param User $entity User entity
-     * @param bool $flush bool
+     * @param bool $flush  bool
      */
     public function remove(User $entity, bool $flush = false): void
     {
@@ -79,7 +79,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      *
-     * @param PasswordAuthenticatedUserInterface $user PasswordAuthenticatedUserInterface
+     * @param PasswordAuthenticatedUserInterface $user              PasswordAuthenticatedUserInterface
      * @param string                             $newHashedPassword Hashed Password
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void

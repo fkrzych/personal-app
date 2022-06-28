@@ -83,7 +83,7 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Query for searching.
      *
-     * @param User $user User entity
+     * @param User   $user    User entity
      * @param string $pattern Pattern for searching
      *
      * @return QueryBuilder Query builder
