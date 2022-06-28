@@ -128,12 +128,12 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Query for searching.
      *
-     * @param User $user
-     * @param $pattern
+     * @param User   $user    User entity
+     * @param string $pattern Pattern for searching
      *
      * @return QueryBuilder Query builder
      */
-    public function querySearch(User $user, $pattern): QueryBuilder
+    public function querySearch(User $user, string $pattern): QueryBuilder
     {
         $pattern = $pattern.'%';
 
@@ -152,7 +152,7 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Count current events.
      *
-     * @param User $user
+     * @param User $user User entity
      *
      * @return array Query builder
      */

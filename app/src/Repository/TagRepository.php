@@ -80,8 +80,8 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Add tag.
      *
-     * @param Tag  $entity
-     * @param bool $flush
+     * @param Tag  $entity Tag entity
+     * @param bool $flush  bool
      */
     public function add(Tag $entity, bool $flush = false): void
     {
@@ -95,8 +95,8 @@ class TagRepository extends ServiceEntityRepository
     /**
      * Remove tag.
      *
-     * @param Tag  $entity
-     * @param bool $flush
+     * @param Tag  $entity Tag entity
+     * @param bool $flush  bool
      */
     public function remove(Tag $entity, bool $flush = false): void
     {

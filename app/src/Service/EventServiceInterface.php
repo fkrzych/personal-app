@@ -18,8 +18,8 @@ interface EventServiceInterface
      * Get paginated list.
      *
      * @param int   $page    Page number
-     * @param User  $author
-     * @param array $filters
+     * @param User  $author  User
+     * @param array $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -30,7 +30,7 @@ interface EventServiceInterface
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */

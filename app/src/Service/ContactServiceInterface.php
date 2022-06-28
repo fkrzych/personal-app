@@ -18,8 +18,8 @@ interface ContactServiceInterface
      * Get paginated list.
      *
      * @param int   $page    Page number
-     * @param User  $author
-     * @param array $filters
+     * @param User  $author  User
+     * @param array $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -30,7 +30,7 @@ interface ContactServiceInterface
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -53,7 +53,7 @@ interface ContactServiceInterface
     /**
      * Prepare pattern.
      *
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return string Result pattern
      */

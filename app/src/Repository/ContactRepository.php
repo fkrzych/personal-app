@@ -66,7 +66,7 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
-     * @param array $filters
+     * @param array $filters Filters
      *
      * @return QueryBuilder Query builder
      */
@@ -83,12 +83,12 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Query for searching.
      *
-     * @param User $user
-     * @param $pattern
+     * @param User $user User entity
+     * @param string $pattern Pattern for searching
      *
      * @return QueryBuilder Query builder
      */
-    public function querySearch(User $user, $pattern): QueryBuilder
+    public function querySearch(User $user, string $pattern): QueryBuilder
     {
         $pattern = $pattern.'%';
 

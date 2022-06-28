@@ -80,7 +80,7 @@ class EventService implements EventServiceInterface
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern
+     * @param string $pattern Pattern
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -148,7 +148,7 @@ class EventService implements EventServiceInterface
     /**
      * Prepare pattern.
      *
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return string Result pattern
      */

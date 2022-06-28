@@ -51,7 +51,7 @@ class ContactService implements ContactServiceInterface
      *
      * @param int   $page    Page number
      * @param User  $author  Author
-     * @param array $filters
+     * @param array $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      *
@@ -73,7 +73,7 @@ class ContactService implements ContactServiceInterface
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -111,7 +111,7 @@ class ContactService implements ContactServiceInterface
     /**
      * Prepare pattern.
      *
-     * @param string $pattern
+     * @param string $pattern Pattern for searching
      *
      * @return string Result pattern
      */

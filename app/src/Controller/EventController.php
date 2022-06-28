@@ -36,8 +36,8 @@ class EventController extends AbstractController
     /**
      * Constructor.
      *
-     * @param EventServiceInterface $eventService
-     * @param TranslatorInterface   $translator
+     * @param EventServiceInterface $eventService EventServiceInterface
+     * @param TranslatorInterface   $translator   TranslatorInterface
      */
     public function __construct(EventServiceInterface $eventService, TranslatorInterface $translator)
     {

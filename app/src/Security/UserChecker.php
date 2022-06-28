@@ -24,7 +24,7 @@ class UserChecker implements UserCheckerInterface
     /**
      * Constructor.
      *
-     * @param TranslatorInterface $translator
+     * @param TranslatorInterface $translator TranslatorInterface
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -34,7 +34,7 @@ class UserChecker implements UserCheckerInterface
     /**
      * Check roles before authorization.
      *
-     * @param UserInterface $user
+     * @param UserInterface $user UserInterface
      *
      * @return void Query builder
      */
@@ -52,7 +52,7 @@ class UserChecker implements UserCheckerInterface
     /**
      * Check roles after authorization.
      *
-     * @param UserInterface $user
+     * @param UserInterface $user UserInterface
      *
      * @return void Query builder
      */

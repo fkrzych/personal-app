@@ -35,8 +35,8 @@ class MainController extends AbstractController
     /**
      * Constructor.
      *
-     * @param MainServiceInterface $mainService
-     * @param TranslatorInterface  $translator
+     * @param MainServiceInterface $mainService MainServiceInterface
+     * @param TranslatorInterface  $translator  TranslatorInterface
      */
     public function __construct(MainServiceInterface $mainService, TranslatorInterface $translator)
     {
@@ -68,8 +68,8 @@ class MainController extends AbstractController
     /**
      * Show action.
      *
-     * @param EventRepository $repository Record repository
-     * @param int             $id         Record id
+     * @param EventRepository $repository Event repository
+     * @param int             $id         Event id
      *
      * @return Response HTTP response
      */
@@ -92,7 +92,7 @@ class MainController extends AbstractController
     /**
      * Email action.
      *
-     * @param MailerInterface $mailer
+     * @param MailerInterface $mailer MailerInterface
      *
      * @return Response
      *
