@@ -32,7 +32,10 @@
     </head>
     <body>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="app-user-options">
+            <div class="show-button-container">
+                <button class="show-button">{{ app.user.email }}</button>
+            </div>
+            <div class="app-user-options hidden">
                 <div>{{ app.user.email }}</div>
                 <a href="{{ url('settings_index', {'id': app.user.id}) }}" title="{{ 'edit.user'|trans}}">{{ 'edit.user'|trans}}</a>
                 <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
@@ -48,5 +51,8 @@
             {% endfor %}
             {% block body %}{% endblock %}
         </div>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

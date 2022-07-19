@@ -5,16 +5,21 @@
 {% endblock %}
 
 {% block body %}
+    <div class="hamburger-btn-container">
+        <button class="hamburger-btn"><ion-icon name="menu-outline"></ion-icon></button>
+    </div>
     <h1>{{ 'edit.user'|trans }}</h1>
     <div class="link-space-between">
         <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
     </div>
-    <div class="app-user-options">
+    <div class="flex-column">
         <a href="{{ url('settings_edit', {'id': app.user.id}) }}" title="{{ 'edit.user_data'|trans }}">{{ 'edit.user_data'|trans }}</a>
         <a href="{{ url('settings_change_password', {'id': app.user.id}) }}" title="{{ 'edit.user_change_password'|trans }}">{{ 'edit.user_change_password'|trans }}</a>
     </div>
-    <div class="link-centered">
+
+    <div class="flex-column links-container hidden">
         <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
         {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
         <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>

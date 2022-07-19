@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #121212;
     color: #fff;
@@ -76,9 +82,69 @@ a {
     color: #fff;
 }
 
-.app-user-options {
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* USER OPTIONS MENU */
+
+.show-button-container {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    align-items: flex-end;
+}
+
+.app-user-options {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    right: 1rem;
+    z-index: 1;
+
+    padding: 1.2rem;
+    background-color: #333333;
+    border-radius: 0.6rem;
+}
+
+/* LINKS */
+.links-container {
+    width: 10rem;
+    height: 100vh;
+    margin-left: -10.5rem;
+    margin-top: -8rem;
+    background-color: #333333;
+}
+
+.hamburger-btn-container {
+    width: 10rem;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #333333;
+    margin-left: -8.4rem;
+    margin-top: -3.2rem;
+    padding: 1rem;
+}
+
+.hamburger-btn {
+    border: none;
+    text-decoration: none;
+    background-color: #333333;
+    font-size: 3rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.margin-left-10rem {
+    margin-left: 10rem;
+}
+
+.margin-left-10rem-sub {
+    margin-left: -10.5rem;
 }
 

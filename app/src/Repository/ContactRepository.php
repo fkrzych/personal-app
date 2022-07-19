@@ -90,7 +90,7 @@ class ContactRepository extends ServiceEntityRepository
      */
     public function querySearch(User $user, string $pattern): QueryBuilder
     {
-        $pattern = $pattern.'%';
+        $pattern = '%'.$pattern.'%';
 
         return $this->getOrCreateQueryBuilder()
             ->select('contact', 'tags')
